@@ -63,8 +63,8 @@ function Welcome(_props: RouteComponentProps): JSX.Element {
   return (
     <div css={c.welcome}>
       <Hello compiler="TypeScript" framework="React" />
-      <button onClick={() => navigate('/')}>Home</button>
       <Search />
+      <button onClick={() => navigate('/')}>Home</button>
     </div>
   );
 }
@@ -72,9 +72,8 @@ function Welcome(_props: RouteComponentProps): JSX.Element {
 function SearchForm(_props: RouteComponentProps): JSX.Element {
   return (
     <div css={c.search}>
-      <Hello compiler="TypeScript" framework="React" />
-      <button onClick={() => navigate('/')}>Home</button>
       <Search />
+      <button onClick={() => navigate('/')}>Home</button>
     </div>
   );
 }
