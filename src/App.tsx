@@ -6,9 +6,7 @@ import Hello from './components/Hello';
 import Search from './components/Search';
 import logo from './logo.svg';
 import SearchRecords from './components/SearchRecords';
-import { Typography } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box';
+import { Typography, Button, Box } from '@material-ui/core';
 import SignUp from './components/SignUp';
 
 export default function App(): JSX.Element {
@@ -46,7 +44,7 @@ function NavLink(props: NavProps): JSX.Element {
 
 function Copyright(_props: RouteComponentProps): JSX.Element {
   return (
-    <Box mt={5}>
+    <Box mt={2}>
       <Typography variant="body2" color="textSecondary" align="center">
         {'OurRoots Copyright © '}
         {new Date().getFullYear()}{' '}

@@ -17,7 +17,7 @@ export const navLink = css`
   float: left;
   border: 1px solid darkgray;
   margin: 0;
-  width: 60px;
+  width: 90px;
   color: #000;
   padding: 12px;
   background-color: #dddddd;
