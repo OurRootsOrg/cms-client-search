@@ -6,6 +6,7 @@ import Hello from './components/Hello';
 import Search from './components/Search';
 import logo from './logo.svg';
 import SearchRecords from './components/SearchRecords';
+import styled from '@emotion/styled';
 
 export default function App(): JSX.Element {
   const { t } = useTranslation();
@@ -60,12 +61,16 @@ function Home(_props: RouteComponentProps): JSX.Element {
   );
 }
 
+const Button = styled.button`
+  color: blue;
+`;
+
 function Welcome(_props: RouteComponentProps): JSX.Element {
   return (
     <div css={c.welcome}>
       <Hello compiler="TypeScript" framework="React" />
       <Search />
-      <button onClick={() => navigate('/')}>Home</button>
+      <Button onClick={() => navigate('/')}>Home</Button>
     </div>
   );
 }
@@ -74,7 +79,7 @@ function SearchForm(_props: RouteComponentProps): JSX.Element {
   return (
     <div css={c.search}>
       <SearchRecords />
-      <button onClick={() => navigate('/')}>Home</button>
+      <Button onClick={() => navigate('/')}>Home</Button>
     </div>
   );
 }
