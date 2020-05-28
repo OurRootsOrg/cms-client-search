@@ -5,6 +5,7 @@ import * as c from './App.style';
 import Hello from './components/Hello';
 import Search from './components/Search';
 import logo from './logo.svg';
+import SearchRecords from './components/SearchRecords';
 
 export default function App(): JSX.Element {
   const { t } = useTranslation();
@@ -72,7 +73,7 @@ function Welcome(_props: RouteComponentProps): JSX.Element {
 function SearchForm(_props: RouteComponentProps): JSX.Element {
   return (
     <div css={c.search}>
-      <Search />
+      <SearchRecords />
       <button onClick={() => navigate('/')}>Home</button>
     </div>
   );
