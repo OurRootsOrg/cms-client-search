@@ -14,10 +14,12 @@ export default function App(): JSX.Element {
       <nav css={c.nav}>
         <NavLink to="/">{t('Home')}</NavLink>
         <NavLink to="welcome">{t('Welcome')}</NavLink>
+        <NavLink to="search">{t('Search')}</NavLink>
       </nav>
       <Router>
         <Home path="/" />
         <Welcome path="/welcome" />
+        <SearchForm path="/search" />
       </Router>
     </div>
   );
@@ -60,6 +62,16 @@ function Home(_props: RouteComponentProps): JSX.Element {
 function Welcome(_props: RouteComponentProps): JSX.Element {
   return (
     <div css={c.welcome}>
+      <Hello compiler="TypeScript" framework="React" />
+      <button onClick={() => navigate('/')}>Home</button>
+      <Search />
+    </div>
+  );
+}
+
+function SearchForm(_props: RouteComponentProps): JSX.Element {
+  return (
+    <div css={c.search}>
       <Hello compiler="TypeScript" framework="React" />
       <button onClick={() => navigate('/')}>Home</button>
       <Search />
