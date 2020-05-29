@@ -5,7 +5,7 @@ type Data = {
   hits: [{ objectID: string; url: string; title: string }];
 };
 
-export default function Search(): JSX.Element {
+export default function SearchQuery(): JSX.Element {
   const [query, setQuery] = useState('react');
   const [state, setUrl] = useHttpGet<Data>(`https://hn.algolia.com/api/v1/search?query=${query}`);
 

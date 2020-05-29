@@ -4,8 +4,10 @@ import { Link, navigate, RouteComponentProps, Router } from '@reach/router';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Hello from './components/Hello';
-import Search from './components/Search';
+import SearchQuery from './components/Search';
 import logo from './logo.svg';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
 export default function App(): JSX.Element {
   const classes = useNavStyles();
@@ -21,6 +23,7 @@ export default function App(): JSX.Element {
       <Router>
         <Home path="/" />
         <Welcome path="/welcome" />
+        <Search path="/search" />
       </Router>
     </div>
   );
@@ -38,6 +41,17 @@ function NavLink(props: NavProps): JSX.Element {
       {...props}
       getProps={({ isCurrent }) => ({ active: isCurrent.toString() })}
     />
+  );
+}
+
+function Copyright(): JSX.Element {
+  return (
+    <Box mt={2}>
+      <Typography variant="body2" color="textSecondary" align="center">
+        {'OurRoots Copyright © '}
+        {new Date().getFullYear()}
+      </Typography>
+    </Box>
   );
 }
 
@@ -67,10 +81,24 @@ function Welcome(_props: RouteComponentProps): JSX.Element {
   return (
     <div className={classes.welcome}>
       <Hello compiler="TypeScript" framework="React" />
+      <SearchQuery />
       <Button variant="contained" onClick={() => navigate('/')} color="primary">
         Home
       </Button>
-      <Search />
+      <Copyright />
+    </div>
+  );
+}
+
+function Search(_props: RouteComponentProps): JSX.Element {
+  const classes = useWelcomeStyles();
+  return (
+    <div className={classes.welcome}>
+      {' '}
+      <Button variant="contained" onClick={() => navigate('/')} color="primary">
+        Home
+      </Button>
+      <Copyright />
     </div>
   );
 }
