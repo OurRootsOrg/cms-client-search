@@ -16,6 +16,7 @@ export default function App(): JSX.Element {
       <nav className={classes.nav}>
         <NavLink to="/">{t('Home')}</NavLink>
         <NavLink to="welcome">{t('Welcome')}</NavLink>
+        <NavLink to="search">{t('Search')}</NavLink>
       </nav>
       <Router>
         <Home path="/" />
