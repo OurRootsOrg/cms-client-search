@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHttpGet } from '../util/useHttp';
+import Box from '@material-ui/core/Box';
 
 type Data = {
   hits: [{ objectID: string; url: string; title: string }];
@@ -10,7 +11,7 @@ export default function SearchQuery(): JSX.Element {
   const [state, setUrl] = useHttpGet<Data>(`https://hn.algolia.com/api/v1/search?query=${query}`);
 
   return (
-    <div>
+    <Box m={5}>
       <label htmlFor="q">Query</label>
       <input type="text" id="q" value={query} onChange={(event) => setQuery(event.target.value)} />
       <button
@@ -31,6 +32,6 @@ export default function SearchQuery(): JSX.Element {
           ))}
         </ul>
       )}
-    </div>
+    </Box>
   );
 }
