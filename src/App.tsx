@@ -4,8 +4,11 @@ import { Link, navigate, RouteComponentProps, Router } from '@reach/router';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Hello from './components/Hello';
-import Search from './components/Search';
+import SearchQuery from './components/Search';
+import SearchForm from './components/Form';
 import logo from './logo.svg';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
 export default function App(): JSX.Element {
   const classes = useNavStyles();
@@ -16,10 +19,12 @@ export default function App(): JSX.Element {
       <nav className={classes.nav}>
         <NavLink to="/">{t('Home')}</NavLink>
         <NavLink to="welcome">{t('Welcome')}</NavLink>
+        <NavLink to="search">{t('Search')}</NavLink>
       </nav>
       <Router>
         <Home path="/" />
         <Welcome path="/welcome" />
+        <Search path="/search" />
       </Router>
     </div>
   );
@@ -37,6 +42,18 @@ function NavLink(props: NavProps): JSX.Element {
       {...props}
       getProps={({ isCurrent }) => ({ active: isCurrent.toString() })}
     />
+  );
+}
+
+function Copyright(): JSX.Element {
+  const { t } = useTranslation();
+  return (
+    <Box mt={2}>
+      <Typography variant="body2" color="textSecondary" align="center">
+        {t('OurRoots Copyright ©')}
+        {new Date().getFullYear()}
+      </Typography>
+    </Box>
   );
 }
 
@@ -66,10 +83,24 @@ function Welcome(_props: RouteComponentProps): JSX.Element {
   return (
     <div className={classes.welcome}>
       <Hello compiler="TypeScript" framework="React" />
+      <SearchQuery />
       <Button variant="contained" onClick={() => navigate('/')} color="primary">
         Home
       </Button>
-      <Search />
+      <Copyright />
+    </div>
+  );
+}
+
+function Search(_props: RouteComponentProps): JSX.Element {
+  const classes = useWelcomeStyles();
+  return (
+    <div className={classes.welcome}>
+      <SearchForm />{' '}
+      <Button variant="contained" onClick={() => navigate('/')} color="primary">
+        Home
+      </Button>
+      <Copyright />
     </div>
   );
 }
@@ -85,7 +116,7 @@ const useNavStyles = makeStyles({
     float: 'left',
     border: '1px solid darkgray',
     margin: 0,
-    width: '60px',
+    width: '90px',
     color: '#000',
     padding: '12px',
     backgroundColor: '#dddddd',
