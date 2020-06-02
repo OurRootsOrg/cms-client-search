@@ -14,9 +14,8 @@ export default function CategoryPicker(): JSX.Element {
   const classes = useStyles();
   const [category, setCategory] = React.useState<string[]>([]);
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) =>
     setCategory(event.target.value as string[]);
-  };
 
   return (
     <Container component="main" maxWidth="md" style={{ marginTop: 20 }}>
