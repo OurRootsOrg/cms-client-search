@@ -12,10 +12,10 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 export default function CategoryPicker(): JSX.Element {
   const classes = useStyles();
-  const [personName, setPersonName] = React.useState<string[]>([]);
+  const [category, setCategory] = React.useState<string[]>([]);
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setPersonName(event.target.value as string[]);
+    setCategory(event.target.value as string[]);
   };
 
   return (
@@ -25,20 +25,20 @@ export default function CategoryPicker(): JSX.Element {
           Restrict results to specific categories
         </Typography>
         <FormControl className={classes.formControl}>
-          <InputLabel id="demo-mutiple-checkbox-label">Tag</InputLabel>
+          <InputLabel id="demo-mutiple-checkbox-label">Select</InputLabel>
           <Select
             labelId="demo-mutiple-checkbox-label"
             id="demo-mutiple-checkbox"
             multiple
-            value={personName}
+            value={category}
             onChange={handleChange}
             input={<Input />}
             renderValue={(selected) => (selected as string[]).join(', ')}
             MenuProps={MenuProps}
           >
-            {names.map((name) => (
+            {selector.map((name) => (
               <MenuItem key={name} value={name}>
-                <Checkbox checked={personName.indexOf(name) > -1} />
+                <Checkbox checked={category.indexOf(name) > -1} />
                 <ListItemText primary={name} />
               </MenuItem>
             ))}
@@ -53,8 +53,8 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     formControl: {
       margin: theme.spacing(1),
-      minWidth: 120,
-      maxWidth: 300,
+      minWidth: 600,
+      maxWidth: 600,
     },
     chips: {
       display: 'flex',
@@ -80,7 +80,7 @@ const MenuProps = {
   },
 };
 
-const names = [
+const selector = [
   'Birth, Baptism, and Christening',
   'Marriage',
   'Death',
