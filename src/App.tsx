@@ -96,7 +96,7 @@ function Search(_props: RouteComponentProps): JSX.Element {
   const classes = useWelcomeStyles();
   return (
     <div className={classes.welcome}>
-      <SearchForm />{' '}
+      <SearchForm />
       <Button variant="contained" onClick={() => navigate('/')} color="primary">
         Home
       </Button>

@@ -5,38 +5,49 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-export default function NamePicker(): JSX.Element {
+export default function LifeEventPicker(): JSX.Element {
   const classes = useStyles();
 
   return (
     <Container component="main" maxWidth="md">
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Search our society's records
+          Search with a life event
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="birthplace"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id="birthplace"
+                label="Birthplace"
                 autoFocus
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={6} sm={3}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
+                id="startYear"
+                label="Year Start"
+                name="startYear"
+                autoComplete="startyr"
+              />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="endYear"
+                label="Year End"
+                name="endYear"
+                autoComplete="endyr"
               />
             </Grid>
           </Grid>
@@ -48,7 +59,7 @@ export default function NamePicker(): JSX.Element {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(4),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'left',
