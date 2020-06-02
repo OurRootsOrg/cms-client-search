@@ -5,50 +5,39 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-export default function LifeEventPicker(): JSX.Element {
+export default function RelationshipPicker(): JSX.Element {
   const classes = useStyles();
 
   return (
     <Container component="main" maxWidth="md">
       <div className={classes.paper}>
-        <Typography component="h1" variant="h6">
-          Search with a life event
+        <Typography component="h2" variant="h6">
+          Search with a Relationship
         </Typography>
-        <Typography>Birth | Residence | Marriage | Death | Any</Typography>
+        <Typography>Spouse | Father | Mother | Other Person </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
-                name="birthplace"
+                name="firstName"
                 variant="outlined"
                 required
                 fullWidth
-                id="birthplace"
-                label="Birthplace"
+                id="firstName"
+                label="Spouse's First Name"
                 autoFocus
               />
             </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                id="startYear"
-                label="Year Start"
-                name="startYear"
-                autoComplete="startyr"
-              />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="endYear"
-                label="Year End"
-                name="endYear"
-                autoComplete="endyr"
+                id="lastName"
+                label="Spouse's Last Name"
+                name="lastName"
+                autoComplete="lname"
               />
             </Grid>
           </Grid>
