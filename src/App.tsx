@@ -101,7 +101,7 @@ function Search(_props: RouteComponentProps): JSX.Element {
         variant="contained"
         onClick={() => navigate('/')}
         color="primary"
-        style={{ marginTop: 20 }}
+        style={{ marginTop: 50 }}
       >
         Home
       </Button>

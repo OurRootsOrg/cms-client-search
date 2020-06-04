@@ -4,7 +4,8 @@ import NamePicker from './NamePicker';
 import LifeEventPicker from './LifeEventPicker';
 import RelationshipPicker from './RelationshipPicker';
 import CategoryPicker from './CategoryPicker';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 export default function SearchForm(): JSX.Element {
@@ -19,6 +20,9 @@ export default function SearchForm(): JSX.Element {
         <LifeEventPicker />
         <RelationshipPicker />
         <CategoryPicker />
+        <Button variant="contained" onClick={() => console.log('click')} style={{ marginTop: 20 }}>
+          Submit
+        </Button>
       </form>
     </Container>
   );

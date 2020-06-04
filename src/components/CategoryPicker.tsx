@@ -21,7 +21,7 @@ export default function CategoryPicker(): JSX.Element {
       <Typography component="h2" variant="h6" style={{ marginTop: 20 }}>
         Restrict results to specific categories
       </Typography>
-      <FormControl variant="outlined" className={classes.formControl}>
+      <FormControl className={classes.formControl}>
         <InputLabel id="demo-mutiple-checkbox-label">Select</InputLabel>
         <Select
           labelId="demo-mutiple-checkbox-label"
