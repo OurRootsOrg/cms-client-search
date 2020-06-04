@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default function SearchForm(): JSX.Element {
   const classes = useStyles();
+
   return (
     <Container component="main" maxWidth="md">
       <form className={classes.form} noValidate>
@@ -20,8 +21,20 @@ export default function SearchForm(): JSX.Element {
         <LifeEventPicker />
         <RelationshipPicker />
         <CategoryPicker />
-        <Button variant="contained" onClick={() => console.log('click')} style={{ marginTop: 20 }}>
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={() => console.log('click')}
+          style={{ marginTop: 20 }}
+        >
           Submit
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={() => console.log('click')}
+          style={{ marginTop: 20, marginLeft: 20 }}
+        >
+          Clear
         </Button>
       </form>
     </Container>
@@ -39,4 +52,5 @@ const useStyles = makeStyles((theme) => ({
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(3),
   },
+  button: {},
 }));
