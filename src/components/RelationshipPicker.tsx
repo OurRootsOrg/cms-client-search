@@ -12,7 +12,9 @@ export default function RelationshipPicker(): JSX.Element {
       <Typography component="h2" variant="h6">
         Search with a Relationship
       </Typography>
-      <Typography style={{ marginBottom: 20 }}>Spouse | Father | Mother | Other Person </Typography>
+      <Typography style={{ marginBottom: 20, color: 'blue' }}>
+        Spouse | Father | Mother | Other Person
+      </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <TextField

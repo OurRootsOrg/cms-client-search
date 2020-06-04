@@ -12,7 +12,7 @@ export default function LifeEventPicker(): JSX.Element {
       <Typography component="h1" variant="h6">
         Search with a life event
       </Typography>
-      <Typography style={{ marginBottom: 20 }}>
+      <Typography style={{ marginBottom: 20, color: 'blue' }}>
         Birth | Residence | Marriage | Death | Any
       </Typography>
       <Grid container spacing={2}>

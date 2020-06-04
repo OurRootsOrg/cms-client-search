@@ -21,21 +21,18 @@ export default function SearchForm(): JSX.Element {
         <LifeEventPicker />
         <RelationshipPicker />
         <CategoryPicker />
-        <Button
-          variant="outlined"
-          color="primary"
-          onClick={() => console.log('click')}
-          style={{ marginTop: 20 }}
-        >
-          Submit
-        </Button>
-        <Button
-          variant="outlined"
-          onClick={() => console.log('click')}
-          style={{ marginTop: 20, marginLeft: 20 }}
-        >
-          Clear
-        </Button>
+        <div style={{ marginTop: 20 }}>
+          <Button variant="outlined" color="primary" onClick={() => console.log('Submit')}>
+            Submit
+          </Button>
+          <Button
+            variant="outlined"
+            onClick={() => console.log('Clear')}
+            style={{ marginLeft: 20 }}
+          >
+            Clear
+          </Button>
+        </div>
       </form>
     </Container>
   );
