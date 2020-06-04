@@ -1,6 +1,5 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -18,33 +17,31 @@ export default function CategoryPicker(): JSX.Element {
     setCategory(event.target.value as string[]);
 
   return (
-    <Container component="main" maxWidth="md" style={{ marginTop: 20 }}>
-      <div>
-        <Typography component="h2" variant="h6">
-          Restrict results to specific categories
-        </Typography>
-        <FormControl className={classes.formControl}>
-          <InputLabel id="demo-mutiple-checkbox-label">Select</InputLabel>
-          <Select
-            labelId="demo-mutiple-checkbox-label"
-            id="demo-mutiple-checkbox"
-            multiple
-            value={category}
-            onChange={handleChange}
-            input={<Input />}
-            renderValue={(selected) => (selected as string[]).join(', ')}
-            MenuProps={MenuProps}
-          >
-            {selector.map((name) => (
-              <MenuItem key={name} value={name}>
-                <Checkbox checked={category.indexOf(name) > -1} />
-                <ListItemText primary={name} />
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </div>
-    </Container>
+    <div>
+      <Typography component="h2" variant="h6" style={{ marginTop: 20 }}>
+        Restrict results to specific categories
+      </Typography>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-mutiple-checkbox-label">Select</InputLabel>
+        <Select
+          labelId="demo-mutiple-checkbox-label"
+          id="demo-mutiple-checkbox"
+          multiple
+          value={category}
+          onChange={handleChange}
+          input={<Input />}
+          renderValue={(selected) => (selected as string[]).join(', ')}
+          MenuProps={MenuProps}
+        >
+          {selector.map((name) => (
+            <MenuItem key={name} value={name}>
+              <Checkbox checked={category.indexOf(name) > -1} />
+              <ListItemText primary={name} />
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </div>
   );
 }
 

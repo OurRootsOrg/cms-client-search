@@ -3,58 +3,55 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 
 export default function LifeEventPicker(): JSX.Element {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="md">
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h6">
-          Search with a life event
-        </Typography>
-        <Typography>Birth | Residence | Marriage | Death | Any</Typography>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="birthplace"
-                variant="outlined"
-                required
-                fullWidth
-                id="birthplace"
-                label="Birthplace"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="startYear"
-                label="Year Start"
-                name="startYear"
-                autoComplete="startyr"
-              />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="endYear"
-                label="Year End"
-                name="endYear"
-                autoComplete="endyr"
-              />
-            </Grid>
+    <div className={classes.paper}>
+      <Typography component="h1" variant="h6">
+        Search with a life event
+      </Typography>
+      <Typography>Birth | Residence | Marriage | Death | Any</Typography>
+      <form className={classes.form} noValidate>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              autoComplete="fname"
+              name="birthplace"
+              variant="outlined"
+              required
+              fullWidth
+              id="birthplace"
+              label="Birthplace"
+              autoFocus
+            />
           </Grid>
-        </form>
-      </div>
-    </Container>
+          <Grid item xs={6} sm={3}>
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              id="startYear"
+              label="Year Start"
+              name="startYear"
+              autoComplete="startyr"
+            />
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              id="endYear"
+              label="Year End"
+              name="endYear"
+              autoComplete="endyr"
+            />
+          </Grid>
+        </Grid>
+      </form>
+    </div>
   );
 }
 
