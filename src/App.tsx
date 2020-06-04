@@ -5,7 +5,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Hello from './components/Hello';
 import SearchQuery from './components/Search';
-import SearchForm from './components/Form';
+import SearchForm from './components/SearchForm';
 import logo from './logo.svg';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
