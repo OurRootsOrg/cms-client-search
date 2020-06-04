@@ -8,33 +8,31 @@ export default function NamePicker(): JSX.Element {
 
   return (
     <div className={classes.paper}>
-      <form className={classes.form} noValidate>
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              autoComplete="fname"
-              name="firstName"
-              variant="outlined"
-              required
-              fullWidth
-              id="firstName"
-              label="First Name"
-              autoFocus
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              variant="outlined"
-              required
-              fullWidth
-              id="lastName"
-              label="Last Name"
-              name="lastName"
-              autoComplete="lname"
-            />
-          </Grid>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            autoComplete="fname"
+            name="firstName"
+            variant="outlined"
+            required
+            fullWidth
+            id="firstName"
+            label="First Name"
+            autoFocus
+          />
         </Grid>
-      </form>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            variant="outlined"
+            required
+            fullWidth
+            id="lastName"
+            label="Last Name"
+            name="lastName"
+            autoComplete="lname"
+          />
+        </Grid>
+      </Grid>
     </div>
   );
 }
@@ -45,9 +43,5 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'left',
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
   },
 }));

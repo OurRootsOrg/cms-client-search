@@ -52,16 +52,6 @@ const useStyles = makeStyles((theme: Theme) =>
       minWidth: 600,
       maxWidth: 600,
     },
-    chips: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    chip: {
-      margin: 2,
-    },
-    noLabel: {
-      marginTop: theme.spacing(3),
-    },
   })
 );
 

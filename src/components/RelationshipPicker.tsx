@@ -12,34 +12,32 @@ export default function RelationshipPicker(): JSX.Element {
       <Typography component="h2" variant="h6">
         Search with a Relationship
       </Typography>
-      <Typography>Spouse | Father | Mother | Other Person </Typography>
-      <form className={classes.form} noValidate>
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              autoComplete="fname"
-              name="firstName"
-              variant="outlined"
-              required
-              fullWidth
-              id="firstName"
-              label="Spouse's First Name"
-              autoFocus
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              variant="outlined"
-              required
-              fullWidth
-              id="lastName"
-              label="Spouse's Last Name"
-              name="lastName"
-              autoComplete="lname"
-            />
-          </Grid>
+      <Typography style={{ marginBottom: 20 }}>Spouse | Father | Mother | Other Person </Typography>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            autoComplete="fname"
+            name="firstName"
+            variant="outlined"
+            required
+            fullWidth
+            id="firstName"
+            label="Spouse's First Name"
+            autoFocus
+          />
         </Grid>
-      </form>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            variant="outlined"
+            required
+            fullWidth
+            id="lastName"
+            label="Spouse's Last Name"
+            name="lastName"
+            autoComplete="lname"
+          />
+        </Grid>
+      </Grid>
     </div>
   );
 }
@@ -50,9 +48,5 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'left',
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
   },
 }));
