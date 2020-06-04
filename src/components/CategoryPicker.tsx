@@ -21,7 +21,7 @@ export default function CategoryPicker(): JSX.Element {
       <Typography component="h2" variant="h6" style={{ marginTop: 20 }}>
         Restrict results to specific categories
       </Typography>
-      <FormControl className={classes.formControl}>
+      <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel id="demo-mutiple-checkbox-label">Select</InputLabel>
         <Select
           labelId="demo-mutiple-checkbox-label"
@@ -45,6 +45,17 @@ export default function CategoryPicker(): JSX.Element {
   );
 }
 
+const selector = [
+  'Birth, Baptism, and Christening',
+  'Marriage',
+  'Death',
+  'Census, Residence, and Lists',
+  'Immigration and Naturalization',
+  'Military',
+  'Probate',
+  'Other',
+];
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     formControl: {
@@ -65,14 +76,3 @@ const MenuProps = {
     },
   },
 };
-
-const selector = [
-  'Birth, Baptism, and Christening',
-  'Marriage',
-  'Death',
-  'Census, Residence, and Lists',
-  'Immigration and Naturalization',
-  'Military',
-  'Probate',
-  'Other',
-];
