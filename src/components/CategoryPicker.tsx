@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
@@ -11,9 +11,9 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 export default function CategoryPicker(): JSX.Element {
   const classes = useStyles();
-  const [category, setCategory] = React.useState<string[]>([]);
+  const [category, setCategory] = useState<string[]>([]);
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) =>
+  const handleChange = (event: ChangeEvent<{ value: unknown }>) =>
     setCategory(event.target.value as string[]);
 
   return (
@@ -66,12 +66,12 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
+const itemHeight = 48;
+const itemPaddingTop = 8;
 const MenuProps = {
   PaperProps: {
     style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      maxHeight: itemHeight * 4.5 + itemPaddingTop,
       width: 250,
     },
   },
