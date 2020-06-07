@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 import Typography from '@material-ui/core/Typography';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -56,15 +56,13 @@ const selector = [
   'Other',
 ];
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 600,
-      maxWidth: 600,
-    },
-  })
-);
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 600,
+    maxWidth: 600,
+  },
+}));
 
 const itemHeight = 48;
 const itemPaddingTop = 8;
