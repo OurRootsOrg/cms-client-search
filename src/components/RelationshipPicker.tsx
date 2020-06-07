@@ -18,7 +18,6 @@ export default function RelationshipPicker(): JSX.Element {
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <TextField
-            autoComplete="fname"
             name="firstName"
             variant="outlined"
             required
@@ -36,7 +35,6 @@ export default function RelationshipPicker(): JSX.Element {
             id="lastName"
             label="Spouse's Last Name"
             name="lastName"
-            autoComplete="lname"
           />
         </Grid>
       </Grid>

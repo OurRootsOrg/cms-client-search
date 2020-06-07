@@ -36,7 +36,6 @@ export default function LifeEventPicker(): JSX.Element {
             id="startYear"
             label="Year Start"
             name="startYear"
-            autoComplete="startyr"
           />
         </Grid>
         <Grid item xs={6} sm={3}>
@@ -47,7 +46,6 @@ export default function LifeEventPicker(): JSX.Element {
             id="endYear"
             label="Year End"
             name="endYear"
-            autoComplete="endyr"
           />
         </Grid>
       </Grid>
