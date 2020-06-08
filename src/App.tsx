@@ -5,7 +5,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Hello from './components/Hello';
 import SearchQuery from './components/Search';
-import SearchForm from './components/Form';
+import SearchForm from './components/SearchForm';
 import logo from './logo.svg';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -96,8 +96,13 @@ function Search(_props: RouteComponentProps): JSX.Element {
   const classes = useWelcomeStyles();
   return (
     <div className={classes.welcome}>
-      <SearchForm />{' '}
-      <Button variant="contained" onClick={() => navigate('/')} color="primary">
+      <SearchForm />
+      <Button
+        variant="contained"
+        onClick={() => navigate('/')}
+        color="primary"
+        style={{ marginTop: 50 }}
+      >
         Home
       </Button>
       <Copyright />
