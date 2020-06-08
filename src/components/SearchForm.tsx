@@ -22,15 +22,8 @@ export default function SearchForm(): JSX.Element {
         <RelationshipPicker />
         <CategoryPicker />
         <div style={{ marginTop: 20 }}>
-          <Button variant="outlined" color="primary" onClick={() => console.log('Submit')}>
+          <Button variant="outlined" color="primary" type="submit" value="Submit">
             Submit
-          </Button>
-          <Button
-            variant="outlined"
-            onClick={() => console.log('Clear')}
-            style={{ marginLeft: 20 }}
-          >
-            Clear
           </Button>
         </div>
       </form>

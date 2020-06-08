@@ -22,10 +22,10 @@ export default function CategoryPicker(): JSX.Element {
         Restrict results to specific categories
       </Typography>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-mutiple-checkbox-label">Select</InputLabel>
+        <InputLabel id="mutiple-checkbox-label">Select</InputLabel>
         <Select
-          labelId="demo-mutiple-checkbox-label"
-          id="demo-mutiple-checkbox"
+          labelId="mutiple-checkbox-label"
+          id="mutiple-checkbox"
           multiple
           value={category}
           onChange={handleChange}
