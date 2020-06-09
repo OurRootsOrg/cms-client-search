@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -7,14 +7,14 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default function LifeEventPicker(): JSX.Element {
   const classes = useStyles();
-  const preventDefault = (event: React.SyntheticEvent) => event.preventDefault();
+  const preventDefault = (event: SyntheticEvent) => event.preventDefault();
 
   return (
     <div className={classes.paper}>
       <Typography component="h1" variant="h6">
         Search with a life event
       </Typography>
-      <Typography style={{ marginBottom: 20, color: 'blue' }}>
+      <Typography style={{ marginBottom: 20 }}>
         <Link href="#" onClick={preventDefault}>
           Birth
         </Link>
