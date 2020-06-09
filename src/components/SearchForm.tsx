@@ -21,7 +21,7 @@ export default function SearchForm(): JSX.Element {
         <LifeEventPicker />
         <RelationshipPicker />
         <CategoryPicker />
-        <div style={{ marginTop: 20 }}>
+        <div style={{ marginTop: 50 }}>
           <Button variant="outlined" color="primary" type="submit" value="Submit">
             Submit
           </Button>

@@ -1,8 +1,10 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, SyntheticEvent } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import Link from '@material-ui/core/Link';
+import NavigateNextOutlinedIcon from '@material-ui/icons/NavigateNextOutlined';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -11,6 +13,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 export default function CategoryPicker(): JSX.Element {
   const classes = useStyles();
+  const preventDefault = (event: SyntheticEvent) => event.preventDefault();
   const [category, setCategory] = useState<string[]>([]);
 
   const handleChange = (event: ChangeEvent<{ value: unknown }>) =>
@@ -41,6 +44,12 @@ export default function CategoryPicker(): JSX.Element {
           ))}
         </Select>
       </FormControl>
+      <Typography>
+        <Link href="#" onClick={preventDefault}>
+          Learn more about our collections
+          <NavigateNextOutlinedIcon />
+        </Link>
+      </Typography>
     </div>
   );
 }

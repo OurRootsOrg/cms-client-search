@@ -31,6 +31,7 @@ export default function RelationshipPicker(): JSX.Element {
           Other Person
         </Link>
       </Typography>
+
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <TextField
