@@ -46,7 +46,7 @@ export default function CategoryPicker(): JSX.Element {
       </FormControl>
       <Typography>
         <Link href="#" onClick={preventDefault}>
-          Learn more about our collections
+          Learn more about our collections &gt;
           <NavigateNextOutlinedIcon />
         </Link>
       </Typography>
