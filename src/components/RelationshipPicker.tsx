@@ -10,7 +10,7 @@ export default function RelationshipPicker(): JSX.Element {
 
   function spouseOnClick(event: SyntheticEvent) {
     event.preventDefault();
-    console.log('Spouse');
+    return console.log('Spouse');
   }
 
   function fatherOnClick(event: SyntheticEvent) {
@@ -76,7 +76,7 @@ export default function RelationshipPicker(): JSX.Element {
             required
             fullWidth
             id="firstName"
-            label="Spouse's First Name"
+            label="Father's First Name"
             autoFocus
           />
         </Grid>
@@ -86,31 +86,7 @@ export default function RelationshipPicker(): JSX.Element {
             required
             fullWidth
             id="lastName"
-            label="Spouse's Last Name"
-            name="lastName"
-          />
-        </Grid>
-      </Grid>
-      {/* ------------------- */}
-      <Grid container spacing={2} style={{ marginBottom: 20 }}>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            name="firstName"
-            variant="outlined"
-            required
-            fullWidth
-            id="firstName"
-            label="Fathers's First Name"
-            autoFocus
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            variant="outlined"
-            required
-            fullWidth
-            id="lastName"
-            label="Spouse's Last Name"
+            label="Father's Last Name"
             name="lastName"
           />
         </Grid>
@@ -125,6 +101,30 @@ export default function RelationshipPicker(): JSX.Element {
             fullWidth
             id="firstName"
             label="Mothers's First Name"
+            autoFocus
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            variant="outlined"
+            required
+            fullWidth
+            id="lastName"
+            label="Mothers's Last Name"
+            name="lastName"
+          />
+        </Grid>
+      </Grid>
+      {/* ------------------- */}
+      <Grid container spacing={2} style={{ marginBottom: 20 }}>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            name="firstName"
+            variant="outlined"
+            required
+            fullWidth
+            id="firstName"
+            label="Other Person's First Name"
             autoFocus
           />
         </Grid>
