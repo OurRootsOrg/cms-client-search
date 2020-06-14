@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default function RelationshipPicker(): JSX.Element {
   const classes = useStyles();
+  // const preventDefault = (event: SyntheticEvent) => event.preventDefault();
 
   function spouseOnClick(event: SyntheticEvent) {
     event.preventDefault();

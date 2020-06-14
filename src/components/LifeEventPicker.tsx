@@ -5,9 +5,17 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 
-export default function LifeEventPicker(): JSX.Element {
+export default function LifeEventPicker(props: any): JSX.Element {
   const classes = useStyles();
+  const [state, setState] = useState({
+    birth: 1,
+    residence: 0,
+    marriage: 0,
+    death: 0,
+    any: 0,
+  });
   const preventDefault = (event: SyntheticEvent) => event.preventDefault();
+  console.log(props);
 
   return (
     <div className={classes.paper}>
@@ -15,25 +23,15 @@ export default function LifeEventPicker(): JSX.Element {
         Search with a life event
       </Typography>
       <Typography style={{ marginBottom: 20 }}>
-        <Link href="#" onClick={preventDefault}>
-          Birth
-        </Link>
+        <Link onClick={preventDefault}>Birth</Link>
         {' | '}
-        <Link href="#" onClick={preventDefault}>
-          Residence
-        </Link>
+        <Link onClick={preventDefault}>Residence</Link>
         {' | '}
-        <Link href="#" onClick={preventDefault}>
-          Marriage
-        </Link>
+        <Link onClick={preventDefault}>Marriage</Link>
         {' | '}
-        <Link href="#" onClick={preventDefault}>
-          Death
-        </Link>
+        <Link onClick={preventDefault}>Death</Link>
         {' | '}
-        <Link href="#" onClick={preventDefault}>
-          Any
-        </Link>
+        <Link onClick={preventDefault}>Any</Link>
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
