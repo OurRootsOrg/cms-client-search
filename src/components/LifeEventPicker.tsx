@@ -8,14 +8,44 @@ import { makeStyles } from '@material-ui/core/styles';
 export default function LifeEventPicker(props: any): JSX.Element {
   const classes = useStyles();
   const [state, setState] = useState({
-    birth: 1,
-    residence: 0,
-    marriage: 0,
-    death: 0,
-    any: 0,
+    birth: false,
+    residence: true,
+    marriage: true,
+    death: true,
+    anyEvent: true,
   });
   const preventDefault = (event: SyntheticEvent) => event.preventDefault();
   console.log(props);
+
+addBirthTextField(){
+  setState((prevState: { birth: boolean; }) => ({
+    birth: !prevState.birth
+  }))
+}
+
+addResidenceTextField(){
+  setState((prevState: { residence: boolean; }) => ({
+    residence: !prevState.residence
+  }))
+}
+
+addMarriageTextField(){
+  setState((prevState: { marriage: boolean; }) => ({
+    marriage: !prevState.marriage
+  }))
+}
+
+addDeathTextField(){
+  setState((prevState: { death: boolean; }) => ({
+    death: !prevState.death
+  }))
+}
+
+addAnyEventTextField(){
+  setState((prevState: { anyEvent: boolean; }) => ({
+    anyEvent: !prevState.anyEvent
+  }))
+}
 
   return (
     <div className={classes.paper}>
