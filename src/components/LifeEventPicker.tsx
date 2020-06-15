@@ -8,63 +8,31 @@ import { makeStyles } from '@material-ui/core/styles';
 export default function LifeEventPicker(): JSX.Element {
   const classes = useStyles();
 
-  const [state, setState] = useState({
-    birth: true,
-    residence: false,
-    marriage: false,
-    death: false,
-    anyEvent: false,
-  });
+  const [birth, setBirth] = useState(true);
+  const [residence, setResidence] = useState(false);
+  const [marriage, setMarriage] = useState(false);
+  const [death, setDeath] = useState(false);
+  const [anyEvent, setAnyEvent] = useState(false);
 
-  const addBirthTextField = (): any => {
-    setState({
-      birth: !state.birth,
-      residence: state.residence,
-      marriage: state.marriage,
-      death: state.death,
-      anyEvent: state.anyEvent,
-    });
-  };
+  function toggleBirthTextField(): void {
+    setBirth(!birth);
+  }
 
-  const addResidenceTextField = (): any => {
-    setState({
-      birth: state.birth,
-      residence: !state.residence,
-      marriage: state.marriage,
-      death: state.death,
-      anyEvent: state.anyEvent,
-    });
-  };
+  function toggleResidenceTextField(): void {
+    setResidence(!residence);
+  }
 
-  const addMarriageTextField = (): any => {
-    setState({
-      birth: state.birth,
-      residence: state.residence,
-      marriage: !state.marriage,
-      death: state.death,
-      anyEvent: state.anyEvent,
-    });
-  };
+  function toggleMarriageTextField(): void {
+    setMarriage(!marriage);
+  }
 
-  const addDeathTextField = (): any => {
-    setState({
-      birth: state.birth,
-      residence: state.residence,
-      marriage: state.marriage,
-      death: !state.death,
-      anyEvent: state.anyEvent,
-    });
-  };
+  function toggleDeathTextField(): void {
+    setDeath(!death);
+  }
 
-  const addAnyEventTextField = (): any => {
-    setState({
-      birth: state.birth,
-      residence: state.residence,
-      marriage: state.marriage,
-      death: state.death,
-      anyEvent: !state.anyEvent,
-    });
-  };
+  function toggleAnyEventTextField(): void {
+    setAnyEvent(!anyEvent);
+  }
 
   return (
     <div className={classes.paper}>
@@ -72,19 +40,19 @@ export default function LifeEventPicker(): JSX.Element {
         Search with a life event
       </Typography>
       <Typography style={{ marginBottom: 20 }}>
-        <Link onClick={addBirthTextField}>Birth</Link>
+        <Link onClick={toggleBirthTextField}>Birth</Link>
         {' | '}
-        <Link onClick={addResidenceTextField}>Residence</Link>
+        <Link onClick={toggleResidenceTextField}>Residence</Link>
         {' | '}
-        <Link onClick={addMarriageTextField}>Marriage</Link>
+        <Link onClick={toggleMarriageTextField}>Marriage</Link>
         {' | '}
-        <Link onClick={addDeathTextField}>Death</Link>
+        <Link onClick={toggleDeathTextField}>Death</Link>
         {' | '}
-        <Link onClick={addAnyEventTextField}>Any</Link>
+        <Link onClick={toggleAnyEventTextField}>Any</Link>
       </Typography>
 
       <div>
-        {state.birth ? (
+        {birth ? (
           <Grid container spacing={2} style={{ marginBottom: 20 }}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -124,7 +92,7 @@ export default function LifeEventPicker(): JSX.Element {
       </div>
       {/* ------------------- */}
       <div>
-        {state.residence ? (
+        {residence ? (
           <Grid container spacing={2} style={{ marginBottom: 20 }}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -164,7 +132,7 @@ export default function LifeEventPicker(): JSX.Element {
       </div>
       {/* ------------------- */}
       <div>
-        {state.marriage ? (
+        {marriage ? (
           <Grid container spacing={2} style={{ marginBottom: 20 }}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -204,7 +172,7 @@ export default function LifeEventPicker(): JSX.Element {
       </div>
       {/* ------------------- */}
       <div>
-        {state.death ? (
+        {death ? (
           <Grid container spacing={2} style={{ marginBottom: 20 }}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -244,7 +212,7 @@ export default function LifeEventPicker(): JSX.Element {
       </div>
       {/* ------------------- */}
       <div>
-        {state.anyEvent ? (
+        {anyEvent ? (
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
