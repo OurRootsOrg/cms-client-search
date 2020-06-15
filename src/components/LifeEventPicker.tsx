@@ -245,7 +245,7 @@ export default function LifeEventPicker(): JSX.Element {
       {/* ------------------- */}
       <div>
         {state.anyEvent ? (
-          <Grid container spacing={2} style={{ marginBottom: 20 }}>
+          <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
                 name="anyEvent"

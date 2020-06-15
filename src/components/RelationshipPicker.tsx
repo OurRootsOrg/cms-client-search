@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
+import CloseIcon from '@material-ui/icons/Close';
 
 export default function RelationshipPicker(): JSX.Element {
   const classes = useStyles();
@@ -90,6 +91,7 @@ export default function RelationshipPicker(): JSX.Element {
                 name="spouseLastName"
               />
             </Grid>
+            <Grid></Grid>
           </Grid>
         ) : (
           ''
@@ -137,7 +139,7 @@ export default function RelationshipPicker(): JSX.Element {
                 required
                 fullWidth
                 id="firstName"
-                label="Mothers's First Name"
+                label="Mother's First Name"
                 autoFocus
               />
             </Grid>
@@ -147,7 +149,7 @@ export default function RelationshipPicker(): JSX.Element {
                 required
                 fullWidth
                 id="lastName"
-                label="Mothers's Last Name"
+                label="Mother's Last Name"
                 name="lastName"
               />
             </Grid>
@@ -197,5 +199,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'left',
+  },
+  closeButton: {
+    position: 'absolute',
+    right: theme.spacing(1),
+    top: theme.spacing(1),
+    color: theme.palette.grey[500],
   },
 }));
