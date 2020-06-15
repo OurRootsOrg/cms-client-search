@@ -88,7 +88,6 @@ export default function LifeEventPicker(): JSX.Element {
           <Grid container spacing={2} style={{ marginBottom: 20 }}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="fname"
                 name="birthplace"
                 variant="outlined"
                 required
@@ -103,9 +102,9 @@ export default function LifeEventPicker(): JSX.Element {
                 variant="outlined"
                 required
                 fullWidth
-                id="startYear"
+                id="birthplaceStartYear"
                 label="Year Start"
-                name="startYear"
+                name="birthplaceStartYear"
               />
             </Grid>
             <Grid item xs={6} sm={3}>
@@ -113,9 +112,9 @@ export default function LifeEventPicker(): JSX.Element {
                 variant="outlined"
                 required
                 fullWidth
-                id="endYear"
+                id="birthplaceEndYear"
                 label="Year End"
-                name="endYear"
+                name="birthplaceEndYear"
               />
             </Grid>
           </Grid>
@@ -129,13 +128,12 @@ export default function LifeEventPicker(): JSX.Element {
           <Grid container spacing={2} style={{ marginBottom: 20 }}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="fname"
-                name="birthplace"
+                name="residence"
                 variant="outlined"
                 required
                 fullWidth
-                id="birthplace"
-                label="Birthplace"
+                id="residence"
+                label="Residence"
                 autoFocus
               />
             </Grid>
@@ -144,9 +142,9 @@ export default function LifeEventPicker(): JSX.Element {
                 variant="outlined"
                 required
                 fullWidth
-                id="startYear"
+                id="residanceStartYear"
                 label="Year Start"
-                name="startYear"
+                name="residanceStartYear"
               />
             </Grid>
             <Grid item xs={6} sm={3}>
@@ -154,9 +152,9 @@ export default function LifeEventPicker(): JSX.Element {
                 variant="outlined"
                 required
                 fullWidth
-                id="endYear"
+                id="residenceEndYear"
                 label="Year End"
-                name="endYear"
+                name="residenceEndYear"
               />
             </Grid>
           </Grid>
@@ -164,6 +162,129 @@ export default function LifeEventPicker(): JSX.Element {
           ''
         )}
       </div>
+
+      <div>
+        {state.marriage ? (
+          <Grid container spacing={2} style={{ marginBottom: 20 }}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="marriage"
+                variant="outlined"
+                required
+                fullWidth
+                id="marriage"
+                label="Marriage"
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="marriageStartYear"
+                label="Year Start"
+                name="marriageStartYear"
+              />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="marriageEndYear"
+                label="Year End"
+                name="marriageEndYear"
+              />
+            </Grid>
+          </Grid>
+        ) : (
+          ''
+        )}
+      </div>
+
+      <div>
+        {state.death ? (
+          <Grid container spacing={2} style={{ marginBottom: 20 }}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="death"
+                variant="outlined"
+                required
+                fullWidth
+                id="death"
+                label="Death"
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="deathStartYear"
+                label="Year Start"
+                name="deathStartYear"
+              />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="deathEndYear"
+                label="Year End"
+                name="deathEndYear"
+              />
+            </Grid>
+          </Grid>
+        ) : (
+          ''
+        )}
+      </div>
+
+      <div>
+        {state.anyEvent ? (
+          <Grid container spacing={2} style={{ marginBottom: 20 }}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="anyEvent"
+                variant="outlined"
+                required
+                fullWidth
+                id="anyEvent"
+                label="Any"
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="anyEventStartYear"
+                label="Year Start"
+                name="anyEventStartYear"
+              />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="anyEventEndYear"
+                label="Year End"
+                name="anyEventEndYear"
+              />
+            </Grid>
+          </Grid>
+        ) : (
+          ''
+        )}
+      </div>
+
+      {/*
+      ------------------------------------ */}
     </div>
   );
 }
