@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Link from '@material-ui/core/Link';
-import NavigateNextOutlinedIcon from '@material-ui/icons/NavigateNextOutlined';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -45,10 +44,7 @@ export default function CategoryPicker(): JSX.Element {
         </Select>
       </FormControl>
       <Typography>
-        <Link href="#" onClick={preventDefault}>
-          Learn more about our collections &gt;
-          <NavigateNextOutlinedIcon />
-        </Link>
+        <Link href="https://ourroots.org/">Learn more about our collections &gt;</Link>
       </Typography>
     </div>
   );
