@@ -7,27 +7,49 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default function RelationshipPicker(): JSX.Element {
   const classes = useStyles();
-  // const preventDefault = (event: SyntheticEvent) => event.preventDefault();
 
-  function spouseOnClick(event: SyntheticEvent) {
-    event.preventDefault();
-    return console.log('Spouse');
-  }
+  const [state, setState] = useState({
+    spouse: false,
+    father: false,
+    mother: false,
+    otherPerson: false,
+  });
 
-  function fatherOnClick(event: SyntheticEvent) {
-    event.preventDefault();
-    console.log('Father');
-  }
+  const spouseOnClick = (): number => {
+    setState({
+      spouse: true,
+      father: state.father,
+      mother: state.mother,
+      otherPerson: state.otherPerson,
+    });
+  };
 
-  function motherOnClick(event: SyntheticEvent) {
-    event.preventDefault();
-    console.log('Mother');
-  }
+  const fatherOnClick = (): number => {
+    setState({
+      spouse: state.spouse,
+      father: true,
+      mother: state.mother,
+      otherPerson: state.otherPerson,
+    });
+  };
 
-  function otherOnClick(event: SyntheticEvent) {
-    event.preventDefault();
-    console.log('Other Person');
-  }
+  const motherOnClick = (): number => {
+    setState({
+      spouse: state.spouse,
+      father: state.father,
+      mother: true,
+      otherPerson: state.otherPerson,
+    });
+  };
+
+  const otherOnClick = (): number => {
+    setState({
+      spouse: state.spouse,
+      father: state.father,
+      mother: state.mother,
+      otherPerson: true,
+    });
+  };
 
   return (
     <div className={classes.paper}>
