@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, SyntheticEvent } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
@@ -12,7 +12,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 export default function CategoryPicker(): JSX.Element {
   const classes = useStyles();
-  const preventDefault = (event: SyntheticEvent) => event.preventDefault();
   const [category, setCategory] = useState<string[]>([]);
 
   const handleChange = (event: ChangeEvent<{ value: unknown }>) =>
