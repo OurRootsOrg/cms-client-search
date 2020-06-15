@@ -122,7 +122,7 @@ export default function LifeEventPicker(): JSX.Element {
           ''
         )}
       </div>
-
+      {/* ------------------- */}
       <div>
         {state.residence ? (
           <Grid container spacing={2} style={{ marginBottom: 20 }}>
@@ -162,7 +162,7 @@ export default function LifeEventPicker(): JSX.Element {
           ''
         )}
       </div>
-
+      {/* ------------------- */}
       <div>
         {state.marriage ? (
           <Grid container spacing={2} style={{ marginBottom: 20 }}>
@@ -202,7 +202,7 @@ export default function LifeEventPicker(): JSX.Element {
           ''
         )}
       </div>
-
+      {/* ------------------- */}
       <div>
         {state.death ? (
           <Grid container spacing={2} style={{ marginBottom: 20 }}>
@@ -242,7 +242,7 @@ export default function LifeEventPicker(): JSX.Element {
           ''
         )}
       </div>
-
+      {/* ------------------- */}
       <div>
         {state.anyEvent ? (
           <Grid container spacing={2} style={{ marginBottom: 20 }}>
@@ -282,9 +282,6 @@ export default function LifeEventPicker(): JSX.Element {
           ''
         )}
       </div>
-
-      {/*
-      ------------------------------------ */}
     </div>
   );
 }
