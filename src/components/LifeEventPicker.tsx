@@ -14,41 +14,21 @@ export default function LifeEventPicker(): JSX.Element {
   const [death, setDeath] = useState(false);
   const [anyEvent, setAnyEvent] = useState(false);
 
-  function toggleBirthTextField(): void {
-    setBirth(!birth);
-  }
-
-  function toggleResidenceTextField(): void {
-    setResidence(!residence);
-  }
-
-  function toggleMarriageTextField(): void {
-    setMarriage(!marriage);
-  }
-
-  function toggleDeathTextField(): void {
-    setDeath(!death);
-  }
-
-  function toggleAnyEventTextField(): void {
-    setAnyEvent(!anyEvent);
-  }
-
   return (
     <div className={classes.paper}>
       <Typography component="h1" variant="h6">
         Search with a life event
       </Typography>
       <Typography style={{ marginBottom: 20 }}>
-        <Link onClick={toggleBirthTextField}>Birth</Link>
+        <Link onClick={() => setBirth(!birth)}>Birth</Link>
         {' | '}
-        <Link onClick={toggleResidenceTextField}>Residence</Link>
+        <Link onClick={() => setResidence(!residence)}>Residence</Link>
         {' | '}
-        <Link onClick={toggleMarriageTextField}>Marriage</Link>
+        <Link onClick={() => setMarriage(!marriage)}>Marriage</Link>
         {' | '}
-        <Link onClick={toggleDeathTextField}>Death</Link>
+        <Link onClick={() => setDeath(!death)}>Death</Link>
         {' | '}
-        <Link onClick={toggleAnyEventTextField}>Any</Link>
+        <Link onClick={() => setAnyEvent(!anyEvent)}>Any</Link>
       </Typography>
 
       {birth && (
