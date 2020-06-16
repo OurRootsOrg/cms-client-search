@@ -54,13 +54,32 @@ export default function LifeEventPicker(): JSX.Element {
       {birth && (
         <Grid container spacing={2} style={{ marginBottom: 20 }}>
           <Grid item xs={12} sm={6}>
-            <TextField variant="outlined" fullWidth id="birthplace" label="Birthplace" autoFocus />
+            <TextField
+              name="birth"
+              variant="outlined"
+              fullWidth
+              id="birthplace"
+              label="Birthplace"
+              autoFocus
+            />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <TextField variant="outlined" fullWidth id="birthplaceStartYear" label="Year Start" />
+            <TextField
+              name="birthYearStart"
+              variant="outlined"
+              fullWidth
+              id="birthplaceStartYear"
+              label="Year Start"
+            />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <TextField variant="outlined" fullWidth id="birthplaceEndYear" label="Year End" />
+            <TextField
+              name="birthYearEnd"
+              variant="outlined"
+              fullWidth
+              id="birthplaceEndYear"
+              label="Year End"
+            />
           </Grid>
         </Grid>
       )}
@@ -70,13 +89,32 @@ export default function LifeEventPicker(): JSX.Element {
       {residence && (
         <Grid container spacing={2} style={{ marginBottom: 20 }}>
           <Grid item xs={12} sm={6}>
-            <TextField variant="outlined" fullWidth id="residence" label="Residence" autoFocus />
+            <TextField
+              name="residence"
+              variant="outlined"
+              fullWidth
+              id="residence"
+              label="Residence"
+              autoFocus
+            />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <TextField variant="outlined" fullWidth id="residanceStartYear" label="Year Start" />
+            <TextField
+              name="residenceYearStart"
+              variant="outlined"
+              fullWidth
+              id="residanceStartYear"
+              label="Year Start"
+            />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <TextField variant="outlined" fullWidth id="residenceEndYear" label="Year End" />
+            <TextField
+              name="residenceYearEnd"
+              variant="outlined"
+              fullWidth
+              id="residenceEndYear"
+              label="Year End"
+            />
           </Grid>
         </Grid>
       )}
@@ -86,13 +124,32 @@ export default function LifeEventPicker(): JSX.Element {
       {marriage && (
         <Grid container spacing={2} style={{ marginBottom: 20 }}>
           <Grid item xs={12} sm={6}>
-            <TextField variant="outlined" fullWidth id="marriage" label="Marriage" autoFocus />
+            <TextField
+              name="marriage"
+              variant="outlined"
+              fullWidth
+              id="marriage"
+              label="Marriage"
+              autoFocus
+            />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <TextField variant="outlined" fullWidth id="marriageStartYear" label="Year Start" />
+            <TextField
+              name="marriageYearStart"
+              variant="outlined"
+              fullWidth
+              id="marriageStartYear"
+              label="Year Start"
+            />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <TextField variant="outlined" fullWidth id="marriageEndYear" label="Year End" />
+            <TextField
+              name="marriageYearEnd"
+              variant="outlined"
+              fullWidth
+              id="marriageEndYear"
+              label="Year End"
+            />
           </Grid>
         </Grid>
       )}
@@ -102,13 +159,25 @@ export default function LifeEventPicker(): JSX.Element {
       {death && (
         <Grid container spacing={2} style={{ marginBottom: 20 }}>
           <Grid item xs={12} sm={6}>
-            <TextField variant="outlined" fullWidth id="death" label="Death" />
+            <TextField name="death" variant="outlined" fullWidth id="death" label="Death" />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <TextField variant="outlined" fullWidth id="deathStartYear" label="Year Start" />
+            <TextField
+              name="deathYearStart"
+              variant="outlined"
+              fullWidth
+              id="deathStartYear"
+              label="Year Start"
+            />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <TextField variant="outlined" fullWidth id="deathEndYear" label="Year End" />
+            <TextField
+              name="deathYearEnd"
+              variant="outlined"
+              fullWidth
+              id="deathEndYear"
+              label="Year End"
+            />
           </Grid>
         </Grid>
       )}
@@ -128,10 +197,22 @@ export default function LifeEventPicker(): JSX.Element {
             />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <TextField variant="outlined" fullWidth id="anyEventStartYear" label="Year Start" />
+            <TextField
+              name="anyEventStartYear"
+              variant="outlined"
+              fullWidth
+              id="anyEventStartYear"
+              label="Year Start"
+            />
           </Grid>
           <Grid item xs={6} sm={3}>
-            <TextField variant="outlined" fullWidth id="anyEventEndYear" label="Year End" />
+            <TextField
+              name="anyEventEndYear"
+              variant="outlined"
+              fullWidth
+              id="anyEventEndYear"
+              label="Year End"
+            />
           </Grid>
         </Grid>
       )}
@@ -145,5 +226,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'left',
+  },
+  container: {
+    marginBottom: theme.spacing(2),
   },
 }));
