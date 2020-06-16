@@ -51,180 +51,90 @@ export default function LifeEventPicker(): JSX.Element {
         <Link onClick={toggleAnyEventTextField}>Any</Link>
       </Typography>
 
-      <div>
-        {birth && (
-          <Grid container spacing={2} style={{ marginBottom: 20 }}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="birthplace"
-                variant="outlined"
-                fullWidth
-                id="birthplace"
-                label="Birthplace"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <TextField
-                variant="outlined"
-                fullWidth
-                id="birthplaceStartYear"
-                label="Year Start"
-                name="birthplaceStartYear"
-              />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <TextField
-                variant="outlined"
-                fullWidth
-                id="birthplaceEndYear"
-                label="Year End"
-                name="birthplaceEndYear"
-              />
-            </Grid>
+      {birth && (
+        <Grid container spacing={2} style={{ marginBottom: 20 }}>
+          <Grid item xs={12} sm={6}>
+            <TextField variant="outlined" fullWidth id="birthplace" label="Birthplace" autoFocus />
           </Grid>
-        )}
-      </div>
+          <Grid item xs={6} sm={3}>
+            <TextField variant="outlined" fullWidth id="birthplaceStartYear" label="Year Start" />
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <TextField variant="outlined" fullWidth id="birthplaceEndYear" label="Year End" />
+          </Grid>
+        </Grid>
+      )}
+
       {/* ------------------- */}
-      <div>
-        {residence && (
-          <Grid container spacing={2} style={{ marginBottom: 20 }}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="residence"
-                variant="outlined"
-                fullWidth
-                id="residence"
-                label="Residence"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <TextField
-                variant="outlined"
-                fullWidth
-                id="residanceStartYear"
-                label="Year Start"
-                name="residanceStartYear"
-              />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <TextField
-                variant="outlined"
-                fullWidth
-                id="residenceEndYear"
-                label="Year End"
-                name="residenceEndYear"
-              />
-            </Grid>
+
+      {residence && (
+        <Grid container spacing={2} style={{ marginBottom: 20 }}>
+          <Grid item xs={12} sm={6}>
+            <TextField variant="outlined" fullWidth id="residence" label="Residence" autoFocus />
           </Grid>
-        )}
-      </div>
+          <Grid item xs={6} sm={3}>
+            <TextField variant="outlined" fullWidth id="residanceStartYear" label="Year Start" />
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <TextField variant="outlined" fullWidth id="residenceEndYear" label="Year End" />
+          </Grid>
+        </Grid>
+      )}
+
       {/* ------------------- */}
-      <div>
-        {marriage && (
-          <Grid container spacing={2} style={{ marginBottom: 20 }}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="marriage"
-                variant="outlined"
-                fullWidth
-                id="marriage"
-                label="Marriage"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <TextField
-                variant="outlined"
-                fullWidth
-                id="marriageStartYear"
-                label="Year Start"
-                name="marriageStartYear"
-              />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <TextField
-                variant="outlined"
-                fullWidth
-                id="marriageEndYear"
-                label="Year End"
-                name="marriageEndYear"
-              />
-            </Grid>
+
+      {marriage && (
+        <Grid container spacing={2} style={{ marginBottom: 20 }}>
+          <Grid item xs={12} sm={6}>
+            <TextField variant="outlined" fullWidth id="marriage" label="Marriage" autoFocus />
           </Grid>
-        )}
-      </div>
+          <Grid item xs={6} sm={3}>
+            <TextField variant="outlined" fullWidth id="marriageStartYear" label="Year Start" />
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <TextField variant="outlined" fullWidth id="marriageEndYear" label="Year End" />
+          </Grid>
+        </Grid>
+      )}
+
       {/* ------------------- */}
-      <div>
-        {death && (
-          <Grid container spacing={2} style={{ marginBottom: 20 }}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="death"
-                variant="outlined"
-                fullWidth
-                id="death"
-                label="Death"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <TextField
-                variant="outlined"
-                fullWidth
-                id="deathStartYear"
-                label="Year Start"
-                name="deathStartYear"
-              />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <TextField
-                variant="outlined"
-                fullWidth
-                id="deathEndYear"
-                label="Year End"
-                name="deathEndYear"
-              />
-            </Grid>
+
+      {death && (
+        <Grid container spacing={2} style={{ marginBottom: 20 }}>
+          <Grid item xs={12} sm={6}>
+            <TextField variant="outlined" fullWidth id="death" label="Death" />
           </Grid>
-        )}
-      </div>
+          <Grid item xs={6} sm={3}>
+            <TextField variant="outlined" fullWidth id="deathStartYear" label="Year Start" />
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <TextField variant="outlined" fullWidth id="deathEndYear" label="Year End" />
+          </Grid>
+        </Grid>
+      )}
+
       {/* ------------------- */}
-      <div>
-        {anyEvent && (
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="anyEvent"
-                variant="outlined"
-                fullWidth
-                id="anyEvent"
-                label="Any"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <TextField
-                variant="outlined"
-                fullWidth
-                id="anyEventStartYear"
-                label="Year Start"
-                name="anyEventStartYear"
-              />
-            </Grid>
-            <Grid item xs={6} sm={3}>
-              <TextField
-                variant="outlined"
-                fullWidth
-                id="anyEventEndYear"
-                label="Year End"
-                name="anyEventEndYear"
-              />
-            </Grid>
+
+      {anyEvent && (
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              name="anyEvent"
+              variant="outlined"
+              fullWidth
+              id="anyEvent"
+              label="Any"
+              autoFocus
+            />
           </Grid>
-        )}
-      </div>
+          <Grid item xs={6} sm={3}>
+            <TextField variant="outlined" fullWidth id="anyEventStartYear" label="Year Start" />
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <TextField variant="outlined" fullWidth id="anyEventEndYear" label="Year End" />
+          </Grid>
+        </Grid>
+      )}
     </div>
   );
 }
