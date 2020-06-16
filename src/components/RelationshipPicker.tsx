@@ -10,48 +10,26 @@ import { makeStyles } from '@material-ui/core/styles';
 export default function RelationshipPicker(): JSX.Element {
   const classes = useStyles();
 
-  const [state, setState] = useState({
-    spouse: false,
-    father: false,
-    mother: false,
-    otherPerson: false,
-  });
+  const [spouse, setSpouse] = useState(false);
+  const [father, setFather] = useState(false);
+  const [mother, setMother] = useState(false);
+  const [otherPerson, setOtherPerson] = useState(false);
 
-  const spouseOnClick = (): any => {
-    setState({
-      spouse: true,
-      father: state.father,
-      mother: state.mother,
-      otherPerson: state.otherPerson,
-    });
-  };
+  function spouseOnClick(): void {
+    setSpouse(!spouse);
+  }
 
-  const fatherOnClick = (): any => {
-    setState({
-      spouse: state.spouse,
-      father: true,
-      mother: state.mother,
-      otherPerson: state.otherPerson,
-    });
-  };
+  function fatherOnClick(): void {
+    setFather(!father);
+  }
 
-  const motherOnClick = (): any => {
-    setState({
-      spouse: state.spouse,
-      father: state.father,
-      mother: true,
-      otherPerson: state.otherPerson,
-    });
-  };
+  function motherOnClick(): void {
+    setMother(!mother);
+  }
 
-  const otherOnClick = (): any => {
-    setState({
-      spouse: state.spouse,
-      father: state.father,
-      mother: state.mother,
-      otherPerson: true,
-    });
-  };
+  function otherPersonOnClick(): void {
+    setOtherPerson(!otherPerson);
+  }
 
   return (
     <div className={classes.paper}>
@@ -65,129 +43,120 @@ export default function RelationshipPicker(): JSX.Element {
         {' | '}
         <Link onClick={motherOnClick}>Mother</Link>
         {' | '}
-        <Link onClick={otherOnClick}>Other Person</Link>
+        <Link onClick={otherPersonOnClick}>Other Person</Link>
       </Typography>
 
-      <div>
-        {state.spouse ? (
-          <Grid container spacing={2} style={{ marginBottom: 20 }}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="spouseFirstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="spouseFirstName"
-                label="Spouse's First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="spouseLastName"
-                label="Spouse's Last Name"
-                name="spouseLastName"
-              />
-            </Grid>
-            <Grid></Grid>
+      {spouse && (
+        <Grid container spacing={2} style={{ marginBottom: 20 }}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              name="spouseFirstName"
+              variant="outlined"
+              required
+              fullWidth
+              id="spouseFirstName"
+              label="Spouse's First Name"
+              autoFocus
+            />
           </Grid>
-        ) : (
-          ''
-        )}
-      </div>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              id="spouseLastName"
+              label="Spouse's Last Name"
+              name="spouseLastName"
+            />
+          </Grid>
+          <Grid></Grid>
+        </Grid>
+      )}
+
       {/* ------------------- */}
-      <div>
-        {state.father ? (
-          <Grid container spacing={2} style={{ marginBottom: 20 }}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="fatherFirstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="fatherFirstName"
-                label="Father's First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="fatherLastName"
-                label="Father's Last Name"
-                name="fatherLastName"
-              />
-            </Grid>
+
+      {father && (
+        <Grid container spacing={2} style={{ marginBottom: 20 }}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              name="fatherFirstName"
+              variant="outlined"
+              required
+              fullWidth
+              id="fatherFirstName"
+              label="Father's First Name"
+              autoFocus
+            />
           </Grid>
-        ) : (
-          ''
-        )}
-      </div>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              id="fatherLastName"
+              label="Father's Last Name"
+              name="fatherLastName"
+            />
+          </Grid>
+        </Grid>
+      )}
+
       {/* ------------------- */}
-      <div>
-        {state.mother ? (
-          <Grid container spacing={2} style={{ marginBottom: 20 }}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="Mother's First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Mother's Last Name"
-                name="lastName"
-              />
-            </Grid>
+
+      {mother && (
+        <Grid container spacing={2} style={{ marginBottom: 20 }}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              name="firstName"
+              variant="outlined"
+              required
+              fullWidth
+              id="firstName"
+              label="Mother's First Name"
+              autoFocus
+            />
           </Grid>
-        ) : (
-          ''
-        )}
-      </div>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              id="lastName"
+              label="Mother's Last Name"
+              name="lastName"
+            />
+          </Grid>
+        </Grid>
+      )}
+
       {/* ------------------- */}
-      <div>
-        {state.otherPerson ? (
-          <Grid container spacing={2} style={{ marginBottom: 20 }}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                name="otherFirstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="otherFirstName"
-                label="Other Person's First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="otherLastName"
-                label="Other Person's Last Name"
-                name="otherLastName"
-              />
-            </Grid>
+
+      {otherPerson && (
+        <Grid container spacing={2} style={{ marginBottom: 20 }}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              name="otherFirstName"
+              variant="outlined"
+              required
+              fullWidth
+              id="otherFirstName"
+              label="Other Person's First Name"
+              autoFocus
+            />
           </Grid>
-        ) : (
-          ''
-        )}
-      </div>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              id="otherLastName"
+              label="Other Person's Last Name"
+              name="otherLastName"
+            />
+          </Grid>
+        </Grid>
+      )}
+
       {/* ------------------- */}
     </div>
   );
