@@ -135,10 +135,4 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'left',
   },
-  closeButton: {
-    position: 'absolute',
-    right: theme.spacing(1),
-    top: theme.spacing(1),
-    color: theme.palette.grey[500],
-  },
 }));
