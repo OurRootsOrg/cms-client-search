@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import Link from '@material-ui/core/Link';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -41,6 +42,9 @@ export default function CategoryPicker(): JSX.Element {
           ))}
         </Select>
       </FormControl>
+      <Typography>
+        <Link href="https://ourroots.org/">Learn more about our collections &gt;</Link>
+      </Typography>
     </div>
   );
 }
