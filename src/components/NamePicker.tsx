@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
-// import Popper from '@material-ui/core/Popper';
+import Popper from '@material-ui/core/Popper';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 
 export default function NamePicker(): JSX.Element {
   const classes = useStyles();
+  const [checkbox, setCheckBox] = useState(false);
+  const [checkbox2, setCheckBox2] = useState(false);
 
   return (
     <div className={classes.paper}>
