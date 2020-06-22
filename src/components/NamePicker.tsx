@@ -13,10 +13,16 @@ export default function NamePicker(): JSX.Element {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
-  const [state, setState] = useState({
-    sounds: false,
-    similar: false,
-    initials: false,
+  const [firstName, setFirstName] = useState({
+    firstSounds: false,
+    firstSimilar: false,
+    firstInitials: false,
+  });
+
+  const [lastName, setLastName] = useState({
+    lastSounds: false,
+    lastSimilar: false,
+    lastInitials: false,
   });
 
   const [disabled1, setDisabled1] = useState(true);
@@ -26,10 +32,10 @@ export default function NamePicker(): JSX.Element {
     setAnchorEl(event.currentTarget);
     if (anchorEl === null) {
       setDisabled1(!disabled1);
-      setState({
-        sounds: false,
-        similar: false,
-        initials: false,
+      setFirstName({
+        firstSounds: false,
+        firstSimilar: false,
+        firstInitials: false,
       });
     }
   };
@@ -38,10 +44,10 @@ export default function NamePicker(): JSX.Element {
     setAnchorEl2(event.currentTarget);
     if (anchorEl2 === null) {
       setDisabled2(!disabled2);
-      setState({
-        sounds: false,
-        similar: false,
-        initials: false,
+      setLastName({
+        lastSounds: false,
+        lastSimilar: false,
+        lastInitials: false,
       });
     }
   };
@@ -58,11 +64,16 @@ export default function NamePicker(): JSX.Element {
   const fName = open ? 'simple-popover' : undefined;
   const lName = open ? 'simple-popover' : undefined;
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    setState({ ...state, [event.target.name]: event.target.checked });
+  const handleChange1 = (event: ChangeEvent<HTMLInputElement>): void => {
+    setFirstName({ ...firstName, [event.target.name]: event.target.checked });
   };
 
-  const { sounds, similar, initials } = state;
+  const handleChange2 = (event: ChangeEvent<HTMLInputElement>): void => {
+    setLastName({ ...lastName, [event.target.name]: event.target.checked });
+  };
+
+  const { firstSounds, firstSimilar, firstInitials } = firstName;
+  const { lastSounds, lastSimilar, lastInitials } = lastName;
 
   return (
     <div className={classes.paper}>
@@ -100,9 +111,9 @@ export default function NamePicker(): JSX.Element {
                     control={
                       <Checkbox
                         disabled={disabled1}
-                        checked={sounds}
-                        onChange={handleChange}
-                        name="sounds"
+                        checked={firstSounds}
+                        onChange={handleChange1}
+                        name="firstSounds"
                         color="primary"
                       />
                     }
@@ -112,9 +123,9 @@ export default function NamePicker(): JSX.Element {
                     control={
                       <Checkbox
                         disabled={disabled1}
-                        checked={similar}
-                        onChange={handleChange}
-                        name="similar"
+                        checked={firstSimilar}
+                        onChange={handleChange1}
+                        name="firstSimilar"
                         color="primary"
                       />
                     }
@@ -124,9 +135,9 @@ export default function NamePicker(): JSX.Element {
                     control={
                       <Checkbox
                         disabled={disabled1}
-                        checked={initials}
-                        onChange={handleChange}
-                        name="initials"
+                        checked={firstInitials}
+                        onChange={handleChange1}
+                        name="firstInitials"
                         color="primary"
                       />
                     }
@@ -170,9 +181,9 @@ export default function NamePicker(): JSX.Element {
                     control={
                       <Checkbox
                         disabled={disabled2}
-                        checked={sounds}
-                        onChange={handleChange}
-                        name="sounds"
+                        checked={lastSounds}
+                        onChange={handleChange2}
+                        name="lastSounds"
                         color="primary"
                       />
                     }
@@ -182,9 +193,9 @@ export default function NamePicker(): JSX.Element {
                     control={
                       <Checkbox
                         disabled={disabled2}
-                        checked={similar}
-                        onChange={handleChange}
-                        name="similar"
+                        checked={lastSimilar}
+                        onChange={handleChange2}
+                        name="lastSimilar"
                         color="primary"
                       />
                     }
@@ -194,9 +205,9 @@ export default function NamePicker(): JSX.Element {
                     control={
                       <Checkbox
                         disabled={disabled2}
-                        checked={initials}
-                        onChange={handleChange}
-                        name="initials"
+                        checked={lastInitials}
+                        onChange={handleChange2}
+                        name="lastInitials"
                         color="primary"
                       />
                     }
