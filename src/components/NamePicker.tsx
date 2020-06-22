@@ -25,6 +25,13 @@ export default function NamePicker(): JSX.Element {
 
   const handleClick2 = (event: MouseEvent<HTMLElement>): void => {
     setAnchorEl2(event.currentTarget);
+    if (anchorEl2 === null) {
+      return setState({
+        sounds: false,
+        similar: false,
+        initials: false,
+      });
+    }
   };
 
   const handleClose = (): void => {
@@ -112,16 +119,35 @@ export default function NamePicker(): JSX.Element {
               <FormControl component="fieldset" className={classes.formControl}>
                 <FormGroup>
                   <FormControlLabel
-                    control={<Checkbox checked={sounds} onChange={handleChange} name="sounds" />}
+                    control={
+                      <Checkbox
+                        checked={sounds}
+                        onChange={handleChange}
+                        name="sounds"
+                        color="primary"
+                      />
+                    }
                     label="Sounds like"
                   />
                   <FormControlLabel
-                    control={<Checkbox checked={similar} onChange={handleChange} name="similar" />}
+                    control={
+                      <Checkbox
+                        checked={similar}
+                        onChange={handleChange}
+                        name="similar"
+                        color="primary"
+                      />
+                    }
                     label="Similar"
                   />
                   <FormControlLabel
                     control={
-                      <Checkbox checked={initials} onChange={handleChange} name="initials" />
+                      <Checkbox
+                        checked={initials}
+                        onChange={handleChange}
+                        name="initials"
+                        color="primary"
+                      />
                     }
                     label="Initials"
                   />
@@ -153,5 +179,6 @@ const useStyles = makeStyles((theme) => ({
   },
   checkbox: {
     display: 'flex',
+    // color: 'primary',
   },
 }));
