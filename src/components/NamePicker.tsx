@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, MouseEvent } from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
@@ -8,8 +8,13 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default function NamePicker(): JSX.Element {
   const classes = useStyles();
-  const [checkbox, setCheckBox] = useState(false);
-  const [checkbox2, setCheckBox2] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const handleClick = (event: MouseEvent<HTMLElement>) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popper' : undefined;
 
   return (
     <div className={classes.paper}>
@@ -24,11 +29,15 @@ export default function NamePicker(): JSX.Element {
             label="First Name"
             autoFocus
           />
-
-          <FormControlLabel
+          <input type="checkbox" aria-describedby={id} onClick={handleClick}></input>
+          Include spelling variations
+          <Popper id={id} open={open} anchorEl={anchorEl}>
+            <div className={classes.paper}>The content of the Popper.</div>
+          </Popper>
+          {/* <FormControlLabel
             control={<Checkbox color="primary" name="fnameVariations" value="yes" />}
             label="Include spelling variations"
-          />
+          /> */}
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
