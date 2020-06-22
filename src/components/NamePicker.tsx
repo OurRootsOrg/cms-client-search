@@ -145,7 +145,6 @@ export default function NamePicker(): JSX.Element {
                   />
                 </FormGroup>
               </FormControl>
-              /
             </div>
           </Popover>
         </Grid>
@@ -215,7 +214,6 @@ export default function NamePicker(): JSX.Element {
                   />
                 </FormGroup>
               </FormControl>
-              /
             </div>
           </Popover>
         </Grid>
