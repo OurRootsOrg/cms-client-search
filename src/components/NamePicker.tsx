@@ -1,6 +1,4 @@
 import React, { useState, MouseEvent } from 'react';
-// import Checkbox from '@material-ui/core/Checkbox';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
 import Popover from '@material-ui/core/Popover';
 import TextField from '@material-ui/core/TextField';
@@ -10,15 +8,8 @@ import { makeStyles } from '@material-ui/core/styles';
 export default function NamePicker(): JSX.Element {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  // const handleClick = (event: MouseEvent<HTMLElement>): void => {
-  //   setAnchorEl(anchorEl ? null : event.currentTarget);
-  // };
 
   const handleClick = (event: MouseEvent<HTMLElement>): void => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClick2 = (event: MouseEvent<HTMLElement>): void => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -61,10 +52,6 @@ export default function NamePicker(): JSX.Element {
           >
             <Typography className={classes.popper}>1st</Typography>
           </Popover>
-          {/* <FormControlLabel
-            control={<Checkbox color="primary" name="fnameVariations" value="yes" />}
-            label="Include spelling variations"
-          /> */}
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
@@ -75,7 +62,7 @@ export default function NamePicker(): JSX.Element {
             label="Last Name"
             name="lastName"
           />
-          <input type="checkbox" aria-describedby={lName} onClick={handleClick2}></input>
+          <input type="checkbox" aria-describedby={lName} onClick={handleClick}></input>
           Include spelling variations
           <Popover
             id={lName}
@@ -91,12 +78,6 @@ export default function NamePicker(): JSX.Element {
               horizontal: 'center',
             }}
           ></Popover>
-          {/* <Popper id={id} open={open} anchorEl={anchorEl}>
-           </Popper> */}
-          {/* <FormControlLabel
-            control={<Checkbox color="primary" name="lnameVariations" value="yes" />}
-            label="Include spelling variations"
-          /> */}
         </Grid>
       </Grid>
     </div>
