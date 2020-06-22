@@ -1,6 +1,6 @@
 import React, { useState, MouseEvent } from 'react';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import Checkbox from '@material-ui/core/Checkbox';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
 import Popper from '@material-ui/core/Popper';
 import TextField from '@material-ui/core/TextField';
@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export default function NamePicker(): JSX.Element {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const handleClick = (event: MouseEvent<HTMLElement>) => {
+  const handleClick = (event: MouseEvent<HTMLElement>): void => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
 
@@ -32,7 +32,7 @@ export default function NamePicker(): JSX.Element {
           <input type="checkbox" aria-describedby={id} onClick={handleClick}></input>
           Include spelling variations
           <Popper id={id} open={open} anchorEl={anchorEl}>
-            <div className={classes.paper}>The content of the Popper.</div>
+            <div className={classes.popper}>The content of the Popper.</div>
           </Popper>
           {/* <FormControlLabel
             control={<Checkbox color="primary" name="fnameVariations" value="yes" />}
@@ -48,10 +48,15 @@ export default function NamePicker(): JSX.Element {
             label="Last Name"
             name="lastName"
           />
-          <FormControlLabel
+          <input type="checkbox" aria-describedby={id} onClick={handleClick}></input>
+          Include spelling variations
+          <Popper id={id} open={open} anchorEl={anchorEl}>
+            {/* <div className={classes.paper}>Content</div> */}
+          </Popper>
+          {/* <FormControlLabel
             control={<Checkbox color="primary" name="lnameVariations" value="yes" />}
             label="Include spelling variations"
-          />
+          /> */}
         </Grid>
       </Grid>
     </div>
@@ -64,5 +69,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'left',
+  },
+  popper: {
+    border: '1px solid',
+    marginTop: theme.spacing(1),
+    padding: theme.spacing(5),
+    backgroundColor: '#FFFFFF',
   },
 }));
