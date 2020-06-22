@@ -1,14 +1,23 @@
-import React, { useState, MouseEvent } from 'react';
+import React, { useState, MouseEvent, ChangeEvent } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Popover from '@material-ui/core/Popover';
 import TextField from '@material-ui/core/TextField';
 // import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 export default function NamePicker(): JSX.Element {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
+  const [state, setState] = useState({
+    sounds: false,
+    similar: false,
+    initials: false,
+  });
 
   const handleClick = (event: MouseEvent<HTMLElement>): void => {
     setAnchorEl(event.currentTarget);
@@ -29,6 +38,12 @@ export default function NamePicker(): JSX.Element {
   const open2 = Boolean(anchorEl2);
   const fName = open ? 'simple-popover' : undefined;
   const lName = open ? 'simple-popover' : undefined;
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
+
+  const { sounds, similar, initials } = state;
 
   return (
     <div className={classes.paper}>
@@ -93,18 +108,26 @@ export default function NamePicker(): JSX.Element {
               horizontal: 'center',
             }}
           >
-            {/* <Typography className={classes.popover}>2nd</Typography> */}
-            <div className={classes.popover}>
-              <input
-                type="checkbox"
-                id="soundsLike2"
-                name="soundsLike2"
-                value="soundsLike2"
-              ></input>
-              <br />
-              <input type="checkbox" id="similiar2" name="similiar2" value="similiar2"></input>
-              <br />
-              <input type="checkbox" id="initials2" name="initials2" value="initials2"></input>
+            <div className={classes.checkbox}>
+              <FormControl component="fieldset" className={classes.formControl}>
+                <FormGroup>
+                  <FormControlLabel
+                    control={<Checkbox checked={sounds} onChange={handleChange} name="sounds" />}
+                    label="Sounds like"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox checked={similar} onChange={handleChange} name="similar" />}
+                    label="Similar"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox checked={initials} onChange={handleChange} name="initials" />
+                    }
+                    label="Initials"
+                  />
+                </FormGroup>
+              </FormControl>
+              /
             </div>
           </Popover>
         </Grid>
@@ -124,5 +147,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
     padding: theme.spacing(2),
     backgroundColor: '#FFFFFF',
+  },
+  formControl: {
+    margin: theme.spacing(3),
+  },
+  checkbox: {
+    display: 'flex',
   },
 }));
