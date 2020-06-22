@@ -19,6 +19,8 @@ export default function NamePicker(): JSX.Element {
     initials: false,
   });
 
+  const [disabled2, setDisabled2] = useState(true);
+
   const handleClick = (event: MouseEvent<HTMLElement>): void => {
     setAnchorEl(event.currentTarget);
   };
@@ -26,7 +28,8 @@ export default function NamePicker(): JSX.Element {
   const handleClick2 = (event: MouseEvent<HTMLElement>): void => {
     setAnchorEl2(event.currentTarget);
     if (anchorEl2 === null) {
-      return setState({
+      setDisabled2(!disabled2);
+      setState({
         sounds: false,
         similar: false,
         initials: false,
@@ -121,6 +124,7 @@ export default function NamePicker(): JSX.Element {
                   <FormControlLabel
                     control={
                       <Checkbox
+                        disabled={disabled2}
                         checked={sounds}
                         onChange={handleChange}
                         name="sounds"
@@ -132,6 +136,7 @@ export default function NamePicker(): JSX.Element {
                   <FormControlLabel
                     control={
                       <Checkbox
+                        disabled={disabled2}
                         checked={similar}
                         onChange={handleChange}
                         name="similar"
@@ -143,6 +148,7 @@ export default function NamePicker(): JSX.Element {
                   <FormControlLabel
                     control={
                       <Checkbox
+                        disabled={disabled2}
                         checked={initials}
                         onChange={handleChange}
                         name="initials"
