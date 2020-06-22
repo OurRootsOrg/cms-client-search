@@ -19,10 +19,19 @@ export default function NamePicker(): JSX.Element {
     initials: false,
   });
 
+  const [disabled1, setDisabled1] = useState(true);
   const [disabled2, setDisabled2] = useState(true);
 
-  const handleClick = (event: MouseEvent<HTMLElement>): void => {
+  const handleClick1 = (event: MouseEvent<HTMLElement>): void => {
     setAnchorEl(event.currentTarget);
+    if (anchorEl === null) {
+      setDisabled1(!disabled1);
+      setState({
+        sounds: false,
+        similar: false,
+        initials: false,
+      });
+    }
   };
 
   const handleClick2 = (event: MouseEvent<HTMLElement>): void => {
@@ -37,7 +46,7 @@ export default function NamePicker(): JSX.Element {
     }
   };
 
-  const handleClose = (): void => {
+  const handleClose1 = (): void => {
     setAnchorEl(null);
   };
   const handleClose2 = (): void => {
@@ -68,13 +77,13 @@ export default function NamePicker(): JSX.Element {
             label="First Name"
             autoFocus
           />
-          <input type="checkbox" aria-describedby={fName} onClick={handleClick}></input>
+          <input type="checkbox" aria-describedby={fName} onClick={handleClick1}></input>
           Exact spelling and ...
           <Popover
             id={fName}
             open={open}
             anchorEl={anchorEl}
-            onClose={handleClose}
+            onClose={handleClose1}
             anchorOrigin={{
               vertical: 'bottom',
               horizontal: 'left',
@@ -84,12 +93,48 @@ export default function NamePicker(): JSX.Element {
               horizontal: 'center',
             }}
           >
-            <div className={classes.popover}>
-              <input type="checkbox" id="soundsLike" name="soundsLike" value="soundsLike"></input>
-              <br />
-              <input type="checkbox" id="similiar" name="similiar" value="similiar"></input>
-              <br />
-              <input type="checkbox" id="initials" name="initials" value="initials"></input>
+            <div className={classes.checkbox}>
+              <FormControl component="fieldset" className={classes.formControl}>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        disabled={disabled1}
+                        checked={sounds}
+                        onChange={handleChange}
+                        name="sounds"
+                        color="primary"
+                      />
+                    }
+                    label="Sounds like"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        disabled={disabled1}
+                        checked={similar}
+                        onChange={handleChange}
+                        name="similar"
+                        color="primary"
+                      />
+                    }
+                    label="Similar"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        disabled={disabled1}
+                        checked={initials}
+                        onChange={handleChange}
+                        name="initials"
+                        color="primary"
+                      />
+                    }
+                    label="Initials"
+                  />
+                </FormGroup>
+              </FormControl>
+              /
             </div>
           </Popover>
         </Grid>
@@ -103,7 +148,7 @@ export default function NamePicker(): JSX.Element {
             name="lastName"
           />
           <input type="checkbox" aria-describedby={lName} onClick={handleClick2}></input>
-          Include spelling variations
+          Exact Spelling and ...
           <Popover
             id={lName}
             open={open2}
@@ -184,6 +229,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3),
   },
   checkbox: {
+    marginTop: theme.spacing(1),
     display: 'flex',
     // color: 'primary',
   },
