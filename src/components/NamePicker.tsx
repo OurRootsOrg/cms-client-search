@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Popover from '@material-ui/core/Popover';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
-import FormControl from '@material-ui/core/FormControl';
+
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -12,6 +12,8 @@ export default function NamePicker(): JSX.Element {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
+  const [disabled1, setDisabled1] = useState(true);
+  const [disabled2, setDisabled2] = useState(true);
   const [firstName, setFirstName] = useState({
     firstSounds: false,
     firstSimilar: false,
@@ -23,9 +25,6 @@ export default function NamePicker(): JSX.Element {
     lastSimilar: false,
     lastInitials: false,
   });
-
-  const [disabled1, setDisabled1] = useState(true);
-  const [disabled2, setDisabled2] = useState(true);
 
   const handleClick1 = (event: MouseEvent<HTMLElement>): void => {
     setAnchorEl(event.currentTarget);
@@ -104,46 +103,44 @@ export default function NamePicker(): JSX.Element {
             }}
           >
             <div className={classes.checkbox}>
-              <FormControl component="fieldset" className={classes.formControl}>
-                <FormGroup>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        disabled={disabled1}
-                        checked={firstSounds}
-                        onChange={handleChange1}
-                        name="firstSounds"
-                        color="primary"
-                      />
-                    }
-                    label="Sounds like"
-                  />
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        disabled={disabled1}
-                        checked={firstSimilar}
-                        onChange={handleChange1}
-                        name="firstSimilar"
-                        color="primary"
-                      />
-                    }
-                    label="Similar"
-                  />
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        disabled={disabled1}
-                        checked={firstInitials}
-                        onChange={handleChange1}
-                        name="firstInitials"
-                        color="primary"
-                      />
-                    }
-                    label="Initials"
-                  />
-                </FormGroup>
-              </FormControl>
+              <FormGroup className={classes.formControl}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      disabled={disabled1}
+                      checked={firstSounds}
+                      onChange={handleChange1}
+                      name="firstSounds"
+                      color="primary"
+                    />
+                  }
+                  label="Sounds like"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      disabled={disabled1}
+                      checked={firstSimilar}
+                      onChange={handleChange1}
+                      name="firstSimilar"
+                      color="primary"
+                    />
+                  }
+                  label="Similar"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      disabled={disabled1}
+                      checked={firstInitials}
+                      onChange={handleChange1}
+                      name="firstInitials"
+                      color="primary"
+                    />
+                  }
+                  label="Initials"
+                />
+              </FormGroup>
             </div>
           </Popover>
         </Grid>
@@ -173,46 +170,44 @@ export default function NamePicker(): JSX.Element {
             }}
           >
             <div className={classes.checkbox}>
-              <FormControl component="fieldset" className={classes.formControl}>
-                <FormGroup>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        disabled={disabled2}
-                        checked={lastSounds}
-                        onChange={handleChange2}
-                        name="lastSounds"
-                        color="primary"
-                      />
-                    }
-                    label="Sounds like"
-                  />
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        disabled={disabled2}
-                        checked={lastSimilar}
-                        onChange={handleChange2}
-                        name="lastSimilar"
-                        color="primary"
-                      />
-                    }
-                    label="Similar"
-                  />
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        disabled={disabled2}
-                        checked={lastInitials}
-                        onChange={handleChange2}
-                        name="lastInitials"
-                        color="primary"
-                      />
-                    }
-                    label="Initials"
-                  />
-                </FormGroup>
-              </FormControl>
+              <FormGroup className={classes.formControl}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      disabled={disabled2}
+                      checked={lastSounds}
+                      onChange={handleChange2}
+                      name="lastSounds"
+                      color="primary"
+                    />
+                  }
+                  label="Sounds like"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      disabled={disabled2}
+                      checked={lastSimilar}
+                      onChange={handleChange2}
+                      name="lastSimilar"
+                      color="primary"
+                    />
+                  }
+                  label="Similar"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      disabled={disabled2}
+                      checked={lastInitials}
+                      onChange={handleChange2}
+                      name="lastInitials"
+                      color="primary"
+                    />
+                  }
+                  label="Initials"
+                />
+              </FormGroup>
             </div>
           </Popover>
         </Grid>
@@ -227,6 +222,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'left',
+    color: 'primary',
   },
   popover: {
     marginTop: theme.spacing(1),
