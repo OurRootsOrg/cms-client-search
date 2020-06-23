@@ -2,11 +2,10 @@ import React, { useState, MouseEvent, ChangeEvent } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Popover from '@material-ui/core/Popover';
 import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import { makeStyles } from '@material-ui/core/styles';
 
 export default function NamePicker(): JSX.Element {
   const classes = useStyles();
@@ -223,11 +222,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'left',
     color: 'primary',
-  },
-  popover: {
-    marginTop: theme.spacing(1),
-    padding: theme.spacing(2),
-    backgroundColor: '#FFFFFF',
   },
   formControl: {
     margin: theme.spacing(3),
