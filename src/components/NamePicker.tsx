@@ -9,10 +9,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default function NamePicker(): JSX.Element {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [anchorEl2, setAnchorEl2] = useState<null | HTMLElement>(null);
-  const [disabled1, setDisabled1] = useState(true);
-  const [disabled2, setDisabled2] = useState(true);
+  const [anchorEl, setAnchorEl] = useState<undefined | HTMLElement>(undefined);
+  const [anchorEl2, setAnchorEl2] = useState<undefined | HTMLElement>(undefined);
+  const [firstDisabled, setFirstDisabled] = useState(true);
+  const [lastDisabled, setLastDisabled] = useState(true);
   const [firstName, setFirstName] = useState({
     firstSounds: false,
     firstSimilar: false,
@@ -27,8 +27,8 @@ export default function NamePicker(): JSX.Element {
 
   const handleClick1 = (event: MouseEvent<HTMLElement>): void => {
     setAnchorEl(event.currentTarget);
-    if (anchorEl === null) {
-      setDisabled1(!disabled1);
+    if (!anchorEl!) {
+      setFirstDisabled(!firstDisabled);
       setFirstName({
         firstSounds: false,
         firstSimilar: false,
@@ -39,8 +39,8 @@ export default function NamePicker(): JSX.Element {
 
   const handleClick2 = (event: MouseEvent<HTMLElement>): void => {
     setAnchorEl2(event.currentTarget);
-    if (anchorEl2 === null) {
-      setDisabled2(!disabled2);
+    if (!anchorEl2) {
+      setLastDisabled(!lastDisabled);
       setLastName({
         lastSounds: false,
         lastSimilar: false,
@@ -50,16 +50,18 @@ export default function NamePicker(): JSX.Element {
   };
 
   const handleClose1 = (): void => {
-    setAnchorEl(null);
+    setAnchorEl(undefined);
   };
   const handleClose2 = (): void => {
-    setAnchorEl2(null);
+    setAnchorEl2(undefined);
   };
 
-  const open = Boolean(anchorEl);
-  const open2 = Boolean(anchorEl2);
-  const fName = open ? 'simple-popover' : undefined;
-  const lName = open ? 'simple-popover' : undefined;
+  const open = !!anchorEl;
+  const open2 = !!anchorEl2;
+  // const fName = open ? 'simple-popover' : undefined;
+  // const lName = open2 ? 'simple-popover' : undefined;
+  const fName = anchorEl && 'simple-popover';
+  const lName = anchorEl2 && 'simple-popover';
 
   const handleChange1 = (event: ChangeEvent<HTMLInputElement>): void => {
     setFirstName({ ...firstName, [event.target.name]: event.target.checked });
@@ -106,7 +108,7 @@ export default function NamePicker(): JSX.Element {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      disabled={disabled1}
+                      disabled={firstDisabled}
                       checked={firstSounds}
                       onChange={handleChange1}
                       name="firstSounds"
@@ -118,7 +120,7 @@ export default function NamePicker(): JSX.Element {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      disabled={disabled1}
+                      disabled={firstDisabled}
                       checked={firstSimilar}
                       onChange={handleChange1}
                       name="firstSimilar"
@@ -130,7 +132,7 @@ export default function NamePicker(): JSX.Element {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      disabled={disabled1}
+                      disabled={firstDisabled}
                       checked={firstInitials}
                       onChange={handleChange1}
                       name="firstInitials"
@@ -173,7 +175,7 @@ export default function NamePicker(): JSX.Element {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      disabled={disabled2}
+                      disabled={lastDisabled}
                       checked={lastSounds}
                       onChange={handleChange2}
                       name="lastSounds"
@@ -185,7 +187,7 @@ export default function NamePicker(): JSX.Element {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      disabled={disabled2}
+                      disabled={lastDisabled}
                       checked={lastSimilar}
                       onChange={handleChange2}
                       name="lastSimilar"
@@ -197,7 +199,7 @@ export default function NamePicker(): JSX.Element {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      disabled={disabled2}
+                      disabled={lastDisabled}
                       checked={lastInitials}
                       onChange={handleChange2}
                       name="lastInitials"
