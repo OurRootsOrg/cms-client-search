@@ -58,18 +58,17 @@ export default function NamePicker(): JSX.Element {
 
   const open = !!anchorEl;
   const open2 = !!anchorEl2;
-  // const fName = open ? 'simple-popover' : undefined;
-  // const lName = open2 ? 'simple-popover' : undefined;
+
   const fName = anchorEl && 'simple-popover';
   const lName = anchorEl2 && 'simple-popover';
 
-  const handleChange1 = (event: ChangeEvent<HTMLInputElement>): void => {
+  function handleChange1(event: ChangeEvent<HTMLInputElement>): void {
     setFirstName({ ...firstName, [event.target.name]: event.target.checked });
-  };
+  }
 
-  const handleChange2 = (event: ChangeEvent<HTMLInputElement>): void => {
+  function handleChange2(event: ChangeEvent<HTMLInputElement>): void {
     setLastName({ ...lastName, [event.target.name]: event.target.checked });
-  };
+  }
 
   const { firstSounds, firstSimilar, firstInitials } = firstName;
   const { lastSounds, lastSimilar, lastInitials } = lastName;
