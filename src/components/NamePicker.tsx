@@ -9,8 +9,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default function NamePicker(): JSX.Element {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState<undefined | HTMLElement>(undefined);
-  const [anchorEl2, setAnchorEl2] = useState<undefined | HTMLElement>(undefined);
+  const [firstAnchor, setFirstAnchor] = useState<undefined | HTMLElement>();
+  const [lastAnchor, setlastAnchor] = useState<undefined | HTMLElement>();
   const [firstDisabled, setFirstDisabled] = useState(true);
   const [lastDisabled, setLastDisabled] = useState(true);
   const [firstName, setFirstName] = useState({
@@ -26,8 +26,8 @@ export default function NamePicker(): JSX.Element {
   });
 
   const handleClick1 = (event: MouseEvent<HTMLElement>): void => {
-    setAnchorEl(event.currentTarget);
-    if (!anchorEl!) {
+    setFirstAnchor(event.currentTarget);
+    if (!firstAnchor) {
       setFirstDisabled(!firstDisabled);
       setFirstName({
         firstSounds: false,
@@ -38,8 +38,8 @@ export default function NamePicker(): JSX.Element {
   };
 
   const handleClick2 = (event: MouseEvent<HTMLElement>): void => {
-    setAnchorEl2(event.currentTarget);
-    if (!anchorEl2) {
+    setlastAnchor(event.currentTarget);
+    if (!lastAnchor) {
       setLastDisabled(!lastDisabled);
       setLastName({
         lastSounds: false,
@@ -50,17 +50,17 @@ export default function NamePicker(): JSX.Element {
   };
 
   const handleClose1 = (): void => {
-    setAnchorEl(undefined);
+    setFirstAnchor(undefined);
   };
   const handleClose2 = (): void => {
-    setAnchorEl2(undefined);
+    setlastAnchor(undefined);
   };
 
-  const open = !!anchorEl;
-  const open2 = !!anchorEl2;
+  const open = !!firstAnchor;
+  const open2 = !!lastAnchor;
 
-  const fName = anchorEl && 'simple-popover';
-  const lName = anchorEl2 && 'simple-popover';
+  const fName = firstAnchor && 'simple-popover';
+  const lName = lastAnchor && 'simple-popover';
 
   function handleChange1(event: ChangeEvent<HTMLInputElement>): void {
     setFirstName({ ...firstName, [event.target.name]: event.target.checked });
@@ -91,7 +91,7 @@ export default function NamePicker(): JSX.Element {
           <Popover
             id={fName}
             open={open}
-            anchorEl={anchorEl}
+            anchorEl={firstAnchor}
             onClose={handleClose1}
             anchorOrigin={{
               vertical: 'bottom',
@@ -158,7 +158,7 @@ export default function NamePicker(): JSX.Element {
           <Popover
             id={lName}
             open={open2}
-            anchorEl={anchorEl2}
+            anchorEl={lastAnchor}
             onClose={handleClose2}
             anchorOrigin={{
               vertical: 'bottom',
