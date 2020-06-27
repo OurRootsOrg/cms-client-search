@@ -7,7 +7,7 @@ export default function SearchResults(): JSX.Element {
   const classes = useStyles();
   return (
     <Container className={classes.paper}>
-      <Typography>Hello World</Typography>
+      <Typography>Hello World, Search Results</Typography>
     </Container>
   );
 }

@@ -11,9 +11,9 @@ import SearchResults from './SearchResults';
 
 export default function SearchForm(): JSX.Element {
   const classes = useStyles();
-  const [search, setSearch] = useState('searchForm');
+  const [search, setSearch] = useState(true);
 
-  if (search === 'searchForm') {
+  if (search) {
     return (
       <Container component="main" maxWidth="md">
         <form className={classes.form} noValidate>
@@ -25,17 +25,18 @@ export default function SearchForm(): JSX.Element {
           <RelationshipPicker />
           <CategoryPicker />
           <div style={{ marginTop: 50 }}>
-            <Button variant="outlined" color="primary" type="submit" value="Submit">
-              Submit
-            </Button>
+            <label onClick={() => setSearch(!search)}>
+              <Button variant="outlined" color="primary" type="submit" value="Submit">
+                Submit
+              </Button>
+            </label>
           </div>
         </form>
       </Container>
     );
   }
-  if (search === 'searchResults') {
-    return <SearchResults />;
-  }
+
+  return <SearchResults />;
 }
 
 const useStyles = makeStyles((theme) => ({
