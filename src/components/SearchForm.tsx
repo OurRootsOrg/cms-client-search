@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from '@material-ui/core/Container';
 import NamePicker from './NamePicker';
 import LifeEventPicker from './LifeEventPicker';
@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default function SearchForm(): JSX.Element {
   const classes = useStyles();
+  const [search, setSearch] = useState('searchForm');
 
   return (
     <Container component="main" maxWidth="md">
