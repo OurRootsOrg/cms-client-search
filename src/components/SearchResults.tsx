@@ -1,24 +1,30 @@
 import React from 'react';
-// import Container from '@material-ui/core/Container';
+import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-// import Typography from '@material-ui/core/Typography';
+import LifeEventPicker from './LifeEventPicker';
+import RelationshipPicker from './RelationshipPicker';
+import NamePicker from './NamePicker';
+import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
 export default function SearchResults(): JSX.Element {
   const classes = useStyles();
   return (
-    // <Container className={classes.paper}>
-    //   <Typography>Hello World, Search Results</Typography>
-    // </Container>
-    <Grid container spacing={3}>
-      <Grid item xs={4}>
-        <Paper className={classes.paper}>xs=4</Paper>
+    <Container component="main" maxWidth="md">
+      <Grid container spacing={2}>
+        <Grid item xs={4}>
+          <Typography className={classes.paper}>Refine your search</Typography>
+          <NamePicker />
+          <LifeEventPicker />
+          <RelationshipPicker />
+        </Grid>
+        <Grid item xs={8}>
+          <Typography component="h1" variant="h5">
+            Search Results
+          </Typography>
+        </Grid>
       </Grid>
-      <Grid item xs={8}>
-        <Paper className={classes.paper}>xs=8</Paper>
-      </Grid>
-    </Grid>
+    </Container>
   );
 }
 
