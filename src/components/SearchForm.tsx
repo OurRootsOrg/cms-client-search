@@ -27,7 +27,7 @@ export default function SearchForm(): JSX.Element {
           <div style={{ marginTop: 50 }}>
             <label onClick={() => setSearchForm(!searchForm)}>
               <Button variant="outlined" color="primary" type="submit" value="Submit">
-                Submit
+                Search
               </Button>
             </label>
           </div>
