@@ -5,7 +5,6 @@ import LifeEventPicker from './LifeEventPicker';
 import RelationshipPicker from './RelationshipPicker';
 import NamePicker from './NamePicker';
 import SearchResultsTable from './SearchResultsTable';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -25,7 +24,6 @@ export default function SearchResults(): JSX.Element {
             Search Results
           </Typography>
           <SearchResultsTable />
-          <Paper>xs=8</Paper>
         </Grid>
       </Grid>
     </Container>
