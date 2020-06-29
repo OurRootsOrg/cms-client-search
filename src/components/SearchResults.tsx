@@ -7,6 +7,7 @@ import NamePicker from './NamePicker';
 import SearchResultsTable from './SearchResultsTable';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import SearchResultsLocation from './SearchResultsLocations';
 
 export default function SearchResults(): JSX.Element {
   const classes = useStyles();
@@ -18,6 +19,7 @@ export default function SearchResults(): JSX.Element {
           <NamePicker />
           <LifeEventPicker />
           <RelationshipPicker />
+          <SearchResultsLocation />
         </Grid>
         <Grid item xs={8}>
           <Typography component="h1" variant="h5">
