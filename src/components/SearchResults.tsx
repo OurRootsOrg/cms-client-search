@@ -26,11 +26,15 @@ export default function SearchResults(): JSX.Element {
             <SearchResultsLocation />
             <SearchResultsCategory />
             <div style={{ marginTop: 50 }}>
-              <label onClick={() => console.log('click')}>
-                <Button variant="outlined" color="primary" type="submit" value="Submit">
-                  Search
-                </Button>
-              </label>
+              <Button
+                variant="outlined"
+                color="primary"
+                type="submit"
+                value="Submit"
+                onClick={() => console.log('click')}
+              >
+                Search
+              </Button>
             </div>
           </form>
         </Grid>

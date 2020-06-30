@@ -25,11 +25,15 @@ export default function SearchForm(): JSX.Element {
           <RelationshipPicker />
           <CategoryPicker />
           <div style={{ marginTop: 50 }}>
-            <label onClick={() => setSearchForm(!searchForm)}>
-              <Button variant="outlined" color="primary" type="submit" value="Submit">
-                Search
-              </Button>
-            </label>
+            <Button
+              variant="outlined"
+              color="primary"
+              type="submit"
+              value="Submit"
+              onClick={() => setSearchForm(!searchForm)}
+            >
+              Search
+            </Button>
           </div>
         </form>
       </Container>
