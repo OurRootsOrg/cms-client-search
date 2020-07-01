@@ -12,6 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export default function SearchForm(props: { setResults: any }): JSX.Element {
   const { setResults } = props;
   const classes = useStyles();
+  console.log('props:', props);
 
   return (
     <Container component="main" maxWidth="md">
