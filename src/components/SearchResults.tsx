@@ -12,7 +12,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import SearchResultsLocation from './SearchResultsLocations';
 import SearchResultsCategory from './SearchResultsCategory';
 
-export default function SearchResults(): JSX.Element {
+export default function SearchResults(props: { setResults: boolean }): JSX.Element {
+  const { setResults } = props;
   const classes = useStyles();
 
   return (
@@ -32,7 +33,7 @@ export default function SearchResults(): JSX.Element {
                 color="primary"
                 type="submit"
                 value="Submit"
-                onClick={() => console.log('click')}
+                onSubmit={() => setResults(false)}
               >
                 Search
               </Button>

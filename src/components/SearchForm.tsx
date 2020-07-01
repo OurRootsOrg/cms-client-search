@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import NamePicker from './NamePicker';
@@ -8,13 +8,12 @@ import CategoryPicker from './CategoryPicker';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import SearchResults from './SearchResults';
 
-export default function SearchForm(): JSX.Element {
+export default function SearchForm(props: { setResults: boolean }): JSX.Element {
+  const { setResults } = props;
   const classes = useStyles();
-  const [searchForm, setSearchForm] = useState(true);
 
-  return searchForm ? (
+  return (
     <Container component="main" maxWidth="md">
       <form className={classes.form} noValidate>
         <Typography component="h1" variant="h5">
@@ -30,15 +29,13 @@ export default function SearchForm(): JSX.Element {
             color="primary"
             type="submit"
             value="Submit"
-            onClick={() => setSearchForm(!searchForm)}
+            onSubmit={() => setResults(true)}
           >
             Search
           </Button>
         </Box>
       </form>
     </Container>
-  ) : (
-    <SearchResults />
   );
 }
 
