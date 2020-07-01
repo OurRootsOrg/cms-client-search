@@ -12,13 +12,12 @@ import { makeStyles } from '@material-ui/core/styles';
 export default function SearchForm(props: { setResults: any }): JSX.Element {
   const { setResults } = props;
   const classes = useStyles();
-  console.log('props:', props);
 
   return (
     <Container component="main" maxWidth="md">
       <form className={classes.form} noValidate>
         <Typography component="h1" variant="h5">
-          Search our society's records
+          Search our society&apos;s records
         </Typography>
         <NamePicker />
         <LifeEventPicker />
@@ -30,7 +29,8 @@ export default function SearchForm(props: { setResults: any }): JSX.Element {
             color="primary"
             type="submit"
             value="Submit"
-            onSubmit={() => setResults(true)}
+            // onSubmit={() => setResults(true)}
+            onClick={() => setResults(true)}
           >
             Search
           </Button>
