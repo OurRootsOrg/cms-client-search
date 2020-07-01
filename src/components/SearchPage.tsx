@@ -11,4 +11,3 @@ export default function SearchPage(): JSX.Element {
     <SearchForm setResults={setResults} />
   );
 }
-q;
