@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import NamePicker from './NamePicker';
 import LifeEventPicker from './LifeEventPicker';
@@ -23,7 +24,7 @@ export default function SearchForm(): JSX.Element {
         <LifeEventPicker />
         <RelationshipPicker />
         <CategoryPicker />
-        <div style={{ marginTop: 50 }}>
+        <Box mt={5}>
           <Button
             variant="outlined"
             color="primary"
@@ -33,7 +34,7 @@ export default function SearchForm(): JSX.Element {
           >
             Search
           </Button>
-        </div>
+        </Box>
       </form>
     </Container>
   ) : (

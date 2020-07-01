@@ -1,4 +1,5 @@
 import React from 'react';
+import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -25,7 +26,7 @@ export default function SearchResults(): JSX.Element {
             <RelationshipPicker />
             <SearchResultsLocation />
             <SearchResultsCategory />
-            <div style={{ marginTop: 50 }}>
+            <Box mt={5}>
               <Button
                 variant="outlined"
                 color="primary"
@@ -35,7 +36,7 @@ export default function SearchResults(): JSX.Element {
               >
                 Search
               </Button>
-            </div>
+            </Box>
           </form>
         </Grid>
         <Grid item xs={8}>
