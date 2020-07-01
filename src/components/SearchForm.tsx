@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
-export default function SearchForm(props: { setResults: boolean }): JSX.Element {
+export default function SearchForm(props: { setResults: any }): JSX.Element {
   const { setResults } = props;
   const classes = useStyles();
 

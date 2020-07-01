@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import SearchResultsLocation from './SearchResultsLocations';
 import SearchResultsCategory from './SearchResultsCategory';
 
-export default function SearchResults(props: { setResults: boolean }): JSX.Element {
+export default function SearchResults(props: { setResults: any }): JSX.Element {
   const { setResults } = props;
   const classes = useStyles();
 

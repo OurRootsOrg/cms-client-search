@@ -6,8 +6,8 @@ export default function SearchPage(): JSX.Element {
   const [results, setResults] = useState(false);
 
   return results ? (
-    <SearchResults onSubmit={() => setResults(false)} />
+    <SearchResults setResults={setResults} />
   ) : (
-    <SearchForm onSubmit={() => setResults(true)} />
+    <SearchForm setResults={setResults} />
   );
 }
