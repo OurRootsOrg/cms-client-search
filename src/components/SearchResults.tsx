@@ -6,11 +6,12 @@ import Grid from '@material-ui/core/Grid';
 import LifeEventPicker from './LifeEventPicker';
 import RelationshipPicker from './RelationshipPicker';
 import NamePicker from './NamePicker';
-import SearchResultsTable from './SearchResultsTable';
+// import SearchResultsTable from './SearchResultsTable';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import SearchResultsLocation from './SearchResultsLocations';
 import SearchResultsCategory from './SearchResultsCategory';
+import FixedTable from './FixedTable';
 
 export default function SearchResults(props: { setResults: any }): JSX.Element {
   const { setResults } = props;
@@ -44,7 +45,8 @@ export default function SearchResults(props: { setResults: any }): JSX.Element {
           <Typography component="h1" variant="h5">
             Search Results
           </Typography>
-          <SearchResultsTable />
+          {/* <SearchResultsTable /> */}
+          <FixedTable />
         </Grid>
       </Grid>
     </Container>
