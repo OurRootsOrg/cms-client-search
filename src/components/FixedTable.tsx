@@ -1,13 +1,12 @@
 import React, { useState, ChangeEvent } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
+// import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 
 interface Column {
@@ -36,14 +35,17 @@ function createData(
   return { name, event, relationship };
 }
 
-const rows = [createData('John Anderson', '', ''), createData('Jon Anderson', '', '')];
+const rows = [
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('Jon Anderson', '', ''),
+];
 
 export default function FixedTable(): JSX.Element {
   const classes = useStyles();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  const handleChangePage = (event: unknown, newPage: number): void => {
+  const handleChangePage = (_event: unknown, newPage: number): void => {
     setPage(newPage);
   };
 
@@ -97,16 +99,8 @@ export default function FixedTable(): JSX.Element {
           </TableBody>
         </Table>
       </TableContainer>
-
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        components="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
-      ></TablePagination>
+      {handleChangePage}
+      {handleChangeRowsPerPage}
     </Paper>
   );
 }
