@@ -1,5 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
+
+
+function createData(name:string, event:string, relationship:string){
+  return {name, event, relationship}
+}
+
+const rows = [createData('John Anderson', '', ''), createData('Jon Anderson', '', '')];
+
+
+export default function FixedTable() {
+  const classes = useStyles();
+  const [page, setPage] = useState(0)
+  const [rowPerPage, setRowsPerPage] = useState(10);
+
+
+
+  return ()
+}
 
 interface Column{
   id: 'name' | 'event' | 'relationship';
@@ -19,20 +37,6 @@ interface Data{
   name: string;
   event: string;
   relationship: string
-}
-
-function createData(name:string, event:string, relatinship:string){
-  return {name, event, relationship}
-}
-
-const rows = [createData('John Anderson', '', ''), createData('Jon Anderson', '', '')];
-
-
-export default function FixedTable() {
-
-
-
-  return ()
 }
 
 const useStyles = makeStyles({
