@@ -45,7 +45,11 @@ export default function SearchResultsTable(): JSX.Element {
 }
 
 const useStyles = makeStyles({
+  root: {
+    width: '100%',
+  },
   table: {
-    minWidth: 700,
+    // minWidth: 700,
+    maxHeight: 440,
   },
 });
