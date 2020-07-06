@@ -10,25 +10,56 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 
-function createData(name: string, event: string, relationship: string) {
+interface Column {
+  id: 'name' | 'event' | 'relationship';
+  label: string;
+  minWidth?: number;
+  align?: 'right';
+  format?: (value: number) => string;
+}
+
+const columns: Column[] = [
+  { id: 'name', label: 'Name', minWidth: 200 },
+  { id: 'event', label: 'Events', minWidth: 200 },
+  { id: 'relationship', label: 'Relationships', minWidth: 200 },
+];
+
+function createData(
+  name: string,
+  event: string,
+  relationship: string
+): {
+  name: string;
+  event: string;
+  relationship: string;
+} {
   return { name, event, relationship };
 }
 
 const rows = [createData('John Anderson', '', ''), createData('Jon Anderson', '', '')];
 
-export default function FixedTable() {
+export default function FixedTable(): JSX.Element {
   const classes = useStyles();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = (event: unknown, newPage: number): void => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
+  // function handleChangePage(event: unknown, newPage: number) {
+  //   return setPage(newPage);
+  // }
+
+  const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>): void => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  // function handleChangeRowsPerPage(event: ChangeEvent<HTMLInputElement>) {
+  //   setRowsPerPage(+event.target.value);
+  //   return setPage(0);
+  // }
 
   return (
     <Paper className={classes.root}>
@@ -78,26 +109,6 @@ export default function FixedTable() {
       ></TablePagination>
     </Paper>
   );
-}
-
-interface Column {
-  id: 'name' | 'event' | 'relationship';
-  label: string;
-  minWidth?: number;
-  align?: 'right';
-  format?: (value: number) => string;
-}
-
-const columns: Column[] = [
-  { id: 'name', label: 'Name', minWidth: 200 },
-  { id: 'event', label: 'Events', minWidth: 200 },
-  { id: 'relationship', label: 'Relationships', minWidth: 200 },
-];
-
-interface Data {
-  name: string;
-  event: string;
-  relationship: string;
 }
 
 const useStyles = makeStyles({

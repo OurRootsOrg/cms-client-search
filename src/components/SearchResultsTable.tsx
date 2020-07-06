@@ -10,7 +10,15 @@ import TableRow from '@material-ui/core/TableRow';
 export default function SearchResultsTable(): JSX.Element {
   const classes = useStyles();
 
-  function createData(name: string, event: string, relationship: string) {
+  function createData(
+    name: string,
+    event: string,
+    relationship: string
+  ): {
+    name: string;
+    event: string;
+    relationship: string;
+  } {
     return { name, event, relationship };
   }
 
