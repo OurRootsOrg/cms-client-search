@@ -14,7 +14,7 @@ interface Column {
   label: string;
   minWidth?: number;
   align?: 'right';
-  format?: (value: number) => string;
+  format?: <T>(value: T) => string | JSX.Element;
 }
 
 const columns: Column[] = [
@@ -60,19 +60,10 @@ export default function FixedTable(): JSX.Element {
     setPage(newPage);
   };
 
-  // function handleChangePage(event: unknown, newPage: number) {
-  //   return setPage(newPage);
-  // }
-
   const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>): void => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-
-  // function handleChangeRowsPerPage(event: ChangeEvent<HTMLInputElement>) {
-  //   setRowsPerPage(+event.target.value);
-  //   return setPage(0);
-  // }
 
   return (
     <Paper className={classes.root}>
