@@ -6,7 +6,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
-// import TablePagination from '@material-ui/core/TablePagination';
+import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 
 interface Column {
@@ -37,7 +37,26 @@ function createData(
 
 const rows = [
   createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
-  createData('Jon Anderson', '', ''),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
+  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
 ];
 
 export default function FixedTable(): JSX.Element {
@@ -99,8 +118,15 @@ export default function FixedTable(): JSX.Element {
           </TableBody>
         </Table>
       </TableContainer>
-      {handleChangePage}
-      {handleChangeRowsPerPage}
+      <TablePagination
+        rowsPerPageOptions={[10, 25, 100]}
+        component="div"
+        count={rows.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+      />
     </Paper>
   );
 }
