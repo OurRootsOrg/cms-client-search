@@ -49,14 +49,6 @@ const rows = [
   createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
   createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
   createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
-  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
-  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
-  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
-  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
-  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
-  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
-  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
-  createData('John Anderson', 'Birth: 1887', 'Spouse: Martha Johnson'),
 ];
 
 export default function FixedTable(): JSX.Element {
@@ -136,6 +128,6 @@ const useStyles = makeStyles({
     width: '100%',
   },
   container: {
-    maxHeight: 440,
+    maxHeight: 600,
   },
 });
