@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import { Typography } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
 
 interface Column {
   id: 'name' | 'event' | 'relationship';
@@ -68,8 +69,10 @@ export default function FixedTable(): JSX.Element {
 
   return (
     <div>
-      <Typography className={classes.root}>{rows.length} results</Typography>
-      <Paper>
+      <Box m={1}>
+        <Typography> {rows.length} results </Typography>
+      </Box>
+      <Paper className={classes.root}>
         <TableContainer className={classes.container}>
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
