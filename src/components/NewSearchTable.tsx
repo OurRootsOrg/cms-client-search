@@ -1,7 +1,12 @@
 import React, { forwardRef } from 'react';
-import MaterialTable from 'material-table';
-import Search from '@material-ui/icons/Search';
 import { Icons } from 'material-table';
+import MaterialTable from 'material-table';
+import ChevronLeft from '@material-ui/icons/ChevronLeft';
+import ChevronRight from '@material-ui/icons/ChevronRight';
+import Clear from '@material-ui/icons/Clear';
+import FirstPage from '@material-ui/icons/FirstPage';
+import LastPage from '@material-ui/icons/LastPage';
+import Search from '@material-ui/icons/Search';
 
 const rows = [
   { name: 'John Anderson', events: 'Birth: 1887', relationship: 'Spouse: Martha Johnson' },
@@ -26,12 +31,12 @@ const rows = [
   { name: 'ohn Anderson', events: 'Birth: 1887', relationship: 'Spouse: Martha Johnson' },
 ];
 
-// const tableIcons = {
-//   // eslint-disable-next-line react/display-name
-//   Search: () => <Search />,
-// };
-
 const tableIcons: Icons = {
+  Clear: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
+  FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
+  LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref} />),
+  NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
+  PreviousPage: forwardRef((props, ref) => <ChevronLeft {...props} ref={ref} />),
   Search: forwardRef((props, ref) => <Search {...props} ref={ref} />),
 };
 
