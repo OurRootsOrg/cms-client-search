@@ -10,8 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import SearchResultsLocation from './SearchResultsLocations';
 import SearchResultsCategory from './SearchResultsCategory';
-// import SearchResultsTable from './SearchResultsTable';
-import NewSearchTable from './NewSearchTable';
+import SearchResultsTable from './SearchResultsTable';
 
 export default function SearchResults(props: { setResults: any }): JSX.Element {
   const { setResults } = props;
@@ -45,8 +44,7 @@ export default function SearchResults(props: { setResults: any }): JSX.Element {
           <Typography component="h1" variant="h5">
             Search Results
           </Typography>
-          {/* <SearchResultsTable /> */}
-          <NewSearchTable />
+          <SearchResultsTable />
         </Grid>
       </Grid>
     </Container>
