@@ -56,26 +56,22 @@ export default function SearchResultsTable(): JSX.Element {
         {
           title: 'Name',
           field: 'name',
-          headerStyle: {
-            backgroundColor: '#EEE',
-          },
         },
         {
           title: 'Events',
           field: 'events',
-          headerStyle: {
-            backgroundColor: '#EEE',
-          },
         },
         {
           title: 'Relationship',
           field: 'relationship',
-          headerStyle: {
-            backgroundColor: '#EEE',
-          },
         },
       ]}
       data={rows}
+      options={{
+        headerStyle: {
+          background: '#EEE',
+        },
+      }}
     />
   );
 }
