@@ -1,63 +1,70 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import React, { forwardRef } from 'react';
+import { Icons } from 'material-table';
+import ArrowUpward from '@material-ui/icons/ArrowUpward';
+import MaterialTable from 'material-table';
+import ChevronLeft from '@material-ui/icons/ChevronLeft';
+import ChevronRight from '@material-ui/icons/ChevronRight';
+import Clear from '@material-ui/icons/Clear';
+import FirstPage from '@material-ui/icons/FirstPage';
+import LastPage from '@material-ui/icons/LastPage';
+import Search from '@material-ui/icons/Search';
+
+const tableIcons: Icons = {
+  FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
+  LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref} />),
+  NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
+  ResetSearch: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
+  PreviousPage: forwardRef((props, ref) => <ChevronLeft {...props} ref={ref} />),
+  Search: forwardRef((props, ref) => <Search {...props} ref={ref} />),
+  SortArrow: forwardRef((props, ref) => <ArrowUpward {...props} ref={ref} />),
+};
+
+const rows = [
+  {
+    name: 'John Anderson',
+    events: 'Birth: 1886, Marriage: 1912',
+    relationship: 'Spouse: Martha Johnson',
+  },
+  { name: 'Jon Anderson', events: 'Birth: 1887', relationship: 'Spouse: Martha Johnson' },
+  { name: 'Jhn Anderson', events: 'Birth: 1923', relationship: 'Spouse: Anna Smith Anderson' },
+  { name: 'ohn Anderson', events: 'Birth: 1880', relationship: 'Spouse: Nicole Olsen' },
+  { name: 'John Anderson', events: 'Birth: 1886', relationship: 'Spouse: Helen Mayfield' },
+  { name: 'Jon Anderson', events: 'Birth: 1887', relationship: 'Spouse: Martha Johnson' },
+  { name: 'Jhn Anderson', events: 'Birth: 1923', relationship: 'Spouse: Anna Smith Anderson' },
+  { name: 'ohn Anderson', events: 'Birth: 1880', relationship: 'Spouse: Nicole Olsen' },
+  { name: 'John Anderson', events: 'Birth: 1886', relationship: 'Spouse: Helen Mayfield' },
+  { name: 'Jon Anderson', events: 'Birth: 1887', relationship: 'Spouse: Martha Johnson' },
+  { name: 'Jhn Anderson', events: 'Birth: 1923', relationship: 'Spouse: Anna Smith Anderson' },
+  { name: 'ohn Anderson', events: 'Birth: 1880', relationship: 'Spouse: Nicole Olsen' },
+  { name: 'John Anderson', events: 'Birth: 1886', relationship: 'Spouse: Helen Mayfield' },
+];
 
 export default function SearchResultsTable(): JSX.Element {
-  const classes = useStyles();
-
-  function createData(
-    name: string,
-    event: string,
-    relationship: string
-  ): {
-    name: string;
-    event: string;
-    relationship: string;
-  } {
-    return { name, event, relationship };
-  }
-
-  const rows = [createData('John Anderson', '', ''), createData('Jon Anderson', '', '')];
-
+  const results = rows.length;
   return (
-    <TableContainer className={classes.table}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Events</TableCell>
-            <TableCell>Relationships</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right"> {row.event}</TableCell>
-              <TableCell align="right"> {row.relationship} </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-
-    // --------------------------------------------
+    <MaterialTable
+      icons={tableIcons}
+      title={results + ' results'}
+      columns={[
+        {
+          title: 'Name',
+          field: 'name',
+        },
+        {
+          title: 'Events',
+          field: 'events',
+        },
+        {
+          title: 'Relationship',
+          field: 'relationship',
+        },
+      ]}
+      data={rows}
+      options={{
+        headerStyle: {
+          background: '#EEE',
+        },
+      }}
+    />
   );
 }
-
-const useStyles = makeStyles({
-  root: {
-    width: '100%',
-  },
-  table: {
-    // minWidth: 700,
-    maxHeight: 440,
-  },
-});
