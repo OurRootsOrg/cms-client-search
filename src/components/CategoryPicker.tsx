@@ -1,17 +1,19 @@
-import React, { useState, ChangeEvent } from 'react';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import Link from '@material-ui/core/Link';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
 import ListItemText from '@material-ui/core/ListItemText';
+import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import Checkbox from '@material-ui/core/Checkbox';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import React, { ChangeEvent, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 export default function CategoryPicker(): JSX.Element {
   const classes = useStyles();
+  const { register } = useFormContext();
   const [category, setCategory] = useState<string[]>([]);
 
   const handleChange = (event: ChangeEvent<{ value: unknown }>) =>
@@ -25,6 +27,7 @@ export default function CategoryPicker(): JSX.Element {
       <FormControl className={classes.formControl}>
         <InputLabel id="mutiple-checkbox-label">Select</InputLabel>
         <Select
+          inputRef={register}
           labelId="mutiple-checkbox-label"
           id="mutiple-checkbox"
           multiple
@@ -36,7 +39,7 @@ export default function CategoryPicker(): JSX.Element {
         >
           {selector.map((name) => (
             <MenuItem key={name} value={name}>
-              <Checkbox checked={category.indexOf(name) > -1} />
+              <Checkbox inputRef={register} checked={category.indexOf(name) > -1} />
               <ListItemText primary={name} />
             </MenuItem>
           ))}

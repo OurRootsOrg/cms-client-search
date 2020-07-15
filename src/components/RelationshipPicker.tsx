@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import React, { useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 export default function RelationshipPicker(): JSX.Element {
   const classes = useStyles();
+  const { register } = useFormContext();
 
   let [spouse, setSpouse] = useState(false);
   let [father, setFather] = useState(false);
@@ -32,6 +34,7 @@ export default function RelationshipPicker(): JSX.Element {
         <Grid container spacing={2} style={{ marginBottom: 20 }}>
           <Grid item xs={12} sm={6}>
             <TextField
+              inputRef={register}
               name="spouseFirstName"
               variant="outlined"
               fullWidth
@@ -42,6 +45,7 @@ export default function RelationshipPicker(): JSX.Element {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
+              inputRef={register}
               variant="outlined"
               fullWidth
               id="spouseLastName"
@@ -57,6 +61,7 @@ export default function RelationshipPicker(): JSX.Element {
         <Grid container spacing={2} style={{ marginBottom: 20 }}>
           <Grid item xs={12} sm={6}>
             <TextField
+              inputRef={register}
               name="fatherFirstName"
               variant="outlined"
               fullWidth
@@ -67,6 +72,7 @@ export default function RelationshipPicker(): JSX.Element {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
+              inputRef={register}
               variant="outlined"
               fullWidth
               id="fatherLastName"
@@ -81,6 +87,7 @@ export default function RelationshipPicker(): JSX.Element {
         <Grid container spacing={2} style={{ marginBottom: 20 }}>
           <Grid item xs={12} sm={6}>
             <TextField
+              inputRef={register}
               name="motherFirstName"
               variant="outlined"
               fullWidth
@@ -91,6 +98,7 @@ export default function RelationshipPicker(): JSX.Element {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
+              inputRef={register}
               variant="outlined"
               fullWidth
               id="motherLastName"
@@ -105,6 +113,7 @@ export default function RelationshipPicker(): JSX.Element {
         <Grid container spacing={2} style={{ marginBottom: 20 }}>
           <Grid item xs={12} sm={6}>
             <TextField
+              inputRef={register}
               name="otherFirstName"
               variant="outlined"
               fullWidth
@@ -115,6 +124,7 @@ export default function RelationshipPicker(): JSX.Element {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
+              inputRef={register}
               variant="outlined"
               fullWidth
               id="otherLastName"

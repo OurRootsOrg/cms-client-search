@@ -32,6 +32,7 @@
     "material-table": "^1.64.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-hook-form": "^6.0.6",
     "react-i18next": "^11.4.0"
   },
   "devDependencies": {

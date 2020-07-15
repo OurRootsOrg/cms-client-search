@@ -1,41 +1,45 @@
-import React from 'react';
 import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
-import NamePicker from './NamePicker';
-import LifeEventPicker from './LifeEventPicker';
-import RelationshipPicker from './RelationshipPicker';
-import CategoryPicker from './CategoryPicker';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import React from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import CategoryPicker from './CategoryPicker';
+import LifeEventPicker from './LifeEventPicker';
+import NamePicker from './NamePicker';
+import RelationshipPicker from './RelationshipPicker';
 
 export default function SearchForm(props: { setResults: any }): JSX.Element {
   const { setResults } = props;
   const classes = useStyles();
+  const formMethods = useForm();
+
+  function doSubmit(data: unknown): void {
+    console.log('Submitted', data);
+    setResults(true);
+  }
+
+  console.log('Search Form Values', formMethods.watch());
 
   return (
     <Container component="main" maxWidth="md">
-      <form className={classes.form} noValidate>
-        <Typography component="h1" variant="h5">
-          Search our society&apos;s records
-        </Typography>
-        <NamePicker />
-        <LifeEventPicker />
-        <RelationshipPicker />
-        <CategoryPicker />
-        <Box mt={5}>
-          <Button
-            variant="outlined"
-            color="primary"
-            type="submit"
-            value="Submit"
-            // onSubmit={() => setResults(true)}
-            onClick={() => setResults(true)}
-          >
-            Search
-          </Button>
-        </Box>
-      </form>
+      <FormProvider {...formMethods}>
+        <form onSubmit={formMethods.handleSubmit(doSubmit)} className={classes.form} noValidate>
+          <Typography component="h1" variant="h5">
+            Search our society&apos;s records
+          </Typography>
+          <NamePicker />
+          <LifeEventPicker />
+          <RelationshipPicker />
+          <CategoryPicker />
+          <Box mt={5}>
+            <Button variant="outlined" color="primary" type="submit" value="Submit">
+              Search
+            </Button>
+          </Box>
+        </form>
+      </FormProvider>
     </Container>
   );
 }
