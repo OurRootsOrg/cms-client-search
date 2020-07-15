@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 import { Dispatch, SetStateAction, useEffect, useReducer, useState } from 'react';
 
-type State<T> = {
+export type RequestState<T> = {
   isLoading: boolean;
   isError: boolean;
   data?: T;
@@ -12,8 +12,8 @@ type Action<T> = {
   payload?: T;
   error?: AxiosError;
 };
-type RequestResult<T> = [State<T>, Dispatch<SetStateAction<AxiosRequestConfig>>];
-type GetResult<T> = [State<T>, (url: string) => void];
+export type RequestResult<T> = [RequestState<T>, Dispatch<SetStateAction<AxiosRequestConfig>>];
+export type GetResult<T> = [RequestState<T>, Dispatch<string>];
 
 export function useHttpGet<T>(url: string): GetResult<T> {
   const [currentUrl, setCurrentUrl] = useState(url);
@@ -64,10 +64,10 @@ export function useHttpRequest<T>(config: AxiosRequestConfig): RequestResult<T> 
     };
   }, [currentConfig]);
 
-  return [state as State<T>, setConfig];
+  return [state as RequestState<T>, setConfig];
 }
 
-function dataFetchReducer<T>(state: State<T>, action: Action<T>): State<T> {
+function dataFetchReducer<T>(state: RequestState<T>, action: Action<T>): RequestState<T> {
   switch (action.type) {
     case 'INIT':
       return {
