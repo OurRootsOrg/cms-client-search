@@ -1,14 +1,16 @@
-import React, { useState, MouseEvent, ChangeEvent } from 'react';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
 import Popover from '@material-ui/core/Popover';
-import TextField from '@material-ui/core/TextField';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import React, { ChangeEvent, MouseEvent, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 export default function NamePicker(): JSX.Element {
   const classes = useStyles();
+  const { register } = useFormContext();
   const [firstAnchor, setFirstAnchor] = useState<undefined | HTMLElement>();
   const [lastAnchor, setlastAnchor] = useState<undefined | HTMLElement>();
   const [firstDisabled, setFirstDisabled] = useState(true);
@@ -78,6 +80,7 @@ export default function NamePicker(): JSX.Element {
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <TextField
+            inputRef={register}
             name="firstName"
             variant="outlined"
             required
@@ -86,7 +89,13 @@ export default function NamePicker(): JSX.Element {
             label="First Name"
             autoFocus
           />
-          <input type="checkbox" aria-describedby={fName} onClick={handleClick1}></input>
+          <input
+            type="checkbox"
+            ref={register}
+            name="firstNameSoundex"
+            aria-describedby={fName}
+            onClick={handleClick1}
+          ></input>
           Exact spelling and ...
           <Popover
             id={fName}
@@ -107,6 +116,7 @@ export default function NamePicker(): JSX.Element {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      inputRef={register}
                       disabled={firstDisabled}
                       checked={firstSounds}
                       onChange={handleChange1}
@@ -119,6 +129,7 @@ export default function NamePicker(): JSX.Element {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      inputRef={register}
                       disabled={firstDisabled}
                       checked={firstSimilar}
                       onChange={handleChange1}
@@ -131,6 +142,7 @@ export default function NamePicker(): JSX.Element {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      inputRef={register}
                       disabled={firstDisabled}
                       checked={firstInitials}
                       onChange={handleChange1}
@@ -146,6 +158,7 @@ export default function NamePicker(): JSX.Element {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            inputRef={register}
             variant="outlined"
             required
             fullWidth
@@ -174,6 +187,7 @@ export default function NamePicker(): JSX.Element {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      inputRef={register}
                       disabled={lastDisabled}
                       checked={lastSounds}
                       onChange={handleChange2}
@@ -186,6 +200,7 @@ export default function NamePicker(): JSX.Element {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      inputRef={register}
                       disabled={lastDisabled}
                       checked={lastSimilar}
                       onChange={handleChange2}
@@ -198,6 +213,7 @@ export default function NamePicker(): JSX.Element {
                 <FormControlLabel
                   control={
                     <Checkbox
+                      inputRef={register}
                       disabled={lastDisabled}
                       checked={lastInitials}
                       onChange={handleChange2}
