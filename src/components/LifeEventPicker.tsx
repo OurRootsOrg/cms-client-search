@@ -8,7 +8,7 @@ import { useFormContext } from 'react-hook-form';
 
 export default function LifeEventPicker(): JSX.Element {
   const classes = useStyles();
-  const { register } = useFormContext();
+  const { register, errors } = useFormContext();
 
   const [birth, setBirth] = useState(true);
   const [residence, setResidence] = useState(false);
@@ -48,12 +48,13 @@ export default function LifeEventPicker(): JSX.Element {
           </Grid>
           <Grid item xs={6} sm={3}>
             <TextField
-              inputRef={register}
+              inputRef={register({ maxLength: 4 })}
               name="birthYearStart"
               variant="outlined"
               fullWidth
               id="birthplaceStartYear"
               label="Year Start"
+              error={errors.birthYearStart ? true : <p>WRONG</p>}
             />
           </Grid>
           <Grid item xs={6} sm={3}>
