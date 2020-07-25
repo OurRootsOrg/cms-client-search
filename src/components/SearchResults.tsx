@@ -1,13 +1,13 @@
-import axios from 'axios';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useSearch } from '../util/useSearch';
+import DataFetching from './DataFetching';
 import LifeEventPicker from './LifeEventPicker';
 import NamePicker from './NamePicker';
 import RelationshipPicker from './RelationshipPicker';
@@ -22,8 +22,6 @@ export default function SearchResults(props: { setResults: any }): JSX.Element {
   const { state, data } = useSearch({
     given: 'Fred',
   });
-
-  useEffect();
 
   function doSubmit(data: unknown): void {
     console.log('Submitted', data);
@@ -64,6 +62,7 @@ export default function SearchResults(props: { setResults: any }): JSX.Element {
           </Typography>
           <Typography component="div">Error: {JSON.stringify(state.error)}</Typography>
           <Typography component="div">Data: {JSON.stringify(data)}</Typography>
+          <DataFetching />
           <SearchResultsTable />
         </Grid>
       </Grid>
