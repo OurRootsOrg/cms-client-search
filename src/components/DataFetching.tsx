@@ -6,9 +6,9 @@ export default function DataFetching(): JSX.Element {
 
   useEffect(() => {
     axios
-      .get('https://jsonplaceholder.typicode.com/posts')
+      .get('https://cms.ourroots.org/api/search?given=Fred')
       .then((res) => {
-        console.log(res);
+        console.log('Res', res);
         setPosts(res.data);
       })
       .catch((err) => {

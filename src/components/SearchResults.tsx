@@ -29,6 +29,7 @@ export default function SearchResults(props: { setResults: any }): JSX.Element {
   }
 
   console.log('Result Form Values', formMethods.watch());
+  console.log('Fred: ', state);
 
   return (
     <Container component="main" className={classes.container}>
