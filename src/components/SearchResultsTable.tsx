@@ -26,7 +26,7 @@ export default function SearchResultsTable(): JSX.Element {
 
   useEffect(() => {
     axios
-      .get('https://jsonplaceholder.typicode.com/posts')
+      .get('https://jsonplaceholder.typicode.com/users')
       .then((res) => {
         // console.log(res);
         setPosts(res.data);
@@ -42,16 +42,16 @@ export default function SearchResultsTable(): JSX.Element {
       title={results + ' results'}
       columns={[
         {
-          title: 'Id',
-          field: 'id',
+          title: 'Name',
+          field: 'name',
         },
         {
-          title: 'Title',
-          field: 'title',
+          title: 'Email',
+          field: 'email',
         },
         {
-          title: 'Body',
-          field: 'body',
+          title: 'Phone',
+          field: 'phone',
         },
       ]}
       data={post}
