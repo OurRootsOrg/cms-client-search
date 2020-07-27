@@ -52,9 +52,21 @@ export default function SearchResultsTable(): JSX.Element {
         {
           title: 'Phone',
           field: 'phone',
+          type: 'numeric',
         },
       ]}
       data={post}
+      detailPanel={() => {
+        return (
+          <iframe
+            width="100%"
+            height="315"
+            src="https://projects.invisionapp.com/share/QYX4E3USZWA#/screens/416046971s"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        );
+      }}
       options={{
         headerStyle: {
           background: '#EEE',
