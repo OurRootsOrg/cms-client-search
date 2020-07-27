@@ -12,6 +12,7 @@ import Search from '@material-ui/icons/Search';
 
 const tableIcons: Icons = {
   FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
+  DetailPanel: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
   LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref} />),
   NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
   ResetSearch: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
@@ -61,7 +62,8 @@ export default function SearchResultsTable(): JSX.Element {
           <iframe
             width="100%"
             height="315"
-            src="https://projects.invisionapp.com/share/QYX4E3USZWA#/screens/416046971s"
+            src="https://ourroots.org/"
+            frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
