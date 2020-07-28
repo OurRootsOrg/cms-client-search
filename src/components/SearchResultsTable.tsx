@@ -47,8 +47,8 @@ export default function SearchResultsTable(): JSX.Element {
           field: 'name',
         },
         {
-          title: 'Email',
-          field: 'email',
+          title: 'Company',
+          field: 'company.name',
         },
         {
           title: 'Phone',
