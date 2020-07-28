@@ -23,16 +23,18 @@ const tableIcons: Icons = {
 
 export default function SearchResultsTable(): JSX.Element {
   const [post, setPosts] = useState([]);
+  const results = post.length;
 
   useEffect(() => {
     const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-    const url = 'https://cms.ourroots.org/api/search?given=Fred';
+    const url = 'https://cms.ourroots.org/api/search?given=Barney';
+    // const users = 'https://jsonplaceholder.typicode.com/users';
 
     axios
       .get(proxyurl + url)
       .then((res) => {
-        console.log('Table: ', res);
-        setPosts(res.data);
+        console.log('Table: ', res.data.hits);
+        setPosts(res.data.hits);
       })
       .catch((err) => {
         console.log(err);
@@ -44,20 +46,19 @@ export default function SearchResultsTable(): JSX.Element {
   return (
     <MaterialTable
       icons={tableIcons}
-      title={' results'}
+      title={results + ' results'}
       columns={[
         {
           title: 'Name',
-          field: 'Name',
+          field: 'person.name',
         },
         {
-          title: 'Total',
-          field: 'total',
+          title: 'Role',
+          field: 'person.role',
         },
         {
-          title: 'Phone',
-          field: 'phone',
-          type: 'numeric',
+          title: 'Collection Name',
+          field: 'collectionName',
         },
       ]}
       data={post}
