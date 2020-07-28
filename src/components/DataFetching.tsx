@@ -10,13 +10,13 @@ export default function DataFetching(): JSX.Element {
     axios
       .get(proxyurl + newLocal)
       .then((res) => {
-        console.log('Res', res);
+        // console.log('Res', res);
         setPosts(res.data);
       })
       .catch(() => {
         console.log('Can’t access ' + newLocal + ' response. Blocked by browser?');
       });
   }, []);
-  console.log('Post:', post);
-  return <div>DataFetching</div>;
+  console.log('DataFetch:', post);
+  return <div></div>;
 }

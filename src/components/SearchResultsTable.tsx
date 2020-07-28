@@ -23,13 +23,15 @@ const tableIcons: Icons = {
 
 export default function SearchResultsTable(): JSX.Element {
   const [post, setPosts] = useState([]);
-  const results = post.length;
 
   useEffect(() => {
+    const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+    const url = 'https://cms.ourroots.org/api/search?given=Fred';
+
     axios
-      .get('https://jsonplaceholder.typicode.com/users')
+      .get(proxyurl + url)
       .then((res) => {
-        // console.log(res);
+        console.log('Table: ', res);
         setPosts(res.data);
       })
       .catch((err) => {
@@ -37,18 +39,20 @@ export default function SearchResultsTable(): JSX.Element {
       });
   }, []);
 
+  console.log('SearchResults: ', post);
+
   return (
     <MaterialTable
       icons={tableIcons}
-      title={results + ' results'}
+      title={' results'}
       columns={[
         {
           title: 'Name',
-          field: 'name',
+          field: 'Name',
         },
         {
-          title: 'Company',
-          field: 'company.name',
+          title: 'Total',
+          field: 'total',
         },
         {
           title: 'Phone',
@@ -62,7 +66,7 @@ export default function SearchResultsTable(): JSX.Element {
           <iframe
             width="100%"
             height="315"
-            src="https://ourroots.org/"
+            src={'https://ourroots.org/'}
             frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

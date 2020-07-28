@@ -19,8 +19,9 @@ export default function SearchResults(props: { setResults: any }): JSX.Element {
   const { setResults } = props;
   const classes = useStyles();
   const formMethods = useForm();
+
   const { state, data } = useSearch({
-    given: 'Fred',
+    'search?given': 'Fred',
   });
 
   function doSubmit(data: unknown): void {
