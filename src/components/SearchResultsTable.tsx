@@ -65,6 +65,7 @@ export default function SearchResultsTable(): JSX.Element {
       detailPanel={() => {
         return (
           <iframe
+            title="Detail Panel"
             width="100%"
             height="315"
             src={'https://ourroots.org/'}
