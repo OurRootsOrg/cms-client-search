@@ -92,7 +92,7 @@ export default function NamePicker(): JSX.Element {
           <input
             type="checkbox"
             ref={register}
-            name="firstNameSoundex"
+            name="firstNameExactSpelling"
             aria-describedby={fName}
             onClick={handleClick1}
           ></input>
@@ -166,7 +166,13 @@ export default function NamePicker(): JSX.Element {
             label="Last Name"
             name="lastName"
           />
-          <input type="checkbox" aria-describedby={lName} onClick={handleClick2}></input>
+          <input
+            type="checkbox"
+            ref={register}
+            name="lastNameExactSpelling"
+            aria-describedby={lName}
+            onClick={handleClick2}
+          ></input>
           Exact Spelling and ...
           <Popover
             id={lName}

@@ -1,4 +1,5 @@
-import React, { forwardRef } from 'react';
+import axios from 'axios';
+import React, { forwardRef, useState, useEffect } from 'react';
 import { Icons } from 'material-table';
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
 import MaterialTable from 'material-table';
@@ -11,6 +12,7 @@ import Search from '@material-ui/icons/Search';
 
 const tableIcons: Icons = {
   FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
+  DetailPanel: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
   LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref} />),
   NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
   ResetSearch: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
@@ -19,28 +21,28 @@ const tableIcons: Icons = {
   SortArrow: forwardRef((props, ref) => <ArrowUpward {...props} ref={ref} />),
 };
 
-const rows = [
-  {
-    name: 'John Anderson',
-    events: 'Birth: 1886, Marriage: 1912',
-    relationship: 'Spouse: Martha Johnson',
-  },
-  { name: 'Jon Anderson', events: 'Birth: 1887', relationship: 'Spouse: Martha Johnson' },
-  { name: 'Jhn Anderson', events: 'Birth: 1923', relationship: 'Spouse: Anna Smith Anderson' },
-  { name: 'ohn Anderson', events: 'Birth: 1880', relationship: 'Spouse: Nicole Olsen' },
-  { name: 'John Anderson', events: 'Birth: 1886', relationship: 'Spouse: Helen Mayfield' },
-  { name: 'Jon Anderson', events: 'Birth: 1887', relationship: 'Spouse: Martha Johnson' },
-  { name: 'Jhn Anderson', events: 'Birth: 1923', relationship: 'Spouse: Anna Smith Anderson' },
-  { name: 'ohn Anderson', events: 'Birth: 1880', relationship: 'Spouse: Nicole Olsen' },
-  { name: 'John Anderson', events: 'Birth: 1886', relationship: 'Spouse: Helen Mayfield' },
-  { name: 'Jon Anderson', events: 'Birth: 1887', relationship: 'Spouse: Martha Johnson' },
-  { name: 'Jhn Anderson', events: 'Birth: 1923', relationship: 'Spouse: Anna Smith Anderson' },
-  { name: 'ohn Anderson', events: 'Birth: 1880', relationship: 'Spouse: Nicole Olsen' },
-  { name: 'John Anderson', events: 'Birth: 1886', relationship: 'Spouse: Helen Mayfield' },
-];
-
 export default function SearchResultsTable(): JSX.Element {
-  const results = rows.length;
+  const [post, setPosts] = useState([]);
+  const results = post.length;
+
+  useEffect(() => {
+    const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+    const url = 'https://cms.ourroots.org/api/search?given=Barney';
+    // const users = 'https://jsonplaceholder.typicode.com/users';
+
+    axios
+      .get(proxyurl + url)
+      .then((res) => {
+        console.log('Table: ', res.data.hits);
+        setPosts(res.data.hits);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  console.log('SearchResults: ', post);
+
   return (
     <MaterialTable
       icons={tableIcons}
@@ -48,18 +50,31 @@ export default function SearchResultsTable(): JSX.Element {
       columns={[
         {
           title: 'Name',
-          field: 'name',
+          field: 'person.name',
         },
         {
-          title: 'Events',
-          field: 'events',
+          title: 'Role',
+          field: 'person.role',
         },
         {
-          title: 'Relationship',
-          field: 'relationship',
+          title: 'Collection Name',
+          field: 'collectionName',
         },
       ]}
-      data={rows}
+      data={post}
+      detailPanel={() => {
+        return (
+          <iframe
+            title="Detail Panel"
+            width="100%"
+            height="315"
+            src={'https://ourroots.org/'}
+            frameBorder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        );
+      }}
       options={{
         headerStyle: {
           background: '#EEE',

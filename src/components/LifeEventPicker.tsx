@@ -48,7 +48,7 @@ export default function LifeEventPicker(): JSX.Element {
           </Grid>
           <Grid item xs={6} sm={3}>
             <TextField
-              inputRef={register}
+              inputRef={register({ maxLength: 4 })}
               name="birthYearStart"
               variant="outlined"
               fullWidth

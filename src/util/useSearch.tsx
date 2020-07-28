@@ -1,7 +1,9 @@
 import { Dispatch } from 'react';
 import { RequestState, useHttpGet } from './useHttp';
 
-const baseUrl = process.env.REACT_APP_CMS_URL;
+/*CORS support to an API proxy*/
+const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+const baseUrl = proxyurl + process.env.REACT_APP_CMS_URL;
 
 /**
  * Types for search parameters and results. Note that search queries
