@@ -1,6 +1,7 @@
 import { Dispatch } from 'react';
 import { RequestState, useHttpGet } from './useHttp';
-//------------------- CORS proxy added -------------------
+
+/*CORS support to an API proxy*/
 const proxyurl = 'https://cors-anywhere.herokuapp.com/';
 const baseUrl = proxyurl + process.env.REACT_APP_CMS_URL;
 
