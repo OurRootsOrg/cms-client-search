@@ -234,7 +234,14 @@ export default function NamePicker(): JSX.Element {
           </Popover>
         </Grid>
         <Grid item xs={4} sm={2}>
-          <TextField />
+          <TextField
+            inputRef={register}
+            name="birthYear"
+            variant="outlined"
+            fullWidth
+            id="birthYear"
+            label="Birth Year"
+          />
         </Grid>
       </Grid>
     </div>
