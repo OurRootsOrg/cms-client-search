@@ -12,7 +12,6 @@ import LifeEventPicker from './LifeEventPicker';
 import NamePicker from './NamePicker';
 import RelationshipPicker from './RelationshipPicker';
 import SearchResultsCategory from './SearchResultsCategory';
-import SearchResultsLocation from './SearchResultsLocations';
 import SearchResultsTable from './SearchResultsTable';
 
 export default function SearchResults(props: { setResults: any }): JSX.Element {
@@ -42,7 +41,6 @@ export default function SearchResults(props: { setResults: any }): JSX.Element {
               <NamePicker />
               <LifeEventPicker />
               <RelationshipPicker />
-              <SearchResultsLocation />
               <SearchResultsCategory />
               <Box mt={5}>
                 <Button
