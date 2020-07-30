@@ -78,7 +78,7 @@ export default function NamePicker(): JSX.Element {
   return (
     <div className={classes.paper}>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={10} sm={5}>
           <TextField
             inputRef={register}
             name="firstName"
@@ -156,7 +156,7 @@ export default function NamePicker(): JSX.Element {
             </div>
           </Popover>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={10} sm={5}>
           <TextField
             inputRef={register}
             variant="outlined"
@@ -232,6 +232,9 @@ export default function NamePicker(): JSX.Element {
               </FormGroup>
             </div>
           </Popover>
+        </Grid>
+        <Grid item xs={4} sm={2}>
+          <TextField />
         </Grid>
       </Grid>
     </div>
