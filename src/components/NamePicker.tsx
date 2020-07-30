@@ -15,6 +15,10 @@ export default function NamePicker(): JSX.Element {
   const [lastAnchor, setlastAnchor] = useState<undefined | HTMLElement>();
   const [firstDisabled, setFirstDisabled] = useState(true);
   const [lastDisabled, setLastDisabled] = useState(true);
+
+  const [yearAnchor, setYearAnchor] = useState<undefined | HTMLElement>();
+  const [yearDisabled, setYearDisabled] = useState(true);
+
   const [firstName, setFirstName] = useState({
     firstSounds: false,
     firstSimilar: false,
@@ -25,6 +29,14 @@ export default function NamePicker(): JSX.Element {
     lastSounds: false,
     lastSimilar: false,
     lastInitials: false,
+  });
+
+  const [birthYear, setBirthYear] = useState({
+    thisYear: false,
+    oneYear: false,
+    twoYears: false,
+    fiveYears: false,
+    tenYears: false,
   });
 
   const handleClick1 = (event: MouseEvent<HTMLElement>): void => {
@@ -51,6 +63,20 @@ export default function NamePicker(): JSX.Element {
     }
   };
 
+  const handleClickYear = (event: MouseEvent<HTMLElement>): void => {
+    setlastAnchor(event.currentTarget);
+    if (!yearAnchor) {
+      setYearDisabled(!yearDisabled);
+      setBirthYear({
+        thisYear: false,
+        oneYear: false,
+        twoYears: false,
+        fiveYears: false,
+        tenYears: false,
+      });
+    }
+  };
+
   const handleClose1 = (): void => {
     setFirstAnchor(undefined);
   };
@@ -58,11 +84,17 @@ export default function NamePicker(): JSX.Element {
     setlastAnchor(undefined);
   };
 
+  const handleCloseYear = (): void => {
+    setYearAnchor(undefined);
+  };
+
   const open = !!firstAnchor;
   const open2 = !!lastAnchor;
+  const openYear = !!yearAnchor;
 
   const fName = firstAnchor && 'simple-popover';
   const lName = lastAnchor && 'simple-popover';
+  const eYear = yearAnchor && 'simple-popover';
 
   function handleChange1(event: ChangeEvent<HTMLInputElement>): void {
     setFirstName({ ...firstName, [event.target.name]: event.target.checked });
@@ -72,8 +104,13 @@ export default function NamePicker(): JSX.Element {
     setLastName({ ...lastName, [event.target.name]: event.target.checked });
   }
 
+  function handleChangeYear(event: ChangeEvent<HTMLInputElement>): void {
+    setLastName({ ...birthYear, [event.target.name]: event.target.checked });
+  }
+
   const { firstSounds, firstSimilar, firstInitials } = firstName;
   const { lastSounds, lastSimilar, lastInitials } = lastName;
+  const { thisYear, oneYear, twoYears, fiveYears, tenYears } = birthYear;
 
   return (
     <div className={classes.paper}>
@@ -242,6 +279,28 @@ export default function NamePicker(): JSX.Element {
             id="birthYear"
             label="Birth Year"
           />
+          <input
+            type="checkbox"
+            ref={register}
+            name="exactToYears"
+            aria-describedby={eYear}
+            onClick={handleClickYear}
+          ></input>
+          Exact to...
+          <Popover
+            id={eYear}
+            open={open}
+            anchorEl={yearAnchor}
+            onClose={handleCloseYear}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'center',
+            }}
+          ></Popover>
         </Grid>
       </Grid>
     </div>
