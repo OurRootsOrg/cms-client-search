@@ -1,4 +1,5 @@
 import Checkbox from '@material-ui/core/Checkbox';
+import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
@@ -6,6 +7,8 @@ import Popover from '@material-ui/core/Popover';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import React, { ChangeEvent, MouseEvent, useState } from 'react';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
 import { useFormContext } from 'react-hook-form';
 
 export default function NamePicker(): JSX.Element {
@@ -31,13 +34,7 @@ export default function NamePicker(): JSX.Element {
     lastInitials: false,
   });
 
-  const [birthYear, setBirthYear] = useState({
-    thisYear: false,
-    oneYear: false,
-    twoYears: false,
-    fiveYears: false,
-    tenYears: false,
-  });
+  const [birthYear, setBirthYear] = useState('thisYear');
 
   const handleClick1 = (event: MouseEvent<HTMLElement>): void => {
     setFirstAnchor(event.currentTarget);
@@ -67,13 +64,7 @@ export default function NamePicker(): JSX.Element {
     setlastAnchor(event.currentTarget);
     if (!yearAnchor) {
       setYearDisabled(!yearDisabled);
-      setBirthYear({
-        thisYear: false,
-        oneYear: false,
-        twoYears: false,
-        fiveYears: false,
-        tenYears: false,
-      });
+      setBirthYear('thisYear');
     }
   };
 
@@ -105,12 +96,12 @@ export default function NamePicker(): JSX.Element {
   }
 
   function handleChangeYear(event: ChangeEvent<HTMLInputElement>): void {
-    setLastName({ ...birthYear, [event.target.name]: event.target.checked });
+    setBirthYear((event.target as HTMLInputElement).value);
   }
 
   const { firstSounds, firstSimilar, firstInitials } = firstName;
   const { lastSounds, lastSimilar, lastInitials } = lastName;
-  const { thisYear, oneYear, twoYears, fiveYears, tenYears } = birthYear;
+  // const { thisYear, oneYear, twoYears, fiveYears, tenYears } = birthYear;
 
   return (
     <div className={classes.paper}>
@@ -289,7 +280,7 @@ export default function NamePicker(): JSX.Element {
           Exact to...
           <Popover
             id={eYear}
-            open={open}
+            open={openYear}
             anchorEl={yearAnchor}
             onClose={handleCloseYear}
             anchorOrigin={{
@@ -300,7 +291,47 @@ export default function NamePicker(): JSX.Element {
               vertical: 'top',
               horizontal: 'center',
             }}
-          ></Popover>
+          >
+            <FormControl component="fieldset">
+              <RadioGroup
+                aria-label="eYear"
+                name="exactToYear"
+                value={birthYear}
+                onChange={handleChangeYear}
+              >
+                <FormControlLabel
+                  inputRef={register}
+                  value="thisYear"
+                  control={<Radio />}
+                  label="This Year"
+                />
+                <FormControlLabel
+                  inputRef={register}
+                  value="1"
+                  control={<Radio />}
+                  label="+/-1 year"
+                />
+                <FormControlLabel
+                  inputRef={register}
+                  value="2"
+                  control={<Radio />}
+                  label="+/-2 years"
+                />
+                <FormControlLabel
+                  inputRef={register}
+                  value="5"
+                  control={<Radio />}
+                  label="+/-5 years"
+                />
+                <FormControlLabel
+                  inputRef={register}
+                  value="10"
+                  control={<Radio />}
+                  label="+/-10 years"
+                />
+              </RadioGroup>
+            </FormControl>
+          </Popover>
         </Grid>
       </Grid>
     </div>
