@@ -64,7 +64,7 @@ export default function NamePicker(): JSX.Element {
     setlastAnchor(event.currentTarget);
     if (!yearAnchor) {
       setYearDisabled(!yearDisabled);
-      setBirthYear('thisYear');
+      // setBirthYear('thisYear');
     }
   };
 
@@ -101,7 +101,6 @@ export default function NamePicker(): JSX.Element {
 
   const { firstSounds, firstSimilar, firstInitials } = firstName;
   const { lastSounds, lastSimilar, lastInitials } = lastName;
-  // const { thisYear, oneYear, twoYears, fiveYears, tenYears } = birthYear;
 
   return (
     <div className={classes.paper}>
