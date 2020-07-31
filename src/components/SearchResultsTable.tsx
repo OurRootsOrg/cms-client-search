@@ -1,6 +1,6 @@
-import axios from 'axios';
-import axiosRetry from 'axios-retry';
-import React, { forwardRef, useState, useEffect } from 'react';
+// import axios from 'axios';
+// import axiosRetry from 'axios-retry';
+import React, { forwardRef } from 'react';
 import { Icons } from 'material-table';
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
 import MaterialTable from 'material-table';
@@ -11,15 +11,15 @@ import FirstPage from '@material-ui/icons/FirstPage';
 import LastPage from '@material-ui/icons/LastPage';
 import Search from '@material-ui/icons/Search';
 
-const axiosClient = axios.create({
-  baseURL: process.env.VUE_APP_API_BASE_URL,
-  withCredentials: false, // This is the default
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-});
-axiosRetry(axiosClient, { retries: 3 }); // retry non-POST requests on network or 5XX errors
+// const axiosClient = axios.create({
+//   baseURL: process.env.VUE_APP_API_BASE_URL,
+//   withCredentials: false, // This is the default
+//   headers: {
+//     Accept: 'application/json',
+//     'Content-Type': 'application/json',
+//   },
+// });
+// axiosRetry(axiosClient, { retries: 3 }); // retry non-POST requests on network or 5XX errors
 
 const tableIcons: Icons = {
   FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
@@ -32,32 +32,33 @@ const tableIcons: Icons = {
   SortArrow: forwardRef((props, ref) => <ArrowUpward {...props} ref={ref} />),
 };
 
-export default function SearchResultsTable(): JSX.Element {
-  const [post, setPosts] = useState([]);
-  const results = post.length;
+export default function SearchResultsTable(props: { setData: any }): JSX.Element {
+  const { setData } = props;
+  // const [post, setPosts] = useState([]);
+  // const results = post.length;
 
-  useEffect(() => {
-    const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-    const url = 'https://cms.ourroots.org/api/search?given=Barney';
-    // const users = 'https://jsonplaceholder.typicode.com/users';
+  // useEffect(() => {
+  //   const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+  //   const url = 'https://cms.ourroots.org/api/search?given=Barney';
+  //   // const users = 'https://jsonplaceholder.typicode.com/users';
 
-    axios
-      .get(proxyurl + url)
-      .then((res) => {
-        console.log('Table: ', res.data.hits);
-        setPosts(res.data.hits);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  //   axios
+  //     .get(proxyurl + url)
+  //     .then((res) => {
+  //       console.log('Table: ', res.data.hits);
+  //       setPosts(res.data.hits);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
-  console.log('SearchResults: ', post);
+  console.log('setData: ', setData);
 
   return (
     <MaterialTable
       icons={tableIcons}
-      title={results + ' results'}
+      title={' results'}
       columns={[
         {
           title: 'Name',
@@ -72,7 +73,7 @@ export default function SearchResultsTable(): JSX.Element {
           field: 'collectionName',
         },
       ]}
-      data={post}
+      data={setData}
       detailPanel={() => {
         return (
           <iframe
