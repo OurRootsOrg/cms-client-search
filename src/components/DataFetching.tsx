@@ -10,7 +10,7 @@ export default function DataFetching(): JSX.Element {
     axios
       .get(proxyurl + newLocal)
       .then((res) => {
-        console.log('Res', res.data.hits);
+        console.log('Res', res.data);
         setPosts(res.data.hits);
       })
       .catch(() => {

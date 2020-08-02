@@ -24,26 +24,28 @@ export default function SearchResultsTable(props: { setData: any }): JSX.Element
   const { setData } = props;
   console.log('setData: ', setData);
   const value = setData;
+  console.log('Value:', typeof value); //object
+  // console.log(value.hits); ??crashes
 
   return (
     <MaterialTable
       icons={tableIcons}
-      title={' results'}
+      // title={' results'}
       columns={[
         {
           title: 'Name',
-          field: 'person.name',
+          field: '', //missing field values
         },
         {
           title: 'Role',
-          field: 'person.role',
+          field: '', //missing field values
         },
         {
           title: 'Collection Name',
-          field: 'collectionName',
+          field: '', //missing field values
         },
       ]}
-      data={value}
+      data={value} // need to fix
       detailPanel={() => {
         return (
           <iframe
