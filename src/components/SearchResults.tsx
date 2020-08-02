@@ -12,6 +12,7 @@ import NamePicker from './NamePicker';
 import RelationshipPicker from './RelationshipPicker';
 import SearchResultsCategory from './SearchResultsCategory';
 import SearchResultsTable from './SearchResultsTable';
+import DataFetching from './DataFetching';
 
 export default function SearchResults(props: { setResults: any }): JSX.Element {
   const { setResults } = props;
@@ -28,7 +29,7 @@ export default function SearchResults(props: { setResults: any }): JSX.Element {
   }
 
   console.log('Result Form Values', formMethods.watch());
-  console.log('Fred: ', state);
+  console.log('Fred: ', data);
 
   return (
     <Container component="main" className={classes.container}>
@@ -59,8 +60,9 @@ export default function SearchResults(props: { setResults: any }): JSX.Element {
           <Typography component="h1" variant="h5">
             Search Results
           </Typography>
-          {/* <Typography component="div">Error: {JSON.stringify(state.error)}</Typography>
-          <Typography component="div">Data: {JSON.stringify(data)}</Typography> */}
+          <Typography component="div">Error: {JSON.stringify(state.error)}</Typography>
+          <Typography component="div">Data: {JSON.stringify(data)}</Typography>
+          <DataFetching />
           <SearchResultsTable setData={data} />
         </Grid>
       </Grid>
