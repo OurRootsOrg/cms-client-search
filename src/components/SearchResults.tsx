@@ -62,8 +62,8 @@ export default function SearchResults(props: { setResults: any }): JSX.Element {
           </Typography>
           <Typography component="div">Error: {JSON.stringify(state.error)}</Typography>
           <Typography component="div">Data: {JSON.stringify(data)}</Typography>
-          <DataFetching />
           <SearchResultsTable setData={data} />
+          <DataFetching />
         </Grid>
       </Grid>
     </Container>
