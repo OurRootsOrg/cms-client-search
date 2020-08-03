@@ -9,7 +9,6 @@ import CategoryPicker from './CategoryPicker';
 import LifeEventPicker from './LifeEventPicker';
 import NamePicker from './NamePicker';
 import RelationshipPicker from './RelationshipPicker';
-import SearchBirthYear from './SearchBirthYear';
 
 export default function SearchForm(props: { setResults: any }): JSX.Element {
   const { setResults } = props;
@@ -31,7 +30,6 @@ export default function SearchForm(props: { setResults: any }): JSX.Element {
             Search our society&apos;s records
           </Typography>
           <NamePicker />
-          <SearchBirthYear />
           <LifeEventPicker />
           <RelationshipPicker />
           <CategoryPicker />

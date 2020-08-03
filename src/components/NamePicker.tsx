@@ -15,7 +15,7 @@ export default function NamePicker(): JSX.Element {
   const classes = useStyles();
   const { register } = useFormContext();
   const [firstAnchor, setFirstAnchor] = useState<undefined | HTMLElement>();
-  const [lastAnchor, setlastAnchor] = useState<undefined | HTMLElement>();
+  const [lastAnchor, setLastAnchor] = useState<undefined | HTMLElement>();
   const [firstDisabled, setFirstDisabled] = useState(true);
   const [lastDisabled, setLastDisabled] = useState(true);
 
@@ -49,7 +49,7 @@ export default function NamePicker(): JSX.Element {
   };
 
   const handleClick2 = (event: MouseEvent<HTMLElement>): void => {
-    setlastAnchor(event.currentTarget);
+    setLastAnchor(event.currentTarget);
     if (!lastAnchor) {
       setLastDisabled(!lastDisabled);
       setLastName({
@@ -61,10 +61,10 @@ export default function NamePicker(): JSX.Element {
   };
 
   const handleClickYear = (event: MouseEvent<HTMLElement>): void => {
-    setlastAnchor(event.currentTarget);
+    setYearAnchor(event.currentTarget);
     if (!yearAnchor) {
       setYearDisabled(!yearDisabled);
-      // setBirthYear('thisYear');
+      // setBirthYear({}); //-----------------need to reset radio buttons on popover disabled
     }
   };
 
@@ -72,7 +72,7 @@ export default function NamePicker(): JSX.Element {
     setFirstAnchor(undefined);
   };
   const handleClose2 = (): void => {
-    setlastAnchor(undefined);
+    setLastAnchor(undefined);
   };
 
   const handleCloseYear = (): void => {
@@ -105,7 +105,7 @@ export default function NamePicker(): JSX.Element {
   return (
     <div className={classes.paper}>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={10} sm={5}>
           <TextField
             inputRef={register}
             name="firstName"
@@ -183,7 +183,7 @@ export default function NamePicker(): JSX.Element {
             </div>
           </Popover>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={10} sm={5}>
           <TextField
             inputRef={register}
             variant="outlined"
@@ -291,39 +291,44 @@ export default function NamePicker(): JSX.Element {
               horizontal: 'center',
             }}
           >
-            <FormControl component="fieldset">
+            <FormControl component="fieldset" className={classes.formControl}>
               <RadioGroup
                 aria-label="eYear"
-                name="exactToYear"
+                name="exactToYearValue"
                 value={birthYear}
                 onChange={handleChangeYear}
               >
                 <FormControlLabel
                   inputRef={register}
+                  disabled={yearDisabled}
                   value="thisYear"
                   control={<Radio />}
                   label="This Year"
                 />
                 <FormControlLabel
                   inputRef={register}
+                  disabled={yearDisabled}
                   value="1"
                   control={<Radio />}
                   label="+/-1 year"
                 />
                 <FormControlLabel
                   inputRef={register}
+                  disabled={yearDisabled}
                   value="2"
                   control={<Radio />}
                   label="+/-2 years"
                 />
                 <FormControlLabel
                   inputRef={register}
+                  disabled={yearDisabled}
                   value="5"
                   control={<Radio />}
                   label="+/-5 years"
                 />
                 <FormControlLabel
                   inputRef={register}
+                  disabled={yearDisabled}
                   value="10"
                   control={<Radio />}
                   label="+/-10 years"
@@ -351,6 +356,5 @@ const useStyles = makeStyles((theme) => ({
   checkbox: {
     marginTop: theme.spacing(1),
     display: 'flex',
-    // color: 'primary',
   },
 }));

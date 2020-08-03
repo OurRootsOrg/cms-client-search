@@ -1,5 +1,6 @@
 import React, { forwardRef, useState, useEffect } from 'react';
 import axios from 'axios';
+import axiosRetry from 'axios-retry';
 import { makeStyles } from '@material-ui/core/styles';
 import { Icons } from 'material-table';
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
@@ -10,6 +11,16 @@ import Clear from '@material-ui/icons/Clear';
 import FirstPage from '@material-ui/icons/FirstPage';
 import LastPage from '@material-ui/icons/LastPage';
 import Search from '@material-ui/icons/Search';
+
+const axiosClient = axios.create({
+  baseURL: process.env.VUE_APP_API_BASE_URL,
+  withCredentials: false, // This is the default
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+});
+axiosRetry(axiosClient, { retries: 3 }); // retry non-POST requests on network or 5XX errors
 
 const tableIcons: Icons = {
   FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
