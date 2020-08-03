@@ -2,15 +2,13 @@ import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 import axiosRetry from 'axios-retry';
 import { Dispatch, SetStateAction, useEffect, useReducer, useState } from 'react';
 
-const axiosClient = axios.create({
-  baseURL: process.env.VUE_APP_API_BASE_URL,
-  withCredentials: false, // This is the default
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-});
-axiosRetry(axiosClient, { retries: 3 }); // retry non-POST requests on network or 5XX errors
+/*TODO: Remove once CORS is fixed on backend. CORS support to an API proxy*/
+const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+const baseUrl = proxyurl + process.env.REACT_APP_CMS_URL;
+
+const axiosClient = axios.create();
+// retry non-POST requests on network or 5XX errors
+axiosRetry(axiosClient, { retryDelay: axiosRetry.exponentialDelay });
 
 export type RequestState<T> = {
   isLoading: boolean;
@@ -27,17 +25,18 @@ export type RequestResult<T> = [RequestState<T>, Dispatch<SetStateAction<AxiosRe
 export type GetResult<T> = [RequestState<T>, Dispatch<string>];
 
 export function useHttpGet<T>(url: string): GetResult<T> {
-  const [currentUrl, setCurrentUrl] = useState(url);
+  const [state, setConfig] = useHttpRequest<T>(getConfig(url));
 
-  function setUrl(url: string): void {
-    setCurrentUrl(url);
-    setConfig({ method: 'get', url });
+  function getConfig(url: string): AxiosRequestConfig {
+    return {
+      method: 'get',
+      url: baseUrl + url,
+    };
   }
 
-  const [state, setConfig] = useHttpRequest<T>({
-    method: 'get',
-    url: currentUrl,
-  });
+  function setUrl(url: string): void {
+    setConfig(getConfig(url));
+  }
 
   return [state, setUrl];
 }
