@@ -1,5 +1,4 @@
-import axios from 'axios';
-import React, { forwardRef, useState, useEffect } from 'react';
+import React, { forwardRef } from 'react';
 import { Icons } from 'material-table';
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
 import MaterialTable from 'material-table';
@@ -21,47 +20,31 @@ const tableIcons: Icons = {
   SortArrow: forwardRef((props, ref) => <ArrowUpward {...props} ref={ref} />),
 };
 
-export default function SearchResultsTable(): JSX.Element {
-  const [post, setPosts] = useState([]);
-  const results = post.length;
-
-  useEffect(() => {
-    const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-    const url = 'https://cms.ourroots.org/api/search?given=Barney';
-    // const users = 'https://jsonplaceholder.typicode.com/users';
-
-    axios
-      .get(proxyurl + url)
-      .then((res) => {
-        console.log('Table: ', res.data.hits);
-        setPosts(res.data.hits);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  console.log('SearchResults: ', post);
+export default function SearchResultsTable(props: { setData: any }): JSX.Element {
+  const { setData } = props;
+  const value = setData;
+  console.log('Value:', value); //object
+  // console.log(value.hits); ??crashes
 
   return (
     <MaterialTable
       icons={tableIcons}
-      title={results + ' results'}
+      title={'__results'}
       columns={[
         {
           title: 'Name',
-          field: 'person.name',
+          field: '', //missing field values
         },
         {
           title: 'Role',
-          field: 'person.role',
+          field: '', //missing field values
         },
         {
           title: 'Collection Name',
-          field: 'collectionName',
+          field: '', //missing field values
         },
       ]}
-      data={post}
+      data={value} // need to fix
       detailPanel={() => {
         return (
           <iframe

@@ -1,5 +1,16 @@
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
+import axiosRetry from 'axios-retry';
 import { Dispatch, SetStateAction, useEffect, useReducer, useState } from 'react';
+
+const axiosClient = axios.create({
+  baseURL: process.env.VUE_APP_API_BASE_URL,
+  withCredentials: false, // This is the default
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+});
+axiosRetry(axiosClient, { retries: 3 }); // retry non-POST requests on network or 5XX errors
 
 export type RequestState<T> = {
   isLoading: boolean;
