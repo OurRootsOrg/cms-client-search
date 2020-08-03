@@ -22,15 +22,14 @@ const tableIcons: Icons = {
 
 export default function SearchResultsTable(props: { setData: any }): JSX.Element {
   const { setData } = props;
-  console.log('setData: ', setData);
   const value = setData;
-  console.log('Value:', typeof value); //object
+  console.log('Value:', value); //object
   // console.log(value.hits); ??crashes
 
   return (
     <MaterialTable
       icons={tableIcons}
-      // title={' results'}
+      title={'__results'}
       columns={[
         {
           title: 'Name',

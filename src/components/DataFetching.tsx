@@ -1,5 +1,6 @@
 import React, { forwardRef, useState, useEffect } from 'react';
 import axios from 'axios';
+import { makeStyles } from '@material-ui/core/styles';
 import { Icons } from 'material-table';
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
 import MaterialTable from 'material-table';
@@ -22,6 +23,7 @@ const tableIcons: Icons = {
 };
 
 export default function DataFetching(): JSX.Element {
+  const classes = useStyles();
   const [post, setPosts] = useState([]);
 
   useEffect(() => {
@@ -39,42 +41,50 @@ export default function DataFetching(): JSX.Element {
   }, []);
   console.log('DataFetch:', post);
   return (
-    <MaterialTable
-      icons={tableIcons}
-      title={post.length + ' results'}
-      columns={[
-        {
-          title: 'Name',
-          field: 'person.name',
-        },
-        {
-          title: 'Role',
-          field: 'person.role',
-        },
-        {
-          title: 'Collection Name',
-          field: 'collectionName',
-        },
-      ]}
-      data={post}
-      detailPanel={() => {
-        return (
-          <iframe
-            title="Detail Panel"
-            width="100%"
-            height="315"
-            src={'https://ourroots.org/'}
-            frameBorder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        );
-      }}
-      options={{
-        headerStyle: {
-          background: '#EEE',
-        },
-      }}
-    />
+    <div className={classes.paper}>
+      <MaterialTable
+        icons={tableIcons}
+        title={post.length + ' results'}
+        columns={[
+          {
+            title: 'Name',
+            field: 'person.name', //col row needs to display multiple data fields
+          },
+          {
+            title: 'Role',
+            field: 'person.role', //col row needs to display multiple data fields
+          },
+          {
+            title: 'Collection Name',
+            field: 'collectionName', //col row needs to display multiple data fields
+          },
+        ]}
+        data={post}
+        detailPanel={() => {
+          return (
+            <iframe
+              title="Detail Panel"
+              width="100%"
+              height="315"
+              src={'https://ourroots.org/'}
+              frameBorder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          );
+        }}
+        options={{
+          headerStyle: {
+            background: '#EEE',
+          },
+        }}
+      />
+    </div>
   );
 }
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(4),
+  },
+}));

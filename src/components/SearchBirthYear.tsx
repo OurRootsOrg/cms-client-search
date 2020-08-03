@@ -1,7 +1,7 @@
-import Checkbox from '@material-ui/core/Checkbox';
+// import Checkbox from '@material-ui/core/Checkbox';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
+// import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
 import Popover from '@material-ui/core/Popover';
 import { makeStyles } from '@material-ui/core/styles';
@@ -11,101 +11,102 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import { useFormContext } from 'react-hook-form';
 
-export default function NamePicker(): JSX.Element {
+export default function SearchBirthYear(): JSX.Element {
   const classes = useStyles();
   const { register } = useFormContext();
-  const [firstAnchor, setFirstAnchor] = useState<undefined | HTMLElement>();
-  const [lastAnchor, setlastAnchor] = useState<undefined | HTMLElement>();
-  const [firstDisabled, setFirstDisabled] = useState(true);
-  const [lastDisabled, setLastDisabled] = useState(true);
+  // const [firstAnchor, setFirstAnchor] = useState<undefined | HTMLElement>();
+  // const [lastAnchor, setlastAnchor] = useState<undefined | HTMLElement>();
+  // const [firstDisabled, setFirstDisabled] = useState(true);
+  // const [lastDisabled, setLastDisabled] = useState(true);
 
   const [yearAnchor, setYearAnchor] = useState<undefined | HTMLElement>();
   const [yearDisabled, setYearDisabled] = useState(true);
 
-  const [firstName, setFirstName] = useState({
-    firstSounds: false,
-    firstSimilar: false,
-    firstInitials: false,
-  });
+  // const [firstName, setFirstName] = useState({
+  //   firstSounds: false,
+  //   firstSimilar: false,
+  //   firstInitials: false,
+  // });
 
-  const [lastName, setLastName] = useState({
-    lastSounds: false,
-    lastSimilar: false,
-    lastInitials: false,
-  });
+  // const [lastName, setLastName] = useState({
+  //   lastSounds: false,
+  //   lastSimilar: false,
+  //   lastInitials: false,
+  // });
 
   const [birthYear, setBirthYear] = useState('thisYear');
 
-  const handleClick1 = (event: MouseEvent<HTMLElement>): void => {
-    setFirstAnchor(event.currentTarget);
-    if (!firstAnchor) {
-      setFirstDisabled(!firstDisabled);
-      setFirstName({
-        firstSounds: false,
-        firstSimilar: false,
-        firstInitials: false,
-      });
-    }
-  };
+  // const handleClick1 = (event: MouseEvent<HTMLElement>): void => {
+  //   setFirstAnchor(event.currentTarget);
+  //   if (!firstAnchor) {
+  //     setFirstDisabled(!firstDisabled);
+  //     setFirstName({
+  //       firstSounds: false,
+  //       firstSimilar: false,
+  //       firstInitials: false,
+  //     });
+  //   }
+  // };
 
-  const handleClick2 = (event: MouseEvent<HTMLElement>): void => {
-    setlastAnchor(event.currentTarget);
-    if (!lastAnchor) {
-      setLastDisabled(!lastDisabled);
-      setLastName({
-        lastSounds: false,
-        lastSimilar: false,
-        lastInitials: false,
-      });
-    }
-  };
+  // const handleClick2 = (event: MouseEvent<HTMLElement>): void => {
+  //   setlastAnchor(event.currentTarget);
+  //   if (!lastAnchor) {
+  //     setLastDisabled(!lastDisabled);
+  //     setLastName({
+  //       lastSounds: false,
+  //       lastSimilar: false,
+  //       lastInitials: false,
+  //     });
+  //   }
+  // };
 
   const handleClickYear = (event: MouseEvent<HTMLElement>): void => {
-    setlastAnchor(event.currentTarget);
+    // setlastAnchor(event.currentTarget);
+    setYearAnchor(event.currentTarget);
     if (!yearAnchor) {
       setYearDisabled(!yearDisabled);
       // setBirthYear('thisYear');
     }
   };
 
-  const handleClose1 = (): void => {
-    setFirstAnchor(undefined);
-  };
-  const handleClose2 = (): void => {
-    setlastAnchor(undefined);
-  };
+  // const handleClose1 = (): void => {
+  //   setFirstAnchor(undefined);
+  // };
+  // const handleClose2 = (): void => {
+  //   setlastAnchor(undefined);
+  // };
 
   const handleCloseYear = (): void => {
     setYearAnchor(undefined);
   };
 
-  const open = !!firstAnchor;
-  const open2 = !!lastAnchor;
+  // const open = !!firstAnchor;
+  // const open2 = !!lastAnchor;
   const openYear = !!yearAnchor;
 
-  const fName = firstAnchor && 'simple-popover';
-  const lName = lastAnchor && 'simple-popover';
+  // const fName = firstAnchor && 'simple-popover';
+  // const lName = lastAnchor && 'simple-popover';
   const eYear = yearAnchor && 'simple-popover';
 
-  function handleChange1(event: ChangeEvent<HTMLInputElement>): void {
-    setFirstName({ ...firstName, [event.target.name]: event.target.checked });
-  }
+  // function handleChange1(event: ChangeEvent<HTMLInputElement>): void {
+  //   setFirstName({ ...firstName, [event.target.name]: event.target.checked });
+  // }
 
-  function handleChange2(event: ChangeEvent<HTMLInputElement>): void {
-    setLastName({ ...lastName, [event.target.name]: event.target.checked });
-  }
+  // function handleChange2(event: ChangeEvent<HTMLInputElement>): void {
+  //   setLastName({ ...lastName, [event.target.name]: event.target.checked });
+  // }
 
   function handleChangeYear(event: ChangeEvent<HTMLInputElement>): void {
     setBirthYear((event.target as HTMLInputElement).value);
   }
 
-  const { firstSounds, firstSimilar, firstInitials } = firstName;
-  const { lastSounds, lastSimilar, lastInitials } = lastName;
+  // const { firstSounds, firstSimilar, firstInitials } = firstName;
+  // const { lastSounds, lastSimilar, lastInitials } = lastName;
 
   return (
     <div className={classes.paper}>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
+        {/* <Grid item xs={12} sm={6}>
           <TextField
             inputRef={register}
             name="firstName"
@@ -259,7 +260,7 @@ export default function NamePicker(): JSX.Element {
               </FormGroup>
             </div>
           </Popover>
-        </Grid>
+        </Grid> */}
         <Grid item xs={4} sm={2}>
           <TextField
             inputRef={register}
