@@ -23,15 +23,15 @@ export default function SearchResultsTable(props: Props): JSX.Element {
       columns={[
         {
           title: 'Name',
-          field: 'person.name', //col row needs to display multiple data fields
+          field: 'person.name',
         },
         {
           title: 'Role',
-          field: 'person.role', //col row needs to display multiple data fields
+          field: 'person.role',
         },
         {
           title: 'Collection Name',
-          field: 'collectionName', //col row needs to display multiple data fields
+          field: 'collectionName',
         },
       ]}
       data={data.hits}
