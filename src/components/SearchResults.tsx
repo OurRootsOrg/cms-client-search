@@ -1,5 +1,6 @@
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -12,24 +13,26 @@ import NamePicker from './NamePicker';
 import RelationshipPicker from './RelationshipPicker';
 import SearchResultsCategory from './SearchResultsCategory';
 import SearchResultsTable from './SearchResultsTable';
-import DataFetching from './DataFetching';
 
-export default function SearchResults(props: { setResults: any }): JSX.Element {
-  const { setResults } = props;
+type Props = {
+  params: Record<string, string>;
+  setResults: (hasResults: boolean) => void;
+};
+export default function SearchResults(props: Props): JSX.Element {
+  const { params, setResults } = props;
   const classes = useStyles();
   const formMethods = useForm();
 
-  const { state, data } = useSearch({
-    'search?given': 'Fred',
-  });
+  const { state, data, setParams } = useSearch(params);
 
   function doSubmit(data: unknown): void {
     console.log('Submitted', data);
+    setParams({ given: 'Barney' });
     setResults(true);
   }
 
   console.log('Result Form Values', formMethods.watch());
-  console.log('Fred: ', data);
+  console.log('Search Result', data);
 
   return (
     <Container component="main" className={classes.container}>
@@ -60,10 +63,13 @@ export default function SearchResults(props: { setResults: any }): JSX.Element {
           <Typography component="h1" variant="h5">
             Search Results
           </Typography>
+          {/* TODO: temporary */}
           <Typography component="div">Error: {JSON.stringify(state.error)}</Typography>
           <Typography component="div">Data: {JSON.stringify(data)}</Typography>
-          <SearchResultsTable setData={data} />
-          <DataFetching />
+          {/* end temporary */}
+          {state.isLoading && <CircularProgress />}
+          {state.isError && <Typography component="div">Error: {state.error?.message}</Typography>}
+          {data && <SearchResultsTable data={data} />}
         </Grid>
       </Grid>
     </Container>

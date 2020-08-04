@@ -1,50 +1,40 @@
-import React, { forwardRef } from 'react';
-import { Icons } from 'material-table';
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
-import MaterialTable from 'material-table';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 import ChevronRight from '@material-ui/icons/ChevronRight';
 import Clear from '@material-ui/icons/Clear';
 import FirstPage from '@material-ui/icons/FirstPage';
 import LastPage from '@material-ui/icons/LastPage';
 import Search from '@material-ui/icons/Search';
+import MaterialTable, { Icons } from 'material-table';
+import React, { forwardRef } from 'react';
+import { SearchResult } from '../util/useSearch';
 
-const tableIcons: Icons = {
-  FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
-  DetailPanel: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
-  LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref} />),
-  NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
-  ResetSearch: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
-  PreviousPage: forwardRef((props, ref) => <ChevronLeft {...props} ref={ref} />),
-  Search: forwardRef((props, ref) => <Search {...props} ref={ref} />),
-  SortArrow: forwardRef((props, ref) => <ArrowUpward {...props} ref={ref} />),
+type Props = {
+  data: SearchResult;
 };
-
-export default function SearchResultsTable(props: { setData: any }): JSX.Element {
-  const { setData } = props;
-  const value = setData;
-  console.log('Value:', value); //object
-  // console.log(value.hits); ??crashes
+export default function SearchResultsTable(props: Props): JSX.Element {
+  const { data } = props;
+  console.log('Data:', data); //object
 
   return (
     <MaterialTable
       icons={tableIcons}
-      title={'__results'}
+      title={data.total + ' results'}
       columns={[
         {
           title: 'Name',
-          field: '', //missing field values
+          field: 'person.name', //col row needs to display multiple data fields
         },
         {
           title: 'Role',
-          field: '', //missing field values
+          field: 'person.role', //col row needs to display multiple data fields
         },
         {
           title: 'Collection Name',
-          field: '', //missing field values
+          field: 'collectionName', //col row needs to display multiple data fields
         },
       ]}
-      data={value} // need to fix
+      data={data.hits}
       detailPanel={() => {
         return (
           <iframe
@@ -66,3 +56,14 @@ export default function SearchResultsTable(props: { setData: any }): JSX.Element
     />
   );
 }
+
+const tableIcons: Icons = {
+  FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
+  DetailPanel: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
+  LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref} />),
+  NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
+  ResetSearch: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
+  PreviousPage: forwardRef((props, ref) => <ChevronLeft {...props} ref={ref} />),
+  Search: forwardRef((props, ref) => <Search {...props} ref={ref} />),
+  SortArrow: forwardRef((props, ref) => <ArrowUpward {...props} ref={ref} />),
+};
