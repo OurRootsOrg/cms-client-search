@@ -2,9 +2,7 @@ import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 import axiosRetry from 'axios-retry';
 import { Dispatch, SetStateAction, useEffect, useReducer, useState } from 'react';
 
-/*TODO: Remove once CORS is fixed on backend. CORS support to an API proxy*/
-const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-const baseUrl = proxyurl + process.env.REACT_APP_CMS_URL;
+const baseUrl = process.env.REACT_APP_CMS_URL;
 
 const axiosClient = axios.create();
 // retry non-POST requests on network or 5XX errors
