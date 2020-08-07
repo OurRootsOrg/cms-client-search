@@ -9,12 +9,15 @@ import MaterialTable, { Icons } from 'material-table';
 import React, { forwardRef } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { SearchResult } from '../util/useSearch';
+import { makeStyles } from '@material-ui/core/styles';
 
 type Props = {
   data: SearchResult;
 };
 export default function SearchResultsTable(props: Props): JSX.Element {
   const { data } = props;
+  const classes = useStyles();
+
   console.log('Data:', data);
 
   return (
@@ -27,9 +30,10 @@ export default function SearchResultsTable(props: Props): JSX.Element {
           field: 'person.name',
           render: (_rowData) => {
             return (
-              <Typography>
-                {_rowData.person.name} , {_rowData.person.role}
-              </Typography>
+              <div className={classes.root}>
+                <Typography>{_rowData.person.name}</Typography>
+                <Typography>{_rowData.person.role}</Typography>
+              </div>
             );
           },
         },
@@ -75,3 +79,9 @@ const tableIcons: Icons = {
   Search: forwardRef((props, ref) => <Search {...props} ref={ref} />),
   SortArrow: forwardRef((props, ref) => <ArrowUpward {...props} ref={ref} />),
 };
+
+const useStyles = makeStyles({
+  root: {
+    display: 'inline',
+  },
+});
