@@ -7,6 +7,7 @@ import LastPage from '@material-ui/icons/LastPage';
 import Search from '@material-ui/icons/Search';
 import MaterialTable, { Icons } from 'material-table';
 import React, { forwardRef } from 'react';
+import Typography from '@material-ui/core/Typography';
 import { SearchResult } from '../util/useSearch';
 
 type Props = {
@@ -14,7 +15,7 @@ type Props = {
 };
 export default function SearchResultsTable(props: Props): JSX.Element {
   const { data } = props;
-  console.log('Data:', data); //object
+  console.log('Data:', data);
 
   return (
     <MaterialTable
@@ -24,14 +25,21 @@ export default function SearchResultsTable(props: Props): JSX.Element {
         {
           title: 'Name',
           field: 'person.name',
-        },
-        {
-          title: 'Role',
-          field: 'person.role',
+          render: (_rowData) => {
+            return (
+              <Typography>
+                {_rowData.person.name} , {_rowData.person.role}
+              </Typography>
+            );
+          },
         },
         {
           title: 'Collection Name',
           field: 'collectionName',
+        },
+        {
+          title: 'Collection',
+          field: 'collection',
         },
       ]}
       data={data.hits}
