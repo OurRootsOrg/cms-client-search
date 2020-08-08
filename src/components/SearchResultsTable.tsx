@@ -47,6 +47,13 @@ export default function SearchResultsTable(props: Props): JSX.Element {
         },
       ]}
       data={data.hits}
+      actions={[
+        {
+          icon: 'save',
+          tooltip: 'Details',
+          onClick: (_event, _rowData) => alert('You saved'),
+        },
+      ]}
       detailPanel={() => {
         return (
           <iframe
