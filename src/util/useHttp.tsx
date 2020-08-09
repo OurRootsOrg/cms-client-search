@@ -28,7 +28,7 @@ export function useHttpGet<T>(url: string): GetResult<T> {
   function getConfig(url: string): AxiosRequestConfig {
     return {
       method: 'get',
-      url: baseUrl + url,
+      url: url.match(/^https?:\/\//) ? url : baseUrl + url,
     };
   }
 
