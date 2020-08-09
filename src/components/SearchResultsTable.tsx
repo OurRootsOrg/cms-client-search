@@ -10,6 +10,7 @@ import React, { forwardRef } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { SearchResult } from '../util/useSearch';
 import { makeStyles } from '@material-ui/core/styles';
+import DetailsModal from './DetailsModal';
 
 type Props = {
   data: SearchResult;
@@ -51,81 +52,9 @@ export default function SearchResultsTable(props: Props): JSX.Element {
         {
           icon: 'save',
           tooltip: 'Details',
-          onClick: (_event, _rowData) => alert('You saved'),
+          onClick: (_event) => <DetailsModal />,
         },
       ]}
-      // ------------------------------------->
-      // detailPanel={() => {
-      //   return (
-      //     <iframe
-      //       title="Detail Panel"
-      //       width="100%"
-      //       height="315"
-      //       src={'https://ourroots.org/'}
-      //       frameBorder="0"
-      //       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-      //       allowFullScreen
-      //     />
-      //   );
-      // }}
-      // ------------------------------------->
-      // detailPanel={[
-      //   {
-      //     tooltip: 'Show Name',
-      //     render: (_rowData) => {
-      //       return (
-      //         <div
-      //           style={{
-      //             fontSize: 100,
-      //             textAlign: 'center',
-      //             color: 'white',
-      //             backgroundColor: '#43A047',
-      //           }}
-      //         >
-      //           {_rowData.person.role}
-      //         </div>
-      //       );
-      //     },
-      //   },
-      //   {
-      //     icon: 'account_circle',
-      //     tooltip: 'Show Surname',
-      //     render: (_rowData) => {
-      //       return (
-      //         <div
-      //           style={{
-      //             fontSize: 100,
-      //             textAlign: 'center',
-      //             color: 'white',
-      //             backgroundColor: '#E53935',
-      //           }}
-      //         >
-      //           {_rowData.person.role}
-      //         </div>
-      //       );
-      //     },
-      //   },
-      //   {
-      //     icon: 'favorite_border',
-      //     openIcon: 'favorite',
-      //     tooltip: 'Show Both',
-      //     render: (_rowData) => {
-      //       return (
-      //         <div
-      //           style={{
-      //             fontSize: 100,
-      //             textAlign: 'center',
-      //             color: 'white',
-      //             backgroundColor: '#FDD835',
-      //           }}
-      //         >
-      //           {_rowData.person.role} {_rowData.person.role}
-      //         </div>
-      //       );
-      //     },
-      //   },
-      // ]}
-      // ------------------------------------->
       options={{
         headerStyle: {
           background: '#EEE',
