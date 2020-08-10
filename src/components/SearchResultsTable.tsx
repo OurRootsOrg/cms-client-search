@@ -20,7 +20,6 @@ export default function SearchResultsTable(props: Props): JSX.Element {
   const { data } = props;
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
-  // const [open, setOpen] = useState(false);
   const [detailRow, setDetailRow] = useState();
 
   console.log('Data:', data);
@@ -44,26 +43,6 @@ export default function SearchResultsTable(props: Props): JSX.Element {
         exercitation exercitation deserunt aliqua. Voluptate ut proident reprehenderit mollit amet.
         Ipsum eu reprehenderit consectetur voluptate laborum excepteur reprehenderit laborum dolore
         Lorem enim eu.
-      </p>
-      <p>
-        Eu non voluptate occaecat labore aliquip qui consequat culpa sint et cupidatat adipisicing
-        elit. Eu in sunt minim quis et. Dolor eiusmod labore in et veniam laboris deserunt
-        reprehenderit consectetur. Officia et tempor occaecat et enim ea magna labore ea eiusmod
-        labore. Mollit eiusmod sint duis reprehenderit deserunt irure aute eu amet voluptate veniam.
-        Amet dolore do consectetur veniam dolore cillum commodo ea ea. Esse esse deserunt nulla duis
-        ullamco voluptate deserunt nisi sint proident do elit. Ipsum occaecat ea id aliqua
-        consectetur mollit. Occaecat et ex adipisicing tempor magna anim sit tempor do. Quis eu
-        laborum enim adipisicing qui tempor veniam nulla sint labore culpa laborum nulla et.
-        Exercitation laborum amet eu ea proident incididunt excepteur non.
-      </p>
-      <p>
-        Ad ea aliquip ut minim velit reprehenderit irure elit dolore consectetur aute nulla. Sit est
-        laborum nostrud excepteur eu excepteur anim irure aliqua irure ipsum sunt. Aute excepteur
-        officia fugiat non qui sit excepteur mollit. Excepteur ad ex deserunt do Lorem mollit
-        cupidatat. Elit voluptate non occaecat cupidatat consequat voluptate est cillum quis.
-        Voluptate culpa nostrud adipisicing aliquip ad proident ea culpa Lorem duis commodo aliqua
-        velit eiusmod. Duis labore voluptate officia quis anim. Aute id ipsum elit non labore
-        reprehenderit laboris ad aute. Amet nisi exercitation ea proident officia minim laboris.
       </p>
     </div>
   );
@@ -100,8 +79,6 @@ export default function SearchResultsTable(props: Props): JSX.Element {
           {
             icon: 'add',
             tooltip: 'Details',
-            // onClick: () => setOpen(true),
-            // onClick: (_event, _rowData) => console.log(_rowData),
             onClick: (_event, _rowData: any) => setDetailRow(_rowData),
           },
         ]}
@@ -112,12 +89,11 @@ export default function SearchResultsTable(props: Props): JSX.Element {
         }}
       />
       <Modal
-        // open={open}
         open={!!detailRow}
         onClose={handleClose}
         aria-labelledby="details-modal-title"
         aria-describedby="details-modal-description"
-        data={detailRow}
+        // data={detailRow}
       >
         {body}
       </Modal>
