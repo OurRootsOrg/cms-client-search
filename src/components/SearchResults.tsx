@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useSearch } from '../util/useSearch';
+import { SearchParams, useSearch } from '../util/useSearch';
 import LifeEventPicker from './LifeEventPicker';
 import NamePicker from './NamePicker';
 import RelationshipPicker from './RelationshipPicker';
@@ -15,20 +15,16 @@ import SearchResultsCategory from './SearchResultsCategory';
 import SearchResultsTable from './SearchResultsTable';
 
 type Props = {
-  params: Record<string, string>;
-  setResults: (hasResults: boolean) => void;
+  params: SearchParams;
 };
 export default function SearchResults(props: Props): JSX.Element {
-  const { params, setResults } = props;
   const classes = useStyles();
+  const { params } = props;
   const formMethods = useForm();
+  const { state, data, setParams } = useSearch(fixSearchParams(params));
 
-  const { state, data, setParams } = useSearch(params);
-
-  function doSubmit(data: unknown): void {
-    console.log('Submitted', data);
-    setParams({ given: 'Barney' });
-    setResults(true);
+  function doSubmit(params: SearchParams): void {
+    setParams(fixSearchParams(params));
   }
 
   console.log('Result Form Values', formMethods.watch());
@@ -41,18 +37,12 @@ export default function SearchResults(props: Props): JSX.Element {
           <FormProvider {...formMethods}>
             <form onSubmit={formMethods.handleSubmit(doSubmit)} noValidate>
               <Typography className={classes.paper}>Refine your search</Typography>
-              <NamePicker />
-              <LifeEventPicker />
-              <RelationshipPicker />
-              <SearchResultsCategory />
+              <NamePicker params={params} />
+              <LifeEventPicker params={params} />
+              <RelationshipPicker params={params} />
+              <SearchResultsCategory params={params} />
               <Box mt={5}>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  type="submit"
-                  value="Submit"
-                  onSubmit={() => setResults(false)}
-                >
+                <Button variant="outlined" color="primary" type="submit">
                   Search
                 </Button>
               </Box>
@@ -74,6 +64,16 @@ export default function SearchResults(props: Props): JSX.Element {
       </Grid>
     </Container>
   );
+}
+
+function fixSearchParams(params: SearchParams): SearchParams {
+  Object.entries(params).forEach(([key, value]) => {
+    if (!value) {
+      delete params[key as keyof SearchParams];
+      return;
+    }
+  });
+  return params;
 }
 
 const useStyles = makeStyles((theme) => ({

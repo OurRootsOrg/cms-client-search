@@ -5,9 +5,14 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import React, { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
+import { SearchParams } from '../util/useSearch';
 
-export default function LifeEventPicker(): JSX.Element {
+type Props = {
+  params?: SearchParams;
+};
+export default function LifeEventPicker(props: Props): JSX.Element {
   const classes = useStyles();
+  const { params } = props;
   const { register } = useFormContext();
 
   const [birth, setBirth] = useState(true);
@@ -38,31 +43,33 @@ export default function LifeEventPicker(): JSX.Element {
           <Grid item xs={12} sm={6}>
             <TextField
               inputRef={register}
-              name="birth"
+              name="birthPlace"
               variant="outlined"
               fullWidth
-              id="birthplace"
+              id="birthPlace"
               label="Birthplace"
+              defaultValue={params?.birthPlace}
               autoFocus
             />
           </Grid>
           <Grid item xs={6} sm={3}>
             <TextField
               inputRef={register({ maxLength: 4 })}
-              name="birthYearStart"
+              name="birthDate"
               variant="outlined"
               fullWidth
-              id="birthplaceStartYear"
+              id="birthDate"
               label="Year Start"
+              defaultValue={params?.birthDate}
             />
           </Grid>
           <Grid item xs={6} sm={3}>
             <TextField
               inputRef={register}
-              name="birthYearEnd"
+              name="birthDateEnd"
               variant="outlined"
               fullWidth
-              id="birthplaceEndYear"
+              id="birthDateEnd"
               label="Year End"
             />
           </Grid>
@@ -76,31 +83,33 @@ export default function LifeEventPicker(): JSX.Element {
           <Grid item xs={12} sm={6}>
             <TextField
               inputRef={register}
-              name="residence"
+              name="residencePlace"
               variant="outlined"
               fullWidth
-              id="residence"
+              id="residencePlace"
               label="Residence"
+              defaultValue={params?.residencePlace}
               autoFocus
             />
           </Grid>
           <Grid item xs={6} sm={3}>
             <TextField
               inputRef={register}
-              name="residenceYearStart"
+              name="residenceDate"
               variant="outlined"
               fullWidth
-              id="residanceStartYear"
+              id="residanceDate"
               label="Year Start"
+              defaultValue={params?.residenceDate}
             />
           </Grid>
           <Grid item xs={6} sm={3}>
             <TextField
               inputRef={register}
-              name="residenceYearEnd"
+              name="residenceDateEnd"
               variant="outlined"
               fullWidth
-              id="residenceEndYear"
+              id="residenceDateEnd"
               label="Year End"
             />
           </Grid>
@@ -114,31 +123,33 @@ export default function LifeEventPicker(): JSX.Element {
           <Grid item xs={12} sm={6}>
             <TextField
               inputRef={register}
-              name="marriage"
+              name="marriagePlace"
               variant="outlined"
               fullWidth
-              id="marriage"
+              id="marriagePlace"
               label="Marriage"
+              defaultValue={params?.marriagePlace}
               autoFocus
             />
           </Grid>
           <Grid item xs={6} sm={3}>
             <TextField
               inputRef={register}
-              name="marriageYearStart"
+              name="marriageDate"
               variant="outlined"
               fullWidth
-              id="marriageStartYear"
+              id="marriageDate"
               label="Year Start"
+              defaultValue={params?.marriageDate}
             />
           </Grid>
           <Grid item xs={6} sm={3}>
             <TextField
               inputRef={register}
-              name="marriageYearEnd"
+              name="marriageDateEnd"
               variant="outlined"
               fullWidth
-              id="marriageEndYear"
+              id="marriageDateEnd"
               label="Year End"
             />
           </Grid>
@@ -152,30 +163,32 @@ export default function LifeEventPicker(): JSX.Element {
           <Grid item xs={12} sm={6}>
             <TextField
               inputRef={register}
-              name="death"
+              name="deathPlace"
               variant="outlined"
               fullWidth
-              id="death"
+              id="deathPlace"
+              defaultValue={params?.deathPlace}
               label="Death"
             />
           </Grid>
           <Grid item xs={6} sm={3}>
             <TextField
               inputRef={register}
-              name="deathYearStart"
+              name="deathDate"
               variant="outlined"
               fullWidth
-              id="deathStartYear"
+              id="deathDate"
               label="Year Start"
+              defaultValue={params?.birthDate}
             />
           </Grid>
           <Grid item xs={6} sm={3}>
             <TextField
               inputRef={register}
-              name="deathYearEnd"
+              name="deathDateEnd"
               variant="outlined"
               fullWidth
-              id="deathEndYear"
+              id="deathDateEnd"
               label="Year End"
             />
           </Grid>
@@ -189,31 +202,33 @@ export default function LifeEventPicker(): JSX.Element {
           <Grid item xs={12} sm={6}>
             <TextField
               inputRef={register}
-              name="anyEvent"
+              name="anyPlace"
               variant="outlined"
               fullWidth
-              id="anyEvent"
+              id="anyPlace"
               label="Any"
+              defaultValue={params?.anyPlace}
               autoFocus
             />
           </Grid>
           <Grid item xs={6} sm={3}>
             <TextField
               inputRef={register}
-              name="anyEventStartYear"
+              name="anyDate"
               variant="outlined"
               fullWidth
-              id="anyEventStartYear"
+              id="anyDate"
               label="Year Start"
+              defaultValue={params?.anyDate}
             />
           </Grid>
           <Grid item xs={6} sm={3}>
             <TextField
               inputRef={register}
-              name="anyEventEndYear"
+              name="anyDateEnd"
               variant="outlined"
               fullWidth
-              id="anyEventEndYear"
+              id="anyDateEnd"
               label="Year End"
             />
           </Grid>

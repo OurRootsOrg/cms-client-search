@@ -4,15 +4,20 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
 import Popover from '@material-ui/core/Popover';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import React, { ChangeEvent, MouseEvent, useState } from 'react';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
 import { useFormContext } from 'react-hook-form';
+import { SearchParams } from '../util/useSearch';
 
-export default function NamePicker(): JSX.Element {
+type Props = {
+  params?: SearchParams;
+};
+export default function NamePicker(props: Props): JSX.Element {
   const classes = useStyles();
+  const { params } = props;
   const { register } = useFormContext();
   const [firstAnchor, setFirstAnchor] = useState<undefined | HTMLElement>();
   const [lastAnchor, setLastAnchor] = useState<undefined | HTMLElement>();
@@ -108,18 +113,19 @@ export default function NamePicker(): JSX.Element {
         <Grid item xs={10} sm={5}>
           <TextField
             inputRef={register}
-            name="firstName"
+            name="given"
             variant="outlined"
             required
             fullWidth
-            id="firstName"
+            id="given"
             label="First Name"
+            defaultValue={params?.given}
             autoFocus
           />
           <input
             type="checkbox"
             ref={register}
-            name="firstNameExactSpelling"
+            name="givenExactSpelling"
             aria-describedby={fName}
             onClick={handleClick1}
           ></input>
@@ -189,9 +195,10 @@ export default function NamePicker(): JSX.Element {
             variant="outlined"
             required
             fullWidth
-            id="lastName"
+            id="surname"
             label="Last Name"
-            name="lastName"
+            name="surname"
+            defaultValue={params?.surname}
           />
           <input
             type="checkbox"
@@ -263,11 +270,12 @@ export default function NamePicker(): JSX.Element {
         <Grid item xs={4} sm={2}>
           <TextField
             inputRef={register}
-            name="birthYear"
+            name="birthDate"
             variant="outlined"
             fullWidth
-            id="birthYear"
+            id="birthDate"
             label="Birth Year"
+            defaultValue={params?.birthDate}
           />
           <input
             type="checkbox"

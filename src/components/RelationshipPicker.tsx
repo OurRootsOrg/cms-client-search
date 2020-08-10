@@ -5,15 +5,20 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import React, { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
+import { SearchParams } from '../util/useSearch';
 
-export default function RelationshipPicker(): JSX.Element {
+type Props = {
+  params?: SearchParams;
+};
+export default function RelationshipPicker(props: Props): JSX.Element {
   const classes = useStyles();
+  const { params } = props;
   const { register } = useFormContext();
 
-  let [spouse, setSpouse] = useState(false);
-  let [father, setFather] = useState(false);
-  let [mother, setMother] = useState(false);
-  let [otherPerson, setOtherPerson] = useState(false);
+  const [spouse, setSpouse] = useState(false);
+  const [father, setFather] = useState(false);
+  const [mother, setMother] = useState(false);
+  const [otherPerson, setOtherPerson] = useState(false);
 
   return (
     <div className={classes.paper}>
@@ -35,11 +40,12 @@ export default function RelationshipPicker(): JSX.Element {
           <Grid item xs={12} sm={6}>
             <TextField
               inputRef={register}
-              name="spouseFirstName"
+              name="spouseGiven"
               variant="outlined"
               fullWidth
-              id="spouseFirstName"
+              id="spouseGiven"
               label="Spouse's First Name"
+              defaultValue={params?.spouseGiven}
               autoFocus
             />
           </Grid>
@@ -48,9 +54,10 @@ export default function RelationshipPicker(): JSX.Element {
               inputRef={register}
               variant="outlined"
               fullWidth
-              id="spouseLastName"
+              id="spouseSurname"
               label="Spouse's Last Name"
-              name="spouseLastName"
+              name="spouseSurname"
+              defaultValue={params?.spouseSurname}
             />
           </Grid>
           <Grid></Grid>
@@ -62,11 +69,12 @@ export default function RelationshipPicker(): JSX.Element {
           <Grid item xs={12} sm={6}>
             <TextField
               inputRef={register}
-              name="fatherFirstName"
+              name="fatherGiven"
               variant="outlined"
               fullWidth
-              id="fatherFirstName"
+              id="fatherGiven"
               label="Father's First Name"
+              defaultValue={params?.fatherGiven}
               autoFocus
             />
           </Grid>
@@ -75,9 +83,10 @@ export default function RelationshipPicker(): JSX.Element {
               inputRef={register}
               variant="outlined"
               fullWidth
-              id="fatherLastName"
+              id="fatherSurname"
               label="Father's Last Name"
-              name="fatherLastName"
+              name="fatherSurname"
+              defaultValue={params?.fatherSurname}
             />
           </Grid>
         </Grid>
@@ -88,11 +97,12 @@ export default function RelationshipPicker(): JSX.Element {
           <Grid item xs={12} sm={6}>
             <TextField
               inputRef={register}
-              name="motherFirstName"
+              name="motherGiven"
               variant="outlined"
               fullWidth
-              id="motherFirstName"
+              id="motherGiven"
               label="Mother's First Name"
+              defaultValue={params?.motherGiven}
               autoFocus
             />
           </Grid>
@@ -101,9 +111,10 @@ export default function RelationshipPicker(): JSX.Element {
               inputRef={register}
               variant="outlined"
               fullWidth
-              id="motherLastName"
+              id="motherSurname"
               label="Mother's Last Name"
-              name="motherLastName"
+              name="motherSurname"
+              defaultValue={params?.spouseSurname}
             />
           </Grid>
         </Grid>
@@ -114,11 +125,12 @@ export default function RelationshipPicker(): JSX.Element {
           <Grid item xs={12} sm={6}>
             <TextField
               inputRef={register}
-              name="otherFirstName"
+              name="otherGiven"
               variant="outlined"
               fullWidth
-              id="otherFirstName"
+              id="otherGiven"
               label="Other Person's First Name"
+              defaultValue={params?.otherGiven}
               autoFocus
             />
           </Grid>
@@ -127,9 +139,10 @@ export default function RelationshipPicker(): JSX.Element {
               inputRef={register}
               variant="outlined"
               fullWidth
-              id="otherLastName"
+              id="otherSurname"
               label="Other Person's Last Name"
-              name="otherLastName"
+              name="otherSurname"
+              defaultValue={params?.otherSurname}
             />
           </Grid>
         </Grid>

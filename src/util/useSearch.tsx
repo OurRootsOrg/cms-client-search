@@ -2,13 +2,83 @@ import { Dispatch } from 'react';
 import { RequestState, useHttpGet } from './useHttp';
 
 /**
- * Types for search parameters and results. Note that search queries
- * are very complex. For now, instead of documenting all the possible
- * parameters, we just use Record, which means any
- * field can be present. Use caution when setting parameters and retrieving
- * results since the spelling and types will not be checked.
+ * Types for search parameters and results.
  */
-export type SearchParams = Record<string, string>;
+export type SearchParams = {
+  given?: string;
+  givenFuzziness?: number;
+  surname?: string;
+  surnameFuzziness?: number;
+  fatherGiven?: string;
+  fatherSurname?: string;
+  motherGiven?: string;
+  motherSurname?: string;
+  spouseGiven?: string;
+  spouseSurname?: string;
+  otherGiven?: string;
+  otherSurname?: string;
+  birthDate?: string;
+  birthDateFuzziness?: number;
+  birthPlace?: string;
+  marriageDate?: string;
+  marriageDateFuzziness?: number;
+  marriagePlace?: string;
+  residenceDate?: string;
+  residenceDateFuzziness?: number;
+  residencePlace?: string;
+  deathDate?: string;
+  deathDateFuzziness?: number;
+  deathPlace?: string;
+  anyDate?: string;
+  anyDateFuzziness?: number;
+  anyPlace?: string;
+  keywords?: string;
+  birthCenturyFacet?: boolean;
+  birthCentury?: string;
+  birthDecadeFacet?: boolean;
+  birthDecade?: string;
+  birthPlace1Facet?: boolean;
+  birthPlace1?: string;
+  birthPlace2Facet?: boolean;
+  birthPlace2?: string;
+  birthPlace3Facet?: boolean;
+  birthPlace3?: string;
+  marriageCenturyFacet?: boolean;
+  marriageCentury?: string;
+  marriageDecadeFacet?: boolean;
+  marriageDecade?: string;
+  marriagePlace1Facet?: boolean;
+  marriagePlace1?: string;
+  marriagePlace2Facet?: boolean;
+  marriagePlace2?: string;
+  marriagePlace3Facet?: boolean;
+  marriagePlace3?: string;
+  residenceCenturyFacet?: boolean;
+  residenceCentury?: string;
+  residenceDecadeFacet?: boolean;
+  residenceDecade?: string;
+  residencePlace1Facet?: boolean;
+  residencePlace1?: string;
+  residencePlace2Facet?: boolean;
+  residencePlace2?: string;
+  residencePlace3Facet?: boolean;
+  residencePlace3?: string;
+  deathCenturyFacet?: boolean;
+  deathCentury?: string;
+  deathDecadeFacet?: boolean;
+  deathDecade?: string;
+  deathPlace1Facet?: boolean;
+  deathPlace1?: string;
+  deathPlace2Facet?: boolean;
+  deathPlace2?: string;
+  deathPlace3Facet?: boolean;
+  deathPlace3?: string;
+  categoryFacet?: boolean;
+  category?: string;
+  collectionFacet?: boolean;
+  collection?: string;
+};
+
 export type SearchResult = {
   hits: Array<{
     collection: number;
@@ -35,7 +105,7 @@ export function useSearch(params: SearchParams): UseSearchContext {
 
   function buildUrl(params: SearchParams): string {
     const query = Object.entries(params)
-      .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+      .map(([key, value]) => `${key}=${value && encodeURIComponent(value)}`)
       .join('&');
     return `/search?${query}`;
   }

@@ -16,8 +16,9 @@ export default function CategoryPicker(): JSX.Element {
   const { register } = useFormContext();
   const [category, setCategory] = useState<string[]>([]);
 
-  const handleChange = (event: ChangeEvent<{ value: unknown }>) =>
+  function handleChange(event: ChangeEvent<{ value: unknown }>): void {
     setCategory(event.target.value as string[]);
+  }
 
   return (
     <div>
