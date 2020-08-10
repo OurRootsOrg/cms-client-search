@@ -22,12 +22,14 @@ export default function SearchResults(props: Props): JSX.Element {
   const { params } = props;
   const formMethods = useForm();
   const { state, data, setParams } = useSearch(fixSearchParams(params));
-  const { reset } = useForm({ mode: 'onChange' });
 
   function doSubmit(params: SearchParams): void {
     setParams(fixSearchParams(params));
   }
 
+  function refreshPage(): void {
+    window.location.reload(false);
+  }
   console.log('Result Form Values', formMethods.watch());
   console.log('Search Result', data);
 
@@ -50,8 +52,7 @@ export default function SearchResults(props: Props): JSX.Element {
                   variant="outlined"
                   color="primary"
                   className={classes.button}
-                  type="reset"
-                  onClick={reset}
+                  onClick={refreshPage}
                 >
                   Start Over
                 </Button>

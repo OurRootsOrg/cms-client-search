@@ -24,10 +24,6 @@ export default function SearchForm(props: Props): JSX.Element {
     onSubmit(data);
   }
 
-  // function refreshPage() {
-  //   window.location.reload(false);
-  // }
-
   console.log('Search Form Values', formMethods.watch());
 
   return (
