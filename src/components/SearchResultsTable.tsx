@@ -26,7 +26,6 @@ export default function SearchResultsTable(props: Props): JSX.Element {
   console.log('Data:', data);
 
   const handleClose = (): void => {
-    // setDetailRow(detailRow);
     setDetailRow(undefined);
   };
 
@@ -118,7 +117,7 @@ export default function SearchResultsTable(props: Props): JSX.Element {
         onClose={handleClose}
         aria-labelledby="details-modal-title"
         aria-describedby="details-modal-description"
-        // data={detailRow}
+        data={detailRow}
       >
         {body}
       </Modal>
