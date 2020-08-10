@@ -1,3 +1,4 @@
+import AddBox from '@material-ui/icons/AddBox';
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 import ChevronRight from '@material-ui/icons/ChevronRight';
@@ -19,12 +20,14 @@ export default function SearchResultsTable(props: Props): JSX.Element {
   const { data } = props;
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
+  const [detailRow, setDetailRow] = useState();
 
   console.log('Data:', data);
 
   const handleClose = (): void => {
-    setOpen(false);
+    // setDetailRow(detailRow);
+    setDetailRow(undefined);
   };
 
   //Temporary -------------------------- TODO : need to add row data to modal, add photos and details
@@ -96,9 +99,11 @@ export default function SearchResultsTable(props: Props): JSX.Element {
         data={data.hits}
         actions={[
           {
-            icon: 'save',
+            icon: 'add',
             tooltip: 'Details',
-            onClick: () => setOpen(true),
+            // onClick: () => setOpen(true),
+            // onClick: (_event, _rowData) => console.log(_rowData),
+            onClick: (_event, _rowData: any) => setDetailRow(_rowData),
           },
         ]}
         options={{
@@ -108,10 +113,12 @@ export default function SearchResultsTable(props: Props): JSX.Element {
         }}
       />
       <Modal
-        open={open}
+        // open={open}
+        open={!!detailRow}
         onClose={handleClose}
         aria-labelledby="details-modal-title"
         aria-describedby="details-modal-description"
+        // data={detailRow}
       >
         {body}
       </Modal>
@@ -121,6 +128,7 @@ export default function SearchResultsTable(props: Props): JSX.Element {
 
 // only the save icon in the action i co is not showing up on the material-table
 const tableIcons: Icons = {
+  Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
   FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
   DetailPanel: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
   LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref} />),
