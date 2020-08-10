@@ -27,6 +27,9 @@ export default function SearchResults(props: Props): JSX.Element {
     setParams(fixSearchParams(params));
   }
 
+  function refreshPage(): void {
+    window.location.reload(false);
+  }
   console.log('Result Form Values', formMethods.watch());
   console.log('Search Result', data);
 
@@ -42,8 +45,16 @@ export default function SearchResults(props: Props): JSX.Element {
               <RelationshipPicker params={params} />
               <SearchResultsCategory params={params} />
               <Box mt={5}>
-                <Button variant="outlined" color="primary" type="submit">
+                <Button variant="contained" color="primary" type="submit">
                   Search
+                </Button>
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  className={classes.button}
+                  onClick={refreshPage}
+                >
+                  Start Over
                 </Button>
               </Box>
             </form>
@@ -86,5 +97,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'left',
+  },
+  button: {
+    marginLeft: 12,
   },
 }));
