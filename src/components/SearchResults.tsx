@@ -42,8 +42,11 @@ export default function SearchResults(props: Props): JSX.Element {
               <RelationshipPicker params={params} />
               <SearchResultsCategory params={params} />
               <Box mt={5}>
-                <Button variant="outlined" color="primary" type="submit">
+                <Button variant="contained" color="primary" type="submit">
                   Search
+                </Button>
+                <Button variant="outlined" color="primary" className={classes.button}>
+                  Start Over
                 </Button>
               </Box>
             </form>
@@ -86,5 +89,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'left',
+  },
+  button: {
+    marginLeft: 12,
   },
 }));
