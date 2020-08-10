@@ -18,6 +18,7 @@ export default function SearchForm(props: Props): JSX.Element {
   const { onSubmit } = props;
   const classes = useStyles();
   const formMethods = useForm();
+  const { reset } = useForm({ mode: 'onChange' });
 
   function doSubmit(data: SearchParams): void {
     onSubmit(data);
@@ -37,8 +38,17 @@ export default function SearchForm(props: Props): JSX.Element {
           <RelationshipPicker />
           <CategoryPicker />
           <Box mt={5}>
-            <Button variant="outlined" color="primary" type="submit" value="Submit">
+            <Button variant="contained" color="primary" type="submit" value="Submit">
               Search
+            </Button>
+            <Button
+              variant="outlined"
+              color="primary"
+              className={classes.button}
+              type="reset"
+              onClick={reset}
+            >
+              Start Over
             </Button>
           </Box>
         </form>
@@ -58,5 +68,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(3),
   },
-  button: {},
+  button: {
+    marginLeft: 12,
+  },
 }));
