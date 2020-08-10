@@ -80,16 +80,19 @@ export type SearchParams = {
 };
 
 export type SearchResult = {
-  hits: Array<{
-    collection: number;
-    collectionName: string;
-    id: string;
-    person: Record<string, string>;
-    score: number;
-  }>;
+  hits: SearchHit[];
   maxScore: number;
   total: number;
 };
+
+export type SearchHit = {
+  collection: number;
+  collectionName: string;
+  id: string;
+  person: Record<string, string>;
+  score: number;
+};
+
 export type UseSearchContext = {
   data?: SearchResult;
   setParams: Dispatch<SearchParams>;
