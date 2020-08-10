@@ -5,19 +5,22 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { SearchParams } from '../util/useSearch';
 import CategoryPicker from './CategoryPicker';
 import LifeEventPicker from './LifeEventPicker';
 import NamePicker from './NamePicker';
 import RelationshipPicker from './RelationshipPicker';
 
-export default function SearchForm(props: { setResults: any }): JSX.Element {
-  const { setResults } = props;
+type Props = {
+  onSubmit: (params: SearchParams) => void;
+};
+export default function SearchForm(props: Props): JSX.Element {
+  const { onSubmit } = props;
   const classes = useStyles();
   const formMethods = useForm();
 
-  function doSubmit(data: unknown): void {
-    console.log('Submitted', data);
-    setResults(true);
+  function doSubmit(data: SearchParams): void {
+    onSubmit(data);
   }
 
   console.log('Search Form Values', formMethods.watch());

@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
+import { SearchParams } from '../util/useSearch';
 import SearchForm from './SearchForm';
 import SearchResults from './SearchResults';
 
 export default function SearchPage(): JSX.Element {
-  const [results, setResults] = useState(false);
+  const [params, setParams] = useState<SearchParams>();
 
-  return results ? (
-    <SearchResults params={{ given: 'Fred' }} setResults={setResults} />
-  ) : (
-    <SearchForm setResults={setResults} />
-  );
+  return params ? <SearchResults params={params} /> : <SearchForm onSubmit={(p) => setParams(p)} />;
 }
