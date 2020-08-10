@@ -64,8 +64,8 @@ export default function SearchResults(props: Props): JSX.Element {
             Search Results
           </Typography>
           {/* TODO: temporary */}
-          <Typography component="div">Error: {JSON.stringify(state.error)}</Typography>
-          <Typography component="div">Data: {JSON.stringify(data)}</Typography>
+          {/* <Typography component="div">Error: {JSON.stringify(state.error)}</Typography>
+          <Typography component="div">Data: {JSON.stringify(data)}</Typography> */}
           {/* end temporary */}
           {state.isLoading && <CircularProgress />}
           {state.isError && <Typography component="div">Error: {state.error?.message}</Typography>}

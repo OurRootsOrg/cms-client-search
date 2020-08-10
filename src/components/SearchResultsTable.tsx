@@ -27,6 +27,7 @@ export default function SearchResultsTable(props: Props): JSX.Element {
     setOpen(false);
   };
 
+  //Temporary -------------------------- TODO : need to add row data to modal, add photos and details
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <h2>Text in a modal</h2>
@@ -66,7 +67,7 @@ export default function SearchResultsTable(props: Props): JSX.Element {
   );
 
   return (
-    <div>
+    <div className={classes.table}>
       <MaterialTable
         icons={tableIcons}
         title={data.total + ' results'}
@@ -118,6 +119,7 @@ export default function SearchResultsTable(props: Props): JSX.Element {
   );
 }
 
+// only the save icon in the action i co is not showing up on the material-table
 const tableIcons: Icons = {
   FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
   DetailPanel: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
@@ -146,8 +148,11 @@ function getModalStyle() {
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    table: {
+      marginTop: theme.spacing(1),
+    },
     paper: {
-      position: 'absolute',
+      position: 'fixed',
       // width: 400,
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
