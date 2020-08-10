@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useSearch } from '../util/useSearch';
-import DetailsModal from './DetailsModal';
 import LifeEventPicker from './LifeEventPicker';
 import NamePicker from './NamePicker';
 import RelationshipPicker from './RelationshipPicker';
@@ -64,7 +63,6 @@ export default function SearchResults(props: Props): JSX.Element {
           <Typography component="h1" variant="h5">
             Search Results
           </Typography>
-          <DetailsModal />
           {/* TODO: temporary */}
           <Typography component="div">Error: {JSON.stringify(state.error)}</Typography>
           <Typography component="div">Data: {JSON.stringify(data)}</Typography>

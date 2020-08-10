@@ -6,11 +6,11 @@ import FirstPage from '@material-ui/icons/FirstPage';
 import LastPage from '@material-ui/icons/LastPage';
 import Search from '@material-ui/icons/Search';
 import MaterialTable, { Icons } from 'material-table';
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { SearchResult } from '../util/useSearch';
-import { makeStyles } from '@material-ui/core/styles';
-import DetailsModal from './DetailsModal';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
 
 type Props = {
   data: SearchResult;
@@ -18,49 +18,103 @@ type Props = {
 export default function SearchResultsTable(props: Props): JSX.Element {
   const { data } = props;
   const classes = useStyles();
+  const [modalStyle] = useState(getModalStyle);
+  const [open, setOpen] = useState(false);
 
   console.log('Data:', data);
 
+  const handleClose = (): void => {
+    setOpen(false);
+  };
+
+  const body = (
+    <div style={modalStyle} className={classes.paper}>
+      <h2>Text in a modal</h2>
+      <p>
+        Officia occaecat dolor incididunt elit qui id ut ut minim minim culpa excepteur. Laboris
+        aute enim Lorem voluptate. Ex veniam eu sunt veniam ad nulla Lorem aliquip ea. Culpa et
+        ullamco velit do voluptate veniam dolor amet minim. Commodo commodo minim fugiat sunt sint.
+        Velit voluptate dolor consequat velit fugiat nisi voluptate sint in sunt incididunt ullamco.
+        Irure pariatur sit cupidatat nostrud ex veniam anim ex esse elit sunt officia aliqua.
+        Exercitation ex culpa pariatur proident ipsum sint amet proident et sunt cillum do. Fugiat
+        nostrud qui id ut ea est. Eu amet esse aliquip aliqua eu incididunt consectetur proident
+        exercitation exercitation deserunt aliqua. Voluptate ut proident reprehenderit mollit amet.
+        Ipsum eu reprehenderit consectetur voluptate laborum excepteur reprehenderit laborum dolore
+        Lorem enim eu.
+      </p>
+      <p>
+        Eu non voluptate occaecat labore aliquip qui consequat culpa sint et cupidatat adipisicing
+        elit. Eu in sunt minim quis et. Dolor eiusmod labore in et veniam laboris deserunt
+        reprehenderit consectetur. Officia et tempor occaecat et enim ea magna labore ea eiusmod
+        labore. Mollit eiusmod sint duis reprehenderit deserunt irure aute eu amet voluptate veniam.
+        Amet dolore do consectetur veniam dolore cillum commodo ea ea. Esse esse deserunt nulla duis
+        ullamco voluptate deserunt nisi sint proident do elit. Ipsum occaecat ea id aliqua
+        consectetur mollit. Occaecat et ex adipisicing tempor magna anim sit tempor do. Quis eu
+        laborum enim adipisicing qui tempor veniam nulla sint labore culpa laborum nulla et.
+        Exercitation laborum amet eu ea proident incididunt excepteur non.
+      </p>
+      <p>
+        Ad ea aliquip ut minim velit reprehenderit irure elit dolore consectetur aute nulla. Sit est
+        laborum nostrud excepteur eu excepteur anim irure aliqua irure ipsum sunt. Aute excepteur
+        officia fugiat non qui sit excepteur mollit. Excepteur ad ex deserunt do Lorem mollit
+        cupidatat. Elit voluptate non occaecat cupidatat consequat voluptate est cillum quis.
+        Voluptate culpa nostrud adipisicing aliquip ad proident ea culpa Lorem duis commodo aliqua
+        velit eiusmod. Duis labore voluptate officia quis anim. Aute id ipsum elit non labore
+        reprehenderit laboris ad aute. Amet nisi exercitation ea proident officia minim laboris.
+      </p>
+    </div>
+  );
+
   return (
-    <MaterialTable
-      icons={tableIcons}
-      title={data.total + ' results'}
-      columns={[
-        {
-          title: 'Name',
-          field: 'person.name',
-          render: (_rowData) => {
-            return (
-              <div className={classes.root}>
-                <Typography>{_rowData.person.name}</Typography>
-                <Typography>{_rowData.person.role}</Typography>
-              </div>
-            );
+    <div>
+      <MaterialTable
+        icons={tableIcons}
+        title={data.total + ' results'}
+        columns={[
+          {
+            title: 'Name',
+            field: 'person.name',
+            render: (_rowData) => {
+              return (
+                <div>
+                  <Typography>{_rowData.person.name}</Typography>
+                  <Typography>{_rowData.person.role}</Typography>
+                </div>
+              );
+            },
           },
-        },
-        {
-          title: 'Collection Name',
-          field: 'collectionName',
-        },
-        {
-          title: 'Collection',
-          field: 'collection',
-        },
-      ]}
-      data={data.hits}
-      actions={[
-        {
-          icon: 'save',
-          tooltip: 'Details',
-          onClick: (_event) => <DetailsModal />,
-        },
-      ]}
-      options={{
-        headerStyle: {
-          background: '#EEE',
-        },
-      }}
-    />
+          {
+            title: 'Collection Name',
+            field: 'collectionName',
+          },
+          {
+            title: 'Collection',
+            field: 'collection',
+          },
+        ]}
+        data={data.hits}
+        actions={[
+          {
+            icon: 'save',
+            tooltip: 'Details',
+            onClick: () => setOpen(true),
+          },
+        ]}
+        options={{
+          headerStyle: {
+            background: '#EEE',
+          },
+        }}
+      />
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="details-modal-title"
+        aria-describedby="details-modal-description"
+      >
+        {body}
+      </Modal>
+    </div>
   );
 }
 
@@ -75,8 +129,30 @@ const tableIcons: Icons = {
   SortArrow: forwardRef((props, ref) => <ArrowUpward {...props} ref={ref} />),
 };
 
-const useStyles = makeStyles({
-  root: {
-    display: 'inline',
-  },
-});
+function rand() {
+  return Math.round(Math.random() * 20) - 10;
+}
+
+function getModalStyle() {
+  const top = 50 + rand();
+  const left = 50 + rand();
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    paper: {
+      position: 'absolute',
+      // width: 400,
+      backgroundColor: theme.palette.background.paper,
+      border: '2px solid #000',
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+    },
+  })
+);
