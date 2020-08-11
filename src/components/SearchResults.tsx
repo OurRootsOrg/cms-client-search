@@ -28,7 +28,7 @@ export default function SearchResults(props: Props): JSX.Element {
   }
 
   function refreshPage(): void {
-    window.location.reload(false);
+    window.location.reload();
   }
   console.log('Result Form Values', formMethods.watch());
   console.log('Search Result', data);
