@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import React from 'react';
-import { useSearch } from './useSearch';
+import { fixSearchParams, useSearch } from './useSearch';
 
 const mock = new MockAdapter(axios);
 
@@ -38,5 +38,24 @@ describe('useSearch', () => {
     expect(screen.queryByText(/John Smith/)).toBeNull();
 
     expect(await screen.findByText(/John Smith/)).toBeInTheDocument();
+  });
+
+  test('fixes search parameters', () => {
+    const params = {
+      birthDate: '1920',
+      exactToYears: true,
+      given: 'george',
+      givenExactSpelling: true,
+      lastNameExactSpelling: false,
+      marriageDate: '',
+      marriagePlace: '',
+      residenceDate: '',
+      residencePlace: '',
+      surname: '',
+    };
+
+    fixSearchParams(params);
+
+    expect(params.lastNameExactSpelling).toBeUndefined();
   });
 });

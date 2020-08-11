@@ -1,4 +1,6 @@
+import Grid from '@material-ui/core/Grid';
 import Modal from '@material-ui/core/Modal';
+import Paper from '@material-ui/core/Paper';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import AddBox from '@material-ui/icons/AddBox';
@@ -11,9 +13,10 @@ import LastPage from '@material-ui/icons/LastPage';
 import Search from '@material-ui/icons/Search';
 import MaterialTable, { Icons } from 'material-table';
 import React, { forwardRef, useState } from 'react';
-import { SearchResult } from '../util/useSearch';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import { SearchHit, SearchResult } from '../util/useSearch';
+
+// Rows per page, in global space so that it's sticky.
+let rowsPerPage = 10;
 
 type Props = {
   data: SearchResult;
@@ -22,8 +25,7 @@ export default function SearchResultsTable(props: Props): JSX.Element {
   const { data } = props;
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
-  const [detailRow, setDetailRow] = useState();
-  console.log('Data: ', data.hits);
+  const [detailRow, setDetailRow] = useState<SearchHit>();
 
   const handleClose = (): void => {
     setDetailRow(undefined);
@@ -99,14 +101,18 @@ export default function SearchResultsTable(props: Props): JSX.Element {
           {
             icon: 'add',
             tooltip: 'Details',
-            onClick: (_event, _rowData: any) => setDetailRow(_rowData),
+            onClick: (_event, rowData) => setDetailRow(rowData as SearchHit),
           },
         ]}
         options={{
           headerStyle: {
             background: '#EEE',
           },
+          pageSize: rowsPerPage,
+          pageSizeOptions: [10, 25, 50, 100],
+          emptyRowsWhenPaging: false,
         }}
+        onChangeRowsPerPage={(size) => (rowsPerPage = size)}
       />
       <Modal
         open={!!detailRow}
@@ -134,11 +140,11 @@ const tableIcons: Icons = {
   SortArrow: forwardRef((props, ref) => <ArrowUpward {...props} ref={ref} />),
 };
 
-function rand() {
+function rand(): number {
   return Math.round(Math.random() * 20) - 10;
 }
 
-function getModalStyle() {
+function getModalStyle(): Record<string, string> {
   const top = 50 + rand();
   const left = 50 + rand();
 

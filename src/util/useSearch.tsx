@@ -107,8 +107,7 @@ export function useSearch(params: SearchParams): UseSearchContext {
   const [state, setUrl] = useHttpGet<SearchResult>(buildUrl(params));
 
   function buildUrl(params: SearchParams): string {
-    fixSearchParams(params);
-    const query = Object.entries(params)
+    const query = Object.entries(fixSearchParams(params))
       .map(([key, value]) => `${key}=${value && encodeURIComponent(value)}`)
       .join('&');
     return `/search?${query}`;
@@ -125,7 +124,9 @@ export function useSearch(params: SearchParams): UseSearchContext {
   };
 }
 
-export function fixSearchParams(params: SearchParams): SearchParams {
+export function fixSearchParams(
+  params: Record<string, string | boolean | number | undefined>
+): SearchParams {
   Object.entries(params).forEach(([key, value]) => {
     if (!value || (typeof value === 'string' && value === 'false')) {
       delete params[key as keyof SearchParams];
