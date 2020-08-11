@@ -15,7 +15,7 @@ export default function LifeEventPicker(props: Props): JSX.Element {
   const { params } = props;
   const { register } = useFormContext();
 
-  const [birth, setBirth] = useState(true);
+  const [birth, setBirth] = useState(false);
   const [residence, setResidence] = useState(false);
   const [marriage, setMarriage] = useState(false);
   const [death, setDeath] = useState(false);
