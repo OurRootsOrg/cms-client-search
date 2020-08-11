@@ -14,17 +14,19 @@ import RelationshipPicker from './RelationshipPicker';
 import SearchResultsCategory from './SearchResultsCategory';
 import SearchResultsTable from './SearchResultsTable';
 
-type Props = {
+export type SearchResultsProps = {
   params: SearchParams;
+  onSubmit?: (params: SearchParams) => void;
 };
-export default function SearchResults(props: Props): JSX.Element {
+export default function SearchResults(props: SearchResultsProps): JSX.Element {
   const classes = useStyles();
-  const { params } = props;
+  const { params, onSubmit } = props;
   const formMethods = useForm();
-  const { state, data, setParams } = useSearch(fixSearchParams(params));
+  const { state, data, setParams } = useSearch(params);
 
   function doSubmit(params: SearchParams): void {
-    setParams(fixSearchParams(params));
+    setParams(params);
+    if (onSubmit) onSubmit(params);
   }
 
   function refreshPage(): void {
@@ -64,10 +66,6 @@ export default function SearchResults(props: Props): JSX.Element {
           <Typography component="h1" variant="h5">
             Search Results
           </Typography>
-          {/* TODO: temporary */}
-          {/* <Typography component="div">Error: {JSON.stringify(state.error)}</Typography>
-          <Typography component="div">Data: {JSON.stringify(data)}</Typography> */}
-          {/* end temporary */}
           {state.isLoading && <CircularProgress />}
           {state.isError && <Typography component="div">Error: {state.error?.message}</Typography>}
           {data && <SearchResultsTable data={data} />}
@@ -75,16 +73,6 @@ export default function SearchResults(props: Props): JSX.Element {
       </Grid>
     </Container>
   );
-}
-
-function fixSearchParams(params: SearchParams): SearchParams {
-  Object.entries(params).forEach(([key, value]) => {
-    if (!value) {
-      delete params[key as keyof SearchParams];
-      return;
-    }
-  });
-  return params;
 }
 
 const useStyles = makeStyles((theme) => ({

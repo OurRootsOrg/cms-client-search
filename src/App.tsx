@@ -1,10 +1,10 @@
+import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import { Link, RouteComponentProps, Router } from '@reach/router';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import SearchPage from './components/SearchPage';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 
 export default function App(): JSX.Element {
   const classes = useNavStyles();
@@ -13,10 +13,10 @@ export default function App(): JSX.Element {
   return (
     <div>
       <nav className={classes.nav}>
-        <NavLink to="/">{t('Home')}</NavLink>
+        <NavLink to="search">{t('Home')}</NavLink>
       </nav>
       <Router>
-        <Home path="/" />
+        <Home path="search/*" />
       </Router>
     </div>
   );
