@@ -1,11 +1,21 @@
-import { NavigateFn, RouteComponentProps, Router, useNavigate } from '@reach/router';
-import React from 'react';
+import { globalHistory, NavigateFn, RouteComponentProps, Router, useNavigate } from '@reach/router';
+import React, { useEffect } from 'react';
 import useQuery, { toQueryString } from '../util/useQuery';
 import { fixSearchParams, SearchParams } from '../util/useSearch';
 import SearchForm, { SearchFormProps } from './SearchForm';
 import SearchResults, { SearchResultsProps } from './SearchResults';
 
 export default function SearchPage(): JSX.Element {
+  useEffect(() => {
+    console.log('effecting', globalHistory);
+    return globalHistory.listen(({ action }) => {
+      console.log('history', action);
+      if (action === 'POP') {
+        window.location.reload();
+      }
+    });
+  }, []);
+
   return (
     <>
       <Router>

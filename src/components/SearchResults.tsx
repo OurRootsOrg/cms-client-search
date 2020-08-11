@@ -5,8 +5,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { globalHistory } from '@reach/router';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { SearchParams, useSearch } from '../util/useSearch';
 import LifeEventPicker from './LifeEventPicker';
@@ -30,20 +29,6 @@ export default function SearchResults(props: SearchResultsProps): JSX.Element {
     setParams(params);
     if (onSubmit) onSubmit(params);
   }
-
-  function refreshPage(): void {
-    window.location.reload();
-  }
-
-  useEffect(() => {
-    console.log('effecting', globalHistory);
-    return globalHistory.listen(({ action }) => {
-      console.log('history', action);
-      if (action === 'PUSH') {
-        window.location.reload();
-      }
-    });
-  });
 
   console.log('Result Form Values', formMethods.watch());
 
@@ -83,7 +68,6 @@ export default function SearchResults(props: SearchResultsProps): JSX.Element {
           {data && <SearchResultsTable data={data} />}
         </Grid>
       </Grid>
-      <Button onClick={() => refreshPage()}>Refresh</Button>
     </Container>
   );
 }
