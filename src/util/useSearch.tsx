@@ -125,12 +125,22 @@ export function useSearch(params: SearchParams): UseSearchContext {
 }
 
 export function fixSearchParams(
-  params: Record<string, string | boolean | number | undefined>
+  formValues: Record<string, string | boolean | number | undefined>
 ): SearchParams {
-  Object.entries(params).forEach(([key, value]) => {
-    if (!value || (typeof value === 'string' && value === 'false')) {
-      delete params[key as keyof SearchParams];
-      return;
+  const params: SearchParams = {};
+  Object.entries(formValues).forEach(([key, value]) => {
+    const p = params as Record<string, string | boolean | number>;
+    if (key === 'givenExact') {
+      if (value) params.givenFuzziness = 1;
+    } else if (key === 'surnameExact') {
+      if (value) params.surnameFuzziness = 1;
+    } else if (typeof value === 'string') {
+      if (value === 'true') p[key] = true;
+      if (value) p[key] = value;
+    } else if (typeof value === 'boolean') {
+      if (value) p[key] = value;
+    } else if (typeof value === 'number') {
+      if (value) p[key] = value;
     }
   });
   return params;

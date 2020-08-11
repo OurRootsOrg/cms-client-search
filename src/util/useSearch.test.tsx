@@ -41,12 +41,12 @@ describe('useSearch', () => {
   });
 
   test('fixes search parameters', () => {
-    const params = {
+    const formValues = {
       birthDate: '1920',
       exactToYears: true,
       given: 'george',
-      givenExactSpelling: true,
-      lastNameExactSpelling: false,
+      givenExact: true,
+      surnameExact: false,
       marriageDate: '',
       marriagePlace: '',
       residenceDate: '',
@@ -54,8 +54,11 @@ describe('useSearch', () => {
       surname: '',
     };
 
-    fixSearchParams(params);
+    const params = fixSearchParams(formValues);
 
-    expect(params.lastNameExactSpelling).toBeUndefined();
+    expect(params.givenFuzziness).toEqual(1);
+    expect(params.surnameFuzziness).toBeUndefined();
+    expect((params as Record<string, string>).givenExact).toBeUndefined();
+    expect((params as Record<string, string>).surnameExact).toBeUndefined();
   });
 });

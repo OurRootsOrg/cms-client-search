@@ -15,11 +15,11 @@ export default function LifeEventPicker(props: Props): JSX.Element {
   const { params } = props;
   const { register } = useFormContext();
 
-  const [birth, setBirth] = useState(false);
-  const [residence, setResidence] = useState(false);
-  const [marriage, setMarriage] = useState(false);
-  const [death, setDeath] = useState(false);
-  const [anyEvent, setAnyEvent] = useState(false);
+  const [birth, setBirth] = useState(!!(params?.birthPlace || params?.birthDate));
+  const [residence, setResidence] = useState(!!(params?.residencePlace || params?.residenceDate));
+  const [marriage, setMarriage] = useState(!!(params?.marriagePlace || params?.marriageDate));
+  const [death, setDeath] = useState(!!(params?.deathPlace || params?.deathDate));
+  const [anyEvent, setAnyEvent] = useState(!!(params?.anyPlace || params?.anyDate));
 
   return (
     <div className={classes.paper}>
@@ -59,7 +59,7 @@ export default function LifeEventPicker(props: Props): JSX.Element {
               variant="outlined"
               fullWidth
               id="birthDate"
-              label="Year Start"
+              label="Year"
               defaultValue={params?.birthDate}
             />
           </Grid>
@@ -89,7 +89,7 @@ export default function LifeEventPicker(props: Props): JSX.Element {
               variant="outlined"
               fullWidth
               id="residanceDate"
-              label="Year Start"
+              label="Year"
               defaultValue={params?.residenceDate}
             />
           </Grid>
@@ -119,7 +119,7 @@ export default function LifeEventPicker(props: Props): JSX.Element {
               variant="outlined"
               fullWidth
               id="marriageDate"
-              label="Year Start"
+              label="Year"
               defaultValue={params?.marriageDate}
             />
           </Grid>
@@ -148,7 +148,7 @@ export default function LifeEventPicker(props: Props): JSX.Element {
               variant="outlined"
               fullWidth
               id="deathDate"
-              label="Year Start"
+              label="Year"
               defaultValue={params?.birthDate}
             />
           </Grid>
@@ -178,7 +178,7 @@ export default function LifeEventPicker(props: Props): JSX.Element {
               variant="outlined"
               fullWidth
               id="anyDate"
-              label="Year Start"
+              label="Year"
               defaultValue={params?.anyDate}
             />
           </Grid>

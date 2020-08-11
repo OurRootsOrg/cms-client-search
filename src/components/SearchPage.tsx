@@ -59,6 +59,5 @@ function Results(props: ResultProps): JSX.Element {
 }
 
 function navToSearch(navigate: NavigateFn, params: SearchParams): void {
-  fixSearchParams(params);
-  navigate(`/search/results?query=${encodeURIComponent(toQueryString(params))}`);
+  navigate(`/search/results?query=${encodeURIComponent(toQueryString(fixSearchParams(params)))}`);
 }

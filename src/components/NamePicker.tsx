@@ -124,7 +124,7 @@ export default function NamePicker(props: Props): JSX.Element {
           <input
             type="checkbox"
             ref={register}
-            name="givenExactSpelling"
+            name="givenExact"
             aria-describedby={fName}
             onClick={handleClick1}
           ></input>
@@ -201,7 +201,7 @@ export default function NamePicker(props: Props): JSX.Element {
           <input
             type="checkbox"
             ref={register}
-            name="lastNameExactSpelling"
+            name="surnameExact"
             aria-describedby={lName}
             onClick={handleClick2}
           ></input>
