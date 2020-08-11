@@ -18,7 +18,6 @@ export default function SearchForm(props: SearchFormProps): JSX.Element {
   const { onSubmit } = props;
   const classes = useStyles();
   const formMethods = useForm();
-  const { reset } = useForm({ mode: 'onChange' });
 
   function doSubmit(params: SearchParams): void {
     if (onSubmit) onSubmit(params);
@@ -41,15 +40,6 @@ export default function SearchForm(props: SearchFormProps): JSX.Element {
             <Button variant="contained" color="primary" type="submit" value="Submit">
               Search
             </Button>
-            <Button
-              variant="outlined"
-              color="primary"
-              className={classes.button}
-              type="reset"
-              onClick={reset}
-            >
-              Start Over
-            </Button>
           </Box>
         </form>
       </FormProvider>
@@ -67,8 +57,5 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(3),
-  },
-  button: {
-    marginLeft: 12,
   },
 }));
