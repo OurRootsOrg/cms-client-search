@@ -28,15 +28,16 @@ export default function SearchResults(props: SearchResultsProps): JSX.Element {
   //TODO: Temporary
   //Note: There's also a temporary display of 'person' after the text 'Search Results'
   const [person, setPerson] = useState<SearchHit>();
+  const personId = data?.hits[0]?.id;
   useEffect(() => {
     async function lk(id: string): Promise<void> {
       const result = await lookup(id);
       setPerson(result);
     }
-    if (data && data.hits[0]) {
-      lk(data.hits[0].id);
+    if (personId) {
+      lk(personId);
     }
-  }, [data?.hits[0]?.id]);
+  }, [personId]);
   //TODO: End Temporary
 
   function doSubmit(params: SearchParams): void {
