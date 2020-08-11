@@ -11,16 +11,16 @@ import LifeEventPicker from './LifeEventPicker';
 import NamePicker from './NamePicker';
 import RelationshipPicker from './RelationshipPicker';
 
-type Props = {
-  onSubmit: (params: SearchParams) => void;
+export type SearchFormProps = {
+  onSubmit?: (params: SearchParams) => void;
 };
-export default function SearchForm(props: Props): JSX.Element {
+export default function SearchForm(props: SearchFormProps): JSX.Element {
   const { onSubmit } = props;
   const classes = useStyles();
   const formMethods = useForm();
 
-  function doSubmit(data: SearchParams): void {
-    onSubmit(data);
+  function doSubmit(params: SearchParams): void {
+    if (onSubmit) onSubmit(params);
   }
 
   console.log('Search Form Values', formMethods.watch());

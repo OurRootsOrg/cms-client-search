@@ -1,9 +1,3 @@
 {
-  "Home": "Home",
-  "Welcome": "Welcome",
-  "Search": "Search",
-  "Instructions": "Edit {{code}} and save to reload.",
-  "Learn": "Learn React",
-  "Hello": "Hello, {{name}}! Enjoy using {{framework}} with {{compiler}}.",
-  "Name": "Name"
+  "Home": "Home"
 }

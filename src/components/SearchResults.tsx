@@ -5,7 +5,8 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import React from 'react';
+import { globalHistory } from '@reach/router';
+import React, { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { SearchParams, useSearch } from '../util/useSearch';
 import LifeEventPicker from './LifeEventPicker';
@@ -14,24 +15,37 @@ import RelationshipPicker from './RelationshipPicker';
 import SearchResultsCategory from './SearchResultsCategory';
 import SearchResultsTable from './SearchResultsTable';
 
-type Props = {
+export type SearchResultsProps = {
   params: SearchParams;
+  onSubmit?: (params: SearchParams) => void;
+  onCancel?: () => void;
 };
-export default function SearchResults(props: Props): JSX.Element {
+export default function SearchResults(props: SearchResultsProps): JSX.Element {
   const classes = useStyles();
-  const { params } = props;
+  const { params, onSubmit, onCancel } = props;
   const formMethods = useForm();
-  const { state, data, setParams } = useSearch(fixSearchParams(params));
+  const { state, data, setParams } = useSearch(params);
 
   function doSubmit(params: SearchParams): void {
-    setParams(fixSearchParams(params));
+    setParams(params);
+    if (onSubmit) onSubmit(params);
   }
 
   function refreshPage(): void {
     window.location.reload();
   }
+
+  useEffect(() => {
+    console.log('effecting', globalHistory);
+    return globalHistory.listen(({ action }) => {
+      console.log('history', action);
+      if (action === 'PUSH') {
+        window.location.reload();
+      }
+    });
+  });
+
   console.log('Result Form Values', formMethods.watch());
-  console.log('Search Result', data);
 
   return (
     <Container component="main" className={classes.container}>
@@ -52,7 +66,7 @@ export default function SearchResults(props: Props): JSX.Element {
                   variant="outlined"
                   color="primary"
                   className={classes.button}
-                  onClick={refreshPage}
+                  onClick={onCancel}
                 >
                   Start Over
                 </Button>
@@ -64,27 +78,14 @@ export default function SearchResults(props: Props): JSX.Element {
           <Typography component="h1" variant="h5">
             Search Results
           </Typography>
-          {/* TODO: temporary */}
-          {/* <Typography component="div">Error: {JSON.stringify(state.error)}</Typography>
-          <Typography component="div">Data: {JSON.stringify(data)}</Typography> */}
-          {/* end temporary */}
           {state.isLoading && <CircularProgress />}
           {state.isError && <Typography component="div">Error: {state.error?.message}</Typography>}
           {data && <SearchResultsTable data={data} />}
         </Grid>
       </Grid>
+      <Button onClick={() => refreshPage()}>Refresh</Button>
     </Container>
   );
-}
-
-function fixSearchParams(params: SearchParams): SearchParams {
-  Object.entries(params).forEach(([key, value]) => {
-    if (!value) {
-      delete params[key as keyof SearchParams];
-      return;
-    }
-  });
-  return params;
 }
 
 const useStyles = makeStyles((theme) => ({
