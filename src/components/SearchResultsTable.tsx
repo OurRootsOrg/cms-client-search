@@ -36,14 +36,21 @@ export default function SearchResultsTable(props: Props): JSX.Element {
       <h2>Name</h2>
 
       <Grid container spacing={3}>
-        <Grid item xs={6}>
+        <Grid item xs={8}>
           <Paper className={classes.grid}>
-            Reprehenderit occaecat id eiusmod cupidatat cupidatat. Ullamco reprehenderit velit non
-            ea. Amet dolor labore laboris veniam consequat tempor aliqua adipisicing laboris. Magna
-            est amet nulla sunt ipsum enim exercitation sint id culpa quis occaecat labore.
+            <Typography>
+              Reprehenderit occaecat id eiusmod cupidatat cupidatat. Ullamco reprehenderit velit non
+              ea. Amet dolor labore laboris veniam consequat tempor aliqua adipisicing laboris.
+              Magna est amet nulla sunt ipsum enim exercitation sint id culpa quis occaecat labore.
+            </Typography>
+            <Typography>
+              Quis fugiat est sit fugiat do cupidatat. Officia et anim qui eu in ea culpa minim
+              fugiat velit. Consequat laboris eu ipsum amet cupidatat est reprehenderit laborum non
+              adipisicing consequat duis aliquip.
+            </Typography>
           </Paper>
         </Grid>
-        <Grid item xs={6} className={classes.image}></Grid>
+        <Grid item xs={4} className={classes.image}></Grid>
       </Grid>
       <p>
         Officia occaecat dolor incididunt elit qui id ut ut minim minim culpa excepteur. Laboris
@@ -52,6 +59,11 @@ export default function SearchResultsTable(props: Props): JSX.Element {
         Velit voluptate dolor consequat velit fugiat nisi voluptate sint in sunt incididunt ullamco.
         Irure pariatur sit cupidatat nostrud ex veniam anim ex esse elit sunt officia aliqua.
         Exercitation ex culpa pariatur proident ipsum sint amet proident et sunt cillum do.
+      </p>
+      <p>
+        Sit Lorem do mollit elit. Consequat ea eu enim et adipisicing. In adipisicing officia
+        pariatur exercitation tempor dolor labore deserunt est ea sit deserunt. Magna dolor in in
+        cupidatat sint ea exercitation nostrud duis ullamco.
       </p>
     </div>
   );
@@ -153,7 +165,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     grid: {
       padding: theme.spacing(2),
-      textAlign: 'center',
+      textAlign: 'left',
       color: theme.palette.text.secondary,
     },
     image: {
