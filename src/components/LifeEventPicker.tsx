@@ -15,7 +15,7 @@ export default function LifeEventPicker(props: Props): JSX.Element {
   const { params } = props;
   const { register } = useFormContext();
 
-  const [birth, setBirth] = useState(false);
+  const [birth, setBirth] = useState(true);
   const [residence, setResidence] = useState(false);
   const [marriage, setMarriage] = useState(false);
   const [death, setDeath] = useState(false);
@@ -40,7 +40,7 @@ export default function LifeEventPicker(props: Props): JSX.Element {
 
       {birth && (
         <Grid container spacing={2} style={{ marginBottom: 20 }}>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={8} sm={8}>
             <TextField
               inputRef={register}
               name="birthPlace"
@@ -52,7 +52,7 @@ export default function LifeEventPicker(props: Props): JSX.Element {
               autoFocus
             />
           </Grid>
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={4} sm={4}>
             <TextField
               inputRef={register({ maxLength: 4 })}
               name="birthDate"
@@ -63,16 +63,6 @@ export default function LifeEventPicker(props: Props): JSX.Element {
               defaultValue={params?.birthDate}
             />
           </Grid>
-          <Grid item xs={6} sm={3}>
-            <TextField
-              inputRef={register}
-              name="birthDateEnd"
-              variant="outlined"
-              fullWidth
-              id="birthDateEnd"
-              label="Year End"
-            />
-          </Grid>
         </Grid>
       )}
 
@@ -80,7 +70,7 @@ export default function LifeEventPicker(props: Props): JSX.Element {
 
       {residence && (
         <Grid container spacing={2} style={{ marginBottom: 20 }}>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={8} sm={8}>
             <TextField
               inputRef={register}
               name="residencePlace"
@@ -92,7 +82,7 @@ export default function LifeEventPicker(props: Props): JSX.Element {
               autoFocus
             />
           </Grid>
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={4} sm={4}>
             <TextField
               inputRef={register}
               name="residenceDate"
@@ -103,16 +93,6 @@ export default function LifeEventPicker(props: Props): JSX.Element {
               defaultValue={params?.residenceDate}
             />
           </Grid>
-          <Grid item xs={6} sm={3}>
-            <TextField
-              inputRef={register}
-              name="residenceDateEnd"
-              variant="outlined"
-              fullWidth
-              id="residenceDateEnd"
-              label="Year End"
-            />
-          </Grid>
         </Grid>
       )}
 
@@ -120,7 +100,7 @@ export default function LifeEventPicker(props: Props): JSX.Element {
 
       {marriage && (
         <Grid container spacing={2} style={{ marginBottom: 20 }}>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={8} sm={8}>
             <TextField
               inputRef={register}
               name="marriagePlace"
@@ -132,7 +112,7 @@ export default function LifeEventPicker(props: Props): JSX.Element {
               autoFocus
             />
           </Grid>
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={4} sm={4}>
             <TextField
               inputRef={register}
               name="marriageDate"
@@ -143,16 +123,6 @@ export default function LifeEventPicker(props: Props): JSX.Element {
               defaultValue={params?.marriageDate}
             />
           </Grid>
-          <Grid item xs={6} sm={3}>
-            <TextField
-              inputRef={register}
-              name="marriageDateEnd"
-              variant="outlined"
-              fullWidth
-              id="marriageDateEnd"
-              label="Year End"
-            />
-          </Grid>
         </Grid>
       )}
 
@@ -160,7 +130,7 @@ export default function LifeEventPicker(props: Props): JSX.Element {
 
       {death && (
         <Grid container spacing={2} style={{ marginBottom: 20 }}>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={8} sm={8}>
             <TextField
               inputRef={register}
               name="deathPlace"
@@ -171,7 +141,7 @@ export default function LifeEventPicker(props: Props): JSX.Element {
               label="Death"
             />
           </Grid>
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={4} sm={4}>
             <TextField
               inputRef={register}
               name="deathDate"
@@ -182,16 +152,6 @@ export default function LifeEventPicker(props: Props): JSX.Element {
               defaultValue={params?.birthDate}
             />
           </Grid>
-          <Grid item xs={6} sm={3}>
-            <TextField
-              inputRef={register}
-              name="deathDateEnd"
-              variant="outlined"
-              fullWidth
-              id="deathDateEnd"
-              label="Year End"
-            />
-          </Grid>
         </Grid>
       )}
 
@@ -199,7 +159,7 @@ export default function LifeEventPicker(props: Props): JSX.Element {
 
       {anyEvent && (
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={8} sm={8}>
             <TextField
               inputRef={register}
               name="anyPlace"
@@ -211,7 +171,7 @@ export default function LifeEventPicker(props: Props): JSX.Element {
               autoFocus
             />
           </Grid>
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={4} sm={4}>
             <TextField
               inputRef={register}
               name="anyDate"
@@ -220,16 +180,6 @@ export default function LifeEventPicker(props: Props): JSX.Element {
               id="anyDate"
               label="Year Start"
               defaultValue={params?.anyDate}
-            />
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <TextField
-              inputRef={register}
-              name="anyDateEnd"
-              variant="outlined"
-              fullWidth
-              id="anyDateEnd"
-              label="Year End"
             />
           </Grid>
         </Grid>

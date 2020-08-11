@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { SearchParams } from '../util/useSearch';
-import CategoryPicker from './CategoryPicker';
 import LifeEventPicker from './LifeEventPicker';
 import NamePicker from './NamePicker';
 import RelationshipPicker from './RelationshipPicker';
@@ -35,7 +34,6 @@ export default function SearchForm(props: SearchFormProps): JSX.Element {
           <NamePicker />
           <LifeEventPicker />
           <RelationshipPicker />
-          <CategoryPicker />
           <Box mt={5}>
             <Button variant="contained" color="primary" type="submit" value="Submit">
               Search

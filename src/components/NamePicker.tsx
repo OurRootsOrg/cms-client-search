@@ -1,16 +1,16 @@
 import Checkbox from '@material-ui/core/Checkbox';
-import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
 import Popover from '@material-ui/core/Popover';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import React, { ChangeEvent, MouseEvent, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { SearchParams } from '../util/useSearch';
+// import FormControl from '@material-ui/core/FormControl';
+// import Radio from '@material-ui/core/Radio';
+// import RadioGroup from '@material-ui/core/RadioGroup';
 
 type Props = {
   params?: SearchParams;
@@ -24,8 +24,8 @@ export default function NamePicker(props: Props): JSX.Element {
   const [firstDisabled, setFirstDisabled] = useState(true);
   const [lastDisabled, setLastDisabled] = useState(true);
 
-  const [yearAnchor, setYearAnchor] = useState<undefined | HTMLElement>();
-  const [yearDisabled, setYearDisabled] = useState(true);
+  // const [yearAnchor, setYearAnchor] = useState<undefined | HTMLElement>();
+  // const [yearDisabled, setYearDisabled] = useState(true);
 
   const [firstName, setFirstName] = useState({
     firstSounds: false,
@@ -39,7 +39,7 @@ export default function NamePicker(props: Props): JSX.Element {
     lastInitials: false,
   });
 
-  const [birthYear, setBirthYear] = useState('thisYear');
+  // const [birthYear, setBirthYear] = useState('thisYear');
 
   const handleClick1 = (event: MouseEvent<HTMLElement>): void => {
     setFirstAnchor(event.currentTarget);
@@ -65,13 +65,13 @@ export default function NamePicker(props: Props): JSX.Element {
     }
   };
 
-  const handleClickYear = (event: MouseEvent<HTMLElement>): void => {
-    setYearAnchor(event.currentTarget);
-    if (!yearAnchor) {
-      setYearDisabled(!yearDisabled);
-      // setBirthYear({}); //-----------------need to reset radio buttons on popover disabled
-    }
-  };
+  // const handleClickYear = (event: MouseEvent<HTMLElement>): void => {
+  //   setYearAnchor(event.currentTarget);
+  //   if (!yearAnchor) {
+  //     setYearDisabled(!yearDisabled);
+  //     // setBirthYear({}); //-----------------need to reset radio buttons on popover disabled
+  //   }
+  // };
 
   const handleClose1 = (): void => {
     setFirstAnchor(undefined);
@@ -80,17 +80,17 @@ export default function NamePicker(props: Props): JSX.Element {
     setLastAnchor(undefined);
   };
 
-  const handleCloseYear = (): void => {
-    setYearAnchor(undefined);
-  };
+  // const handleCloseYear = (): void => {
+  //   setYearAnchor(undefined);
+  // };
 
   const open = !!firstAnchor;
   const open2 = !!lastAnchor;
-  const openYear = !!yearAnchor;
+  // const openYear = !!yearAnchor;
 
   const fName = firstAnchor && 'simple-popover';
   const lName = lastAnchor && 'simple-popover';
-  const eYear = yearAnchor && 'simple-popover';
+  // const eYear = yearAnchor && 'simple-popover';
 
   function handleChange1(event: ChangeEvent<HTMLInputElement>): void {
     setFirstName({ ...firstName, [event.target.name]: event.target.checked });
@@ -100,9 +100,9 @@ export default function NamePicker(props: Props): JSX.Element {
     setLastName({ ...lastName, [event.target.name]: event.target.checked });
   }
 
-  function handleChangeYear(event: ChangeEvent<HTMLInputElement>): void {
-    setBirthYear((event.target as HTMLInputElement).value);
-  }
+  // function handleChangeYear(event: ChangeEvent<HTMLInputElement>): void {
+  //   setBirthYear((event.target as HTMLInputElement).value);
+  // }
 
   const { firstSounds, firstSimilar, firstInitials } = firstName;
   const { lastSounds, lastSimilar, lastInitials } = lastName;
@@ -110,7 +110,7 @@ export default function NamePicker(props: Props): JSX.Element {
   return (
     <div className={classes.paper}>
       <Grid container spacing={2}>
-        <Grid item xs={10} sm={5}>
+        <Grid item xs={12} sm={6}>
           <TextField
             inputRef={register}
             name="given"
@@ -188,7 +188,7 @@ export default function NamePicker(props: Props): JSX.Element {
             </div>
           </Popover>
         </Grid>
-        <Grid item xs={10} sm={5}>
+        <Grid item xs={12} sm={6}>
           <TextField
             inputRef={register}
             variant="outlined"
@@ -265,7 +265,7 @@ export default function NamePicker(props: Props): JSX.Element {
             </div>
           </Popover>
         </Grid>
-        <Grid item xs={4} sm={2}>
+        {/* <Grid item xs={4} sm={2}>
           <TextField
             inputRef={register}
             name="birthDate"
@@ -342,7 +342,7 @@ export default function NamePicker(props: Props): JSX.Element {
               </RadioGroup>
             </FormControl>
           </Popover>
-        </Grid>
+        </Grid> */}
       </Grid>
     </div>
   );

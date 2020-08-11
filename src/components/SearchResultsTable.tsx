@@ -23,6 +23,7 @@ export default function SearchResultsTable(props: Props): JSX.Element {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [detailRow, setDetailRow] = useState();
+  console.log('Data: ', data.hits);
 
   const handleClose = (): void => {
     setDetailRow(undefined);
