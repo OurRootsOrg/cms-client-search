@@ -1,7 +1,7 @@
 import { NavigateFn, RouteComponentProps, Router, useNavigate } from '@reach/router';
 import React from 'react';
 import useQuery, { toQueryString } from '../util/useQuery';
-import { SearchParams } from '../util/useSearch';
+import { fixSearchParams, SearchParams } from '../util/useSearch';
 import SearchForm, { SearchFormProps } from './SearchForm';
 import SearchResults, { SearchResultsProps } from './SearchResults';
 
@@ -36,9 +36,21 @@ function Results(props: ResultProps): JSX.Element {
     navToSearch(navigate, params);
   }
 
-  return <SearchResults params={params as SearchParams} onSubmit={doSubmit} {...props} />;
+  function doCancel(): void {
+    navigate('/search');
+  }
+
+  return (
+    <SearchResults
+      params={params as SearchParams}
+      onSubmit={doSubmit}
+      onCancel={doCancel}
+      {...props}
+    />
+  );
 }
 
 function navToSearch(navigate: NavigateFn, params: SearchParams): void {
+  fixSearchParams(params);
   navigate(`/search/results?query=${encodeURIComponent(toQueryString(params))}`);
 }

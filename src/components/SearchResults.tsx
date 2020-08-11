@@ -17,10 +17,11 @@ import SearchResultsTable from './SearchResultsTable';
 export type SearchResultsProps = {
   params: SearchParams;
   onSubmit?: (params: SearchParams) => void;
+  onCancel?: () => void;
 };
 export default function SearchResults(props: SearchResultsProps): JSX.Element {
   const classes = useStyles();
-  const { params, onSubmit } = props;
+  const { params, onSubmit, onCancel } = props;
   const formMethods = useForm();
   const { state, data, setParams } = useSearch(params);
 
@@ -54,7 +55,7 @@ export default function SearchResults(props: SearchResultsProps): JSX.Element {
                   variant="outlined"
                   color="primary"
                   className={classes.button}
-                  onClick={refreshPage}
+                  onClick={onCancel}
                 >
                   Start Over
                 </Button>
@@ -71,6 +72,7 @@ export default function SearchResults(props: SearchResultsProps): JSX.Element {
           {data && <SearchResultsTable data={data} />}
         </Grid>
       </Grid>
+      <Button onClick={() => refreshPage()}>Refresh</Button>
     </Container>
   );
 }

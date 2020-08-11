@@ -125,7 +125,7 @@ export function useSearch(params: SearchParams): UseSearchContext {
   };
 }
 
-function fixSearchParams(params: SearchParams): SearchParams {
+export function fixSearchParams(params: SearchParams): SearchParams {
   console.log('fixing', params);
   Object.entries(params).forEach(([key, value]) => {
     if (!value || (typeof value === 'string' && value === 'false')) {
