@@ -1,12 +1,6 @@
-import axios, { AxiosError, AxiosRequestConfig } from 'axios';
-import axiosRetry from 'axios-retry';
+import { AxiosError, AxiosRequestConfig } from 'axios';
 import { Dispatch, SetStateAction, useEffect, useReducer, useState } from 'react';
-
-const baseUrl = process.env.REACT_APP_CMS_URL;
-
-const axiosClient = axios.create();
-// retry non-POST requests on network or 5XX errors
-axiosRetry(axiosClient, { retryDelay: axiosRetry.exponentialDelay });
+import { getConfig, request } from './http';
 
 export type RequestState<T> = {
   isLoading: boolean;
@@ -24,13 +18,6 @@ export type GetResult<T> = [RequestState<T>, Dispatch<string>];
 
 export function useHttpGet<T>(url: string): GetResult<T> {
   const [state, setConfig] = useHttpRequest<T>(getConfig(url));
-
-  function getConfig(url: string): AxiosRequestConfig {
-    return {
-      method: 'get',
-      url: url.match(/^https?:\/\//) ? url : baseUrl + url,
-    };
-  }
 
   function setUrl(url: string): void {
     setConfig(getConfig(url));
@@ -53,7 +40,7 @@ export function useHttpRequest<T>(config: AxiosRequestConfig): RequestResult<T> 
     async function fetch(): Promise<void> {
       dispatch({ type: 'INIT' });
       try {
-        const result = await axios.request(currentConfig);
+        const result = await request(currentConfig);
 
         if (!didCancel) {
           dispatch({ type: 'SUCCESS', payload: result.data });

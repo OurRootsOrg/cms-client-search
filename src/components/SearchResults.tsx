@@ -5,9 +5,9 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { SearchParams, useSearch } from '../util/useSearch';
+import { lookup, SearchHit, SearchParams, useSearch } from '../util/useSearch';
 import LifeEventPicker from './LifeEventPicker';
 import NamePicker from './NamePicker';
 import RelationshipPicker from './RelationshipPicker';
@@ -24,6 +24,17 @@ export default function SearchResults(props: SearchResultsProps): JSX.Element {
   const { params, onSubmit, onCancel } = props;
   const formMethods = useForm();
   const { state, data, setParams } = useSearch(params);
+
+  const [person, setPerson] = useState<SearchHit>();
+  useEffect(() => {
+    async function lk(id: string): Promise<void> {
+      const result = await lookup(id);
+      setPerson(result);
+    }
+    if (data && data.hits[0]) {
+      lk(data.hits[0].id);
+    }
+  }, [data?.hits[0]?.id]);
 
   function doSubmit(params: SearchParams): void {
     setParams(params);
@@ -61,7 +72,7 @@ export default function SearchResults(props: SearchResultsProps): JSX.Element {
         </Grid>
         <Grid item xs={8}>
           <Typography component="h1" variant="h5">
-            Search Results
+            Search Results {JSON.stringify(person)}
           </Typography>
           {state.isLoading && <CircularProgress />}
           {state.isError && <Typography component="div">Error: {state.error?.message}</Typography>}

@@ -1,4 +1,5 @@
 import { Dispatch } from 'react';
+import { get } from './http';
 import { RequestState, useHttpGet } from './useHttp';
 
 /**
@@ -144,4 +145,8 @@ export function fixSearchParams(
     }
   });
   return params;
+}
+
+export async function lookup(id: string): Promise<SearchHit> {
+  return (await get(`/search/${id}`)).data;
 }
