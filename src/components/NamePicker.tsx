@@ -115,7 +115,6 @@ export default function NamePicker(props: Props): JSX.Element {
             inputRef={register}
             name="given"
             variant="outlined"
-            required
             fullWidth
             id="given"
             label="First Name"
@@ -193,7 +192,6 @@ export default function NamePicker(props: Props): JSX.Element {
           <TextField
             inputRef={register}
             variant="outlined"
-            required
             fullWidth
             id="surname"
             label="Last Name"

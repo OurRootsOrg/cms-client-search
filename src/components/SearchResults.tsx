@@ -5,7 +5,8 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import React from 'react';
+import { globalHistory } from '@reach/router';
+import React, { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { SearchParams, useSearch } from '../util/useSearch';
 import LifeEventPicker from './LifeEventPicker';
@@ -33,8 +34,18 @@ export default function SearchResults(props: SearchResultsProps): JSX.Element {
   function refreshPage(): void {
     window.location.reload();
   }
+
+  useEffect(() => {
+    console.log('effecting', globalHistory);
+    return globalHistory.listen(({ action }) => {
+      console.log('history', action);
+      if (action === 'PUSH') {
+        window.location.reload();
+      }
+    });
+  });
+
   console.log('Result Form Values', formMethods.watch());
-  console.log('Search Result', data);
 
   return (
     <Container component="main" className={classes.container}>

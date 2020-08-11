@@ -1,3 +1,6 @@
+import Modal from '@material-ui/core/Modal';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
@@ -8,10 +11,7 @@ import LastPage from '@material-ui/icons/LastPage';
 import Search from '@material-ui/icons/Search';
 import MaterialTable, { Icons } from 'material-table';
 import React, { forwardRef, useState } from 'react';
-import Typography from '@material-ui/core/Typography';
 import { SearchResult } from '../util/useSearch';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
 
 type Props = {
   data: SearchResult;
@@ -21,8 +21,6 @@ export default function SearchResultsTable(props: Props): JSX.Element {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [detailRow, setDetailRow] = useState();
-
-  console.log('Data:', data);
 
   const handleClose = (): void => {
     setDetailRow(undefined);
