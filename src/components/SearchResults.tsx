@@ -25,6 +25,8 @@ export default function SearchResults(props: SearchResultsProps): JSX.Element {
   const formMethods = useForm();
   const { state, data, setParams } = useSearch(params);
 
+  //TODO: Temporary
+  //Note: There's also a temporary display of 'person' after the text 'Search Results'
   const [person, setPerson] = useState<SearchHit>();
   useEffect(() => {
     async function lk(id: string): Promise<void> {
@@ -35,6 +37,7 @@ export default function SearchResults(props: SearchResultsProps): JSX.Element {
       lk(data.hits[0].id);
     }
   }, [data?.hits[0]?.id]);
+  //TODO: End Temporary
 
   function doSubmit(params: SearchParams): void {
     setParams(params);
