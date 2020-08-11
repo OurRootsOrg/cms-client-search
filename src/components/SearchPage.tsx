@@ -7,9 +7,7 @@ import SearchResults, { SearchResultsProps } from './SearchResults';
 
 export default function SearchPage(): JSX.Element {
   useEffect(() => {
-    console.log('effecting', globalHistory);
     return globalHistory.listen(({ action }) => {
-      console.log('history', action);
       if (action === 'POP') {
         window.location.reload();
       }
