@@ -12,6 +12,8 @@ import Search from '@material-ui/icons/Search';
 import MaterialTable, { Icons } from 'material-table';
 import React, { forwardRef, useState } from 'react';
 import { SearchResult } from '../util/useSearch';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 type Props = {
   data: SearchResult;
@@ -21,6 +23,7 @@ export default function SearchResultsTable(props: Props): JSX.Element {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [detailRow, setDetailRow] = useState();
+  console.log('Data: ', data.hits);
 
   const handleClose = (): void => {
     setDetailRow(undefined);
@@ -29,18 +32,37 @@ export default function SearchResultsTable(props: Props): JSX.Element {
   //Temporary -------------------------- TODO : need to add row data to modal, add photos and details
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2>Text in a modal</h2>
+      <h2>Name</h2>
+
+      <Grid container spacing={3}>
+        <Grid item xs={8}>
+          <Paper className={classes.grid}>
+            <Typography>
+              Reprehenderit occaecat id eiusmod cupidatat cupidatat. Ullamco reprehenderit velit non
+              ea. Amet dolor labore laboris veniam consequat tempor aliqua adipisicing laboris.
+              Magna est amet nulla sunt ipsum enim exercitation sint id culpa quis occaecat labore.
+            </Typography>
+            <Typography>
+              Quis fugiat est sit fugiat do cupidatat. Officia et anim qui eu in ea culpa minim
+              fugiat velit. Consequat laboris eu ipsum amet cupidatat est reprehenderit laborum non
+              adipisicing consequat duis aliquip.
+            </Typography>
+          </Paper>
+        </Grid>
+        <Grid item xs={4} className={classes.image}></Grid>
+      </Grid>
       <p>
         Officia occaecat dolor incididunt elit qui id ut ut minim minim culpa excepteur. Laboris
         aute enim Lorem voluptate. Ex veniam eu sunt veniam ad nulla Lorem aliquip ea. Culpa et
         ullamco velit do voluptate veniam dolor amet minim. Commodo commodo minim fugiat sunt sint.
         Velit voluptate dolor consequat velit fugiat nisi voluptate sint in sunt incididunt ullamco.
         Irure pariatur sit cupidatat nostrud ex veniam anim ex esse elit sunt officia aliqua.
-        Exercitation ex culpa pariatur proident ipsum sint amet proident et sunt cillum do. Fugiat
-        nostrud qui id ut ea est. Eu amet esse aliquip aliqua eu incididunt consectetur proident
-        exercitation exercitation deserunt aliqua. Voluptate ut proident reprehenderit mollit amet.
-        Ipsum eu reprehenderit consectetur voluptate laborum excepteur reprehenderit laborum dolore
-        Lorem enim eu.
+        Exercitation ex culpa pariatur proident ipsum sint amet proident et sunt cillum do.
+      </p>
+      <p>
+        Sit Lorem do mollit elit. Consequat ea eu enim et adipisicing. In adipisicing officia
+        pariatur exercitation tempor dolor labore deserunt est ea sit deserunt. Magna dolor in in
+        cupidatat sint ea exercitation nostrud duis ullamco.
       </p>
     </div>
   );
@@ -139,6 +161,20 @@ const useStyles = makeStyles((theme: Theme) =>
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
+    },
+    grid: {
+      padding: theme.spacing(2),
+      textAlign: 'left',
+      color: theme.palette.text.secondary,
+    },
+    image: {
+      backgroundImage:
+        'url(https://images.unsplash.com/photo-1467688695332-6b486449d78f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2106&q=80)',
+      backgroundRepeat: 'no-repeat',
+      backgroundColor:
+        theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
     },
   })
 );
