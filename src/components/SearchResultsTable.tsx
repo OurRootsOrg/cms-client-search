@@ -12,6 +12,8 @@ import Typography from '@material-ui/core/Typography';
 import { SearchResult } from '../util/useSearch';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 type Props = {
   data: SearchResult;
@@ -31,18 +33,25 @@ export default function SearchResultsTable(props: Props): JSX.Element {
   //Temporary -------------------------- TODO : need to add row data to modal, add photos and details
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2>Text in a modal</h2>
+      <h2>Name</h2>
+
+      <Grid container spacing={3}>
+        <Grid item xs={6}>
+          <Paper className={classes.grid}>
+            Reprehenderit occaecat id eiusmod cupidatat cupidatat. Ullamco reprehenderit velit non
+            ea. Amet dolor labore laboris veniam consequat tempor aliqua adipisicing laboris. Magna
+            est amet nulla sunt ipsum enim exercitation sint id culpa quis occaecat labore.
+          </Paper>
+        </Grid>
+        <Grid item xs={6} className={classes.image}></Grid>
+      </Grid>
       <p>
         Officia occaecat dolor incididunt elit qui id ut ut minim minim culpa excepteur. Laboris
         aute enim Lorem voluptate. Ex veniam eu sunt veniam ad nulla Lorem aliquip ea. Culpa et
         ullamco velit do voluptate veniam dolor amet minim. Commodo commodo minim fugiat sunt sint.
         Velit voluptate dolor consequat velit fugiat nisi voluptate sint in sunt incididunt ullamco.
         Irure pariatur sit cupidatat nostrud ex veniam anim ex esse elit sunt officia aliqua.
-        Exercitation ex culpa pariatur proident ipsum sint amet proident et sunt cillum do. Fugiat
-        nostrud qui id ut ea est. Eu amet esse aliquip aliqua eu incididunt consectetur proident
-        exercitation exercitation deserunt aliqua. Voluptate ut proident reprehenderit mollit amet.
-        Ipsum eu reprehenderit consectetur voluptate laborum excepteur reprehenderit laborum dolore
-        Lorem enim eu.
+        Exercitation ex culpa pariatur proident ipsum sint amet proident et sunt cillum do.
       </p>
     </div>
   );
@@ -141,6 +150,20 @@ const useStyles = makeStyles((theme: Theme) =>
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
+    },
+    grid: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    },
+    image: {
+      backgroundImage:
+        'url(https://images.unsplash.com/photo-1467688695332-6b486449d78f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2106&q=80)',
+      backgroundRepeat: 'no-repeat',
+      backgroundColor:
+        theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
     },
   })
 );
