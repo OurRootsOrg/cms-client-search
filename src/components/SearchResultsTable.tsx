@@ -80,20 +80,27 @@ export default function SearchResultsTable(props: Props): JSX.Element {
             field: 'person.name',
             render: (_rowData) => {
               const person = JSON.stringify(_rowData.person);
+              // const events = JSON.stringify(_rowData.person.events);
+              // const relationships = JSON.stringify(_rowData.relationships);
+              // const eventRow = events.slice(1, events.length - 1);
+              // const relationshipRow = relationships.slice(1, relationships.length - 1);
+
               const result = person.slice(1, person.length - 1);
               const arr = result.split(',');
-              // function name(param){
-              //   let arr = result.split(",")
-              // }
+              console.log(arr);
 
               return (
                 <div>
-                  {/* <Typography>{_rowData.person.name}</Typography>
-                  <Typography>{_rowData.person.role}</Typography> */}
-                  <Typography>{result}</Typography>
-                  {arr.map((row) => (
-                    <Typography>{row}</Typography>
-                  ))}
+                  <Typography>Name: {_rowData.person.name}</Typography>
+                  <Typography>Name: {_rowData.person.role}</Typography>
+                  <Typography>Events: {JSON.stringify(_rowData.person.events)}</Typography>
+                  <Typography>
+                    Relationships: {JSON.stringify(_rowData.person.relationships)}
+                  </Typography>
+
+                  {/* {arr.map((row) => (
+                    <Typography>{row} </Typography>
+                  ))} */}
                 </div>
               );
             },
