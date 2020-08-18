@@ -79,10 +79,21 @@ export default function SearchResultsTable(props: Props): JSX.Element {
             title: 'Name',
             field: 'person.name',
             render: (_rowData) => {
+              const person = JSON.stringify(_rowData.person);
+              const result = person.slice(1, person.length - 1);
+              const arr = result.split(',');
+              // function name(param){
+              //   let arr = result.split(",")
+              // }
+
               return (
                 <div>
-                  <Typography>{_rowData.person.name}</Typography>
-                  <Typography>{_rowData.person.role}</Typography>
+                  {/* <Typography>{_rowData.person.name}</Typography>
+                  <Typography>{_rowData.person.role}</Typography> */}
+                  <Typography>{result}</Typography>
+                  {arr.map((row) => (
+                    <Typography>{row}</Typography>
+                  ))}
                 </div>
               );
             },

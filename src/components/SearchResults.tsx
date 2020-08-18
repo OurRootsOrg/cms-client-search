@@ -46,7 +46,7 @@ export default function SearchResults(props: SearchResultsProps): JSX.Element {
   }
 
   console.log('Result Form Values', formMethods.watch());
-
+  console.log(person);
   return (
     <Container component="main" className={classes.container}>
       <Grid container spacing={2}>
@@ -76,7 +76,8 @@ export default function SearchResults(props: SearchResultsProps): JSX.Element {
         </Grid>
         <Grid item xs={8}>
           <Typography component="h1" variant="h5">
-            Search Results {JSON.stringify(person)}
+            Search Results
+            {/* {JSON.stringify(person)} */}
           </Typography>
           {state.isLoading && <CircularProgress />}
           {state.isError && <Typography component="div">Error: {state.error?.message}</Typography>}
