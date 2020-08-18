@@ -1,13 +1,16 @@
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
-import Popover from '@material-ui/core/Popover';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import React, { ChangeEvent, MouseEvent, useState } from 'react';
+import React, { MouseEvent, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { SearchParams } from '../util/useSearch';
+/* ------------- FirstName and LastName Popovers ------------- */
+// import {ChangeEvent} from 'react'
+// import Checkbox from '@material-ui/core/Checkbox';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import FormGroup from '@material-ui/core/FormGroup';
+// import Popover from '@material-ui/core/Popover';
+/* ------------- Birth Year with +years radio buttons ------------- */
 // import FormControl from '@material-ui/core/FormControl';
 // import Radio from '@material-ui/core/Radio';
 // import RadioGroup from '@material-ui/core/RadioGroup';
@@ -27,17 +30,17 @@ export default function NamePicker(props: Props): JSX.Element {
   // const [yearAnchor, setYearAnchor] = useState<undefined | HTMLElement>();
   // const [yearDisabled, setYearDisabled] = useState(true);
 
-  const [firstName, setFirstName] = useState({
-    firstSounds: false,
-    firstSimilar: false,
-    firstInitials: false,
-  });
+  // const [firstName, setFirstName] = useState({
+  //   firstSounds: false,
+  //   firstSimilar: false,
+  //   firstInitials: false,
+  // });
 
-  const [lastName, setLastName] = useState({
-    lastSounds: false,
-    lastSimilar: false,
-    lastInitials: false,
-  });
+  // const [lastName, setLastName] = useState({
+  //   lastSounds: false,
+  //   lastSimilar: false,
+  //   lastInitials: false,
+  // });
 
   // const [birthYear, setBirthYear] = useState('thisYear');
 
@@ -45,11 +48,11 @@ export default function NamePicker(props: Props): JSX.Element {
     setFirstAnchor(event.currentTarget);
     if (!firstAnchor) {
       setFirstDisabled(!firstDisabled);
-      setFirstName({
-        firstSounds: false,
-        firstSimilar: false,
-        firstInitials: false,
-      });
+      // setFirstName({
+      //   firstSounds: false,
+      //   firstSimilar: false,
+      //   firstInitials: false,
+      // });
     }
   };
 
@@ -57,13 +60,17 @@ export default function NamePicker(props: Props): JSX.Element {
     setLastAnchor(event.currentTarget);
     if (!lastAnchor) {
       setLastDisabled(!lastDisabled);
-      setLastName({
-        lastSounds: false,
-        lastSimilar: false,
-        lastInitials: false,
-      });
+      // setLastName({
+      //   lastSounds: false,
+      //   lastSimilar: false,
+      //   lastInitials: false,
+      // });
     }
   };
+
+  const fName = firstAnchor && 'simple-popover';
+  const lName = lastAnchor && 'simple-popover';
+  // const eYear = yearAnchor && 'simple-popover';
 
   // const handleClickYear = (event: MouseEvent<HTMLElement>): void => {
   //   setYearAnchor(event.currentTarget);
@@ -73,39 +80,35 @@ export default function NamePicker(props: Props): JSX.Element {
   //   }
   // };
 
-  const handleClose1 = (): void => {
-    setFirstAnchor(undefined);
-  };
-  const handleClose2 = (): void => {
-    setLastAnchor(undefined);
-  };
+  // const handleClose1 = (): void => {
+  //   setFirstAnchor(undefined);
+  // };
+  // const handleClose2 = (): void => {
+  //   setLastAnchor(undefined);
+  // };
 
   // const handleCloseYear = (): void => {
   //   setYearAnchor(undefined);
   // };
 
-  const open = !!firstAnchor;
-  const open2 = !!lastAnchor;
+  // const open = !!firstAnchor;
+  // const open2 = !!lastAnchor;
   // const openYear = !!yearAnchor;
 
-  const fName = firstAnchor && 'simple-popover';
-  const lName = lastAnchor && 'simple-popover';
-  // const eYear = yearAnchor && 'simple-popover';
+  // function handleChange1(event: ChangeEvent<HTMLInputElement>): void {
+  //   setFirstName({ ...firstName, [event.target.name]: event.target.checked });
+  // }
 
-  function handleChange1(event: ChangeEvent<HTMLInputElement>): void {
-    setFirstName({ ...firstName, [event.target.name]: event.target.checked });
-  }
-
-  function handleChange2(event: ChangeEvent<HTMLInputElement>): void {
-    setLastName({ ...lastName, [event.target.name]: event.target.checked });
-  }
+  // function handleChange2(event: ChangeEvent<HTMLInputElement>): void {
+  //   setLastName({ ...lastName, [event.target.name]: event.target.checked });
+  // }
 
   // function handleChangeYear(event: ChangeEvent<HTMLInputElement>): void {
   //   setBirthYear((event.target as HTMLInputElement).value);
   // }
 
-  const { firstSounds, firstSimilar, firstInitials } = firstName;
-  const { lastSounds, lastSimilar, lastInitials } = lastName;
+  // const { firstSounds, firstSimilar, firstInitials } = firstName;
+  // const { lastSounds, lastSimilar, lastInitials } = lastName;
 
   return (
     <div className={classes.paper}>
@@ -129,7 +132,7 @@ export default function NamePicker(props: Props): JSX.Element {
             onClick={handleClick1}
           ></input>
           Exact spelling and ...
-          <Popover
+          {/* <Popover
             id={fName}
             open={open}
             anchorEl={firstAnchor}
@@ -186,7 +189,7 @@ export default function NamePicker(props: Props): JSX.Element {
                 />
               </FormGroup>
             </div>
-          </Popover>
+          </Popover> */}
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
@@ -206,7 +209,7 @@ export default function NamePicker(props: Props): JSX.Element {
             onClick={handleClick2}
           ></input>
           Exact Spelling and ...
-          <Popover
+          {/* <Popover
             id={lName}
             open={open2}
             anchorEl={lastAnchor}
@@ -263,7 +266,7 @@ export default function NamePicker(props: Props): JSX.Element {
                 />
               </FormGroup>
             </div>
-          </Popover>
+          </Popover> */}
         </Grid>
         {/* <Grid item xs={4} sm={2}>
           <TextField
