@@ -79,7 +79,6 @@ export default function SearchResultsTable(props: Props): JSX.Element {
             title: 'Name',
             field: 'person.name',
             render: (_rowData) => {
-              // const person = JSON.stringify(_rowData.person);
               const events = JSON.stringify(_rowData.person.events);
               const relationships = JSON.stringify(_rowData.person.relationships);
               let eventRow;
@@ -99,6 +98,7 @@ export default function SearchResultsTable(props: Props): JSX.Element {
                 ));
               }
 
+              // const person = JSON.stringify(_rowData.person);
               // const result = person.slice(1, person.length - 1);
               // const arr = result.split(',');
               // console.log(arr);

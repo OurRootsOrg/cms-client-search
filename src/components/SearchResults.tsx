@@ -77,7 +77,7 @@ export default function SearchResults(props: SearchResultsProps): JSX.Element {
         <Grid item xs={8}>
           <Typography component="h1" variant="h5">
             Search Results
-            {/* {JSON.stringify(person)} */}
+            {JSON.stringify(person)}
           </Typography>
           {state.isLoading && <CircularProgress />}
           {state.isError && <Typography component="div">Error: {state.error?.message}</Typography>}
