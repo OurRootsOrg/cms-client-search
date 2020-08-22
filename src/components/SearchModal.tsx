@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -6,8 +6,9 @@ import Typography from '@material-ui/core/Typography';
 
 export default function SearchModal(): JSX.Element {
   const classes = useStyle();
+  const [modalStyle] = useState(getModalStyle);
   return (
-    <div className={classes.paper}>
+    <div style={modalStyle} className={classes.paper}>
       <h2>Name</h2>
 
       <Grid container spacing={3}>
@@ -38,6 +39,21 @@ export default function SearchModal(): JSX.Element {
       </p>
     </div>
   );
+}
+
+function rand(): number {
+  return Math.round(Math.random() * 20) - 10;
+}
+
+function getModalStyle(): Record<string, string> {
+  const top = 50 + rand();
+  const left = 50 + rand();
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
 }
 
 const useStyle = makeStyles((theme) => ({

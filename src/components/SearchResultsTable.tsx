@@ -26,6 +26,7 @@ export default function SearchResultsTable(props: Props): JSX.Element {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [detailRow, setDetailRow] = useState<SearchHit>();
+  console.log('Click:', typeof detailRow);
 
   const handleClose = (): void => {
     setDetailRow(undefined);
@@ -34,21 +35,14 @@ export default function SearchResultsTable(props: Props): JSX.Element {
   //Temporary -------------------------- TODO : need to add row data to modal, add photos and details
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2>Name</h2>
+      <h2>{JSON.stringify(detailRow?.person.name)}</h2>
 
       <Grid container spacing={3}>
         <Grid item xs={8}>
           <Paper className={classes.grid}>
-            <Typography>
-              Reprehenderit occaecat id eiusmod cupidatat cupidatat. Ullamco reprehenderit velit non
-              ea. Amet dolor labore laboris veniam consequat tempor aliqua adipisicing laboris.
-              Magna est amet nulla sunt ipsum enim exercitation sint id culpa quis occaecat labore.
-            </Typography>
-            <Typography>
-              Quis fugiat est sit fugiat do cupidatat. Officia et anim qui eu in ea culpa minim
-              fugiat velit. Consequat laboris eu ipsum amet cupidatat est reprehenderit laborum non
-              adipisicing consequat duis aliquip.
-            </Typography>
+            <Typography>{JSON.stringify(detailRow?.person.name)}</Typography>
+            <Typography>{JSON.stringify(detailRow?.person.event)}</Typography>
+            <Typography>{JSON.stringify(detailRow?.person.relationships)}</Typography>
           </Paper>
         </Grid>
         <Grid item xs={4} className={classes.image}></Grid>
