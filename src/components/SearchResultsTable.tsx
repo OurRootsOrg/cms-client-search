@@ -15,6 +15,7 @@ import Search from '@material-ui/icons/Search';
 import MaterialTable, { Icons } from 'material-table';
 import React, { forwardRef, useState } from 'react';
 import { SearchHit, SearchResult } from '../util/useSearch';
+// import SearchDetails from './SearchDetails';
 
 // Rows per page, in global space so that it's sticky.
 let rowsPerPage = 10;
