@@ -1,4 +1,3 @@
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Modal from '@material-ui/core/Modal';
 import Paper from '@material-ui/core/Paper';
@@ -36,16 +35,7 @@ export default function SearchResultsTable(props: Props): JSX.Element {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <Grid container>
-        <Grid item xs={8}>
-          <h2>{detailRow?.person.name}</h2>
-        </Grid>
-        <Grid item xs={4}>
-          <Button variant="contained" href="https://ourroots.org/" target="_blank">
-            Open in New Window
-          </Button>
-        </Grid>
-      </Grid>
+      <h2>{detailRow?.person.name}</h2>
 
       <Grid container spacing={3}>
         <Grid item xs={8}>
@@ -58,19 +48,9 @@ export default function SearchResultsTable(props: Props): JSX.Element {
         </Grid>
         <Grid item xs={4} className={classes.image}></Grid>
       </Grid>
-      <p>
-        Officia occaecat dolor incididunt elit qui id ut ut minim minim culpa excepteur. Laboris
-        aute enim Lorem voluptate. Ex veniam eu sunt veniam ad nulla Lorem aliquip ea. Culpa et
-        ullamco velit do voluptate veniam dolor amet minim. Commodo commodo minim fugiat sunt sint.
-        Velit voluptate dolor consequat velit fugiat nisi voluptate sint in sunt incididunt ullamco.
-        Irure pariatur sit cupidatat nostrud ex veniam anim ex esse elit sunt officia aliqua.
-        Exercitation ex culpa pariatur proident ipsum sint amet proident et sunt cillum do.
-      </p>
-      <p>
-        Sit Lorem do mollit elit. Consequat ea eu enim et adipisicing. In adipisicing officia
-        pariatur exercitation tempor dolor labore deserunt est ea sit deserunt. Magna dolor in in
-        cupidatat sint ea exercitation nostrud duis ullamco.
-      </p>
+      <div className={classes.container}>
+        <Typography>{JSON.stringify(detailRow?.person.relationships)}</Typography>
+      </div>
     </div>
   );
 
@@ -205,6 +185,9 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(2),
       textAlign: 'left',
       color: theme.palette.text.secondary,
+    },
+    container: {
+      marginTop: theme.spacing(3),
     },
     column: {
       marginLeft: theme.spacing(2),
