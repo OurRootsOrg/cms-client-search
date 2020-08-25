@@ -92,6 +92,7 @@ export type SearchHit = {
   id: string;
   person: Record<string, string>;
   score: number;
+  relationships: any;
 };
 
 export type UseSearchContext = {

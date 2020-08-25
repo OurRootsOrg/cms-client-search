@@ -1,3 +1,4 @@
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Modal from '@material-ui/core/Modal';
 import Paper from '@material-ui/core/Paper';
@@ -14,6 +15,7 @@ import Search from '@material-ui/icons/Search';
 import MaterialTable, { Icons } from 'material-table';
 import React, { forwardRef, useState } from 'react';
 import { SearchHit, SearchResult } from '../util/useSearch';
+// import SearchDetails from './SearchDetails';
 
 // Rows per page, in global space so that it's sticky.
 let rowsPerPage = 10;
@@ -26,29 +28,32 @@ export default function SearchResultsTable(props: Props): JSX.Element {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [detailRow, setDetailRow] = useState<SearchHit>();
+  console.log('Click:', typeof detailRow);
 
   const handleClose = (): void => {
     setDetailRow(undefined);
   };
 
-  //Temporary -------------------------- TODO : need to add row data to modal, add photos and details
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2>Name</h2>
+      <Grid container>
+        <Grid item xs={8}>
+          <h2>{detailRow?.person.name}</h2>
+        </Grid>
+        <Grid item xs={4}>
+          <Button variant="contained" href="https://ourroots.org/" target="_blank">
+            Open in New Window
+          </Button>
+        </Grid>
+      </Grid>
 
       <Grid container spacing={3}>
         <Grid item xs={8}>
           <Paper className={classes.grid}>
-            <Typography>
-              Reprehenderit occaecat id eiusmod cupidatat cupidatat. Ullamco reprehenderit velit non
-              ea. Amet dolor labore laboris veniam consequat tempor aliqua adipisicing laboris.
-              Magna est amet nulla sunt ipsum enim exercitation sint id culpa quis occaecat labore.
-            </Typography>
-            <Typography>
-              Quis fugiat est sit fugiat do cupidatat. Officia et anim qui eu in ea culpa minim
-              fugiat velit. Consequat laboris eu ipsum amet cupidatat est reprehenderit laborum non
-              adipisicing consequat duis aliquip.
-            </Typography>
+            <Typography>Name: {detailRow?.person.name}</Typography>
+            <Typography>Role: {detailRow?.person.role}</Typography>
+            <Typography>Event: {JSON.stringify(detailRow?.person.events)}</Typography>
+            <Typography>Relationship: {JSON.stringify(detailRow?.person.relationships)}</Typography>
           </Paper>
         </Grid>
         <Grid item xs={4} className={classes.image}></Grid>
@@ -79,10 +84,40 @@ export default function SearchResultsTable(props: Props): JSX.Element {
             title: 'Name',
             field: 'person.name',
             render: (_rowData) => {
+              const events = JSON.stringify(_rowData.person.events);
+              const relationships = JSON.stringify(_rowData.person.relationships);
+              let eventRow;
+              let relationshipRow;
+
+              if (events !== undefined) {
+                const arr = events.slice(1, events.length - 1).split(',');
+                eventRow = arr.map((row) => (
+                  <Typography className={classes.column}>{row}</Typography>
+                ));
+              }
+
+              if (relationships !== undefined) {
+                const arr = relationships.slice(1, relationships.length - 1).split(',');
+                relationshipRow = arr.map((row) => (
+                  <Typography className={classes.column}>{row}</Typography>
+                ));
+              }
+
+              // const person = JSON.stringify(_rowData.person);
+              // const result = person.slice(1, person.length - 1);
+              // const arr = result.split(',');
+              // console.log(arr);
+
               return (
                 <div>
-                  <Typography>{_rowData.person.name}</Typography>
-                  <Typography>{_rowData.person.role}</Typography>
+                  <Typography>Name: {_rowData.person.name}</Typography>
+                  <Typography>Role: {_rowData.person.role}</Typography>
+                  <Typography>Events: {eventRow}</Typography>
+                  <Typography>Relationships: {relationshipRow}</Typography>
+                  {/*
+                  {arr.map((row) => (
+                    <Typography>{row} </Typography>
+                  ))} */}
                 </div>
               );
             },
@@ -170,6 +205,9 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(2),
       textAlign: 'left',
       color: theme.palette.text.secondary,
+    },
+    column: {
+      marginLeft: theme.spacing(2),
     },
     image: {
       backgroundImage:

@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
+import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
-export default function SearchModal(): JSX.Element {
-  const classes = useStyle();
-  const [modalStyle] = useState(getModalStyle);
+export default function SearchDetails(): JSX.Element {
+  const classes = useStyles();
   return (
-    <div style={modalStyle} className={classes.paper}>
+    <Container component="main" maxWidth="md">
       <h2>Name</h2>
 
       <Grid container spacing={3}>
@@ -37,38 +37,33 @@ export default function SearchModal(): JSX.Element {
         pariatur exercitation tempor dolor labore deserunt est ea sit deserunt. Magna dolor in in
         cupidatat sint ea exercitation nostrud duis ullamco.
       </p>
-    </div>
+    </Container>
   );
 }
 
-function rand(): number {
-  return Math.round(Math.random() * 20) - 10;
-}
-
-function getModalStyle(): Record<string, string> {
-  const top = 50 + rand();
-  const left = 50 + rand();
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-
-const useStyle = makeStyles((theme) => ({
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'left',
-    color: theme.palette.text.secondary,
-  },
-  image: {
-    backgroundImage:
-      'url(https://images.unsplash.com/photo-1467688695332-6b486449d78f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2106&q=80)',
-    backgroundRepeat: 'no-repeat',
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
-}));
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    paper: {
+      position: 'fixed',
+      // width: 400,
+      backgroundColor: theme.palette.background.paper,
+      border: '2px solid #000',
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+    },
+    grid: {
+      padding: theme.spacing(2),
+      textAlign: 'left',
+      color: theme.palette.text.secondary,
+    },
+    image: {
+      backgroundImage:
+        'url(https://images.unsplash.com/photo-1467688695332-6b486449d78f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2106&q=80)',
+      backgroundRepeat: 'no-repeat',
+      backgroundColor:
+        theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    },
+  })
+);
