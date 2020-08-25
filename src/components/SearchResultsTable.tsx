@@ -35,14 +35,15 @@ export default function SearchResultsTable(props: Props): JSX.Element {
   //Temporary -------------------------- TODO : need to add row data to modal, add photos and details
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2>{JSON.stringify(detailRow?.person.name)}</h2>
+      <h2>{detailRow?.person.name}</h2>
 
       <Grid container spacing={3}>
         <Grid item xs={8}>
           <Paper className={classes.grid}>
-            <Typography>{JSON.stringify(detailRow?.person.name)}</Typography>
-            <Typography>{JSON.stringify(detailRow?.person.event)}</Typography>
-            <Typography>{JSON.stringify(detailRow?.person.relationships)}</Typography>
+            <Typography>Name: {detailRow?.person.name}</Typography>
+            <Typography>Role: {detailRow?.person.role}</Typography>
+            <Typography>Event: {JSON.stringify(detailRow?.person.events)}</Typography>
+            <Typography>Relationship: {JSON.stringify(detailRow?.person.relationships)}</Typography>
           </Paper>
         </Grid>
         <Grid item xs={4} className={classes.image}></Grid>
