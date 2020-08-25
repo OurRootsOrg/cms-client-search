@@ -1,3 +1,4 @@
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Modal from '@material-ui/core/Modal';
 import Paper from '@material-ui/core/Paper';
@@ -35,7 +36,14 @@ export default function SearchResultsTable(props: Props): JSX.Element {
   //Temporary -------------------------- TODO : need to add row data to modal, add photos and details
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2>{detailRow?.person.name}</h2>
+      <Grid container>
+        <Grid item xs={8}>
+          <h2>{detailRow?.person.name}</h2>
+        </Grid>
+        <Grid item xs={4}>
+          <Button variant="contained">Open in New Window</Button>
+        </Grid>
+      </Grid>
 
       <Grid container spacing={3}>
         <Grid item xs={8}>
