@@ -34,7 +34,6 @@ export default function SearchResultsTable(props: Props): JSX.Element {
     setDetailRow(undefined);
   };
 
-  //Temporary -------------------------- TODO : need to add row data to modal, add photos and details
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <Grid container>
@@ -42,7 +41,9 @@ export default function SearchResultsTable(props: Props): JSX.Element {
           <h2>{detailRow?.person.name}</h2>
         </Grid>
         <Grid item xs={4}>
-          <Button variant="contained">Open in New Window</Button>
+          <Button variant="contained" href="https://ourroots.org/" target="_blank">
+            Open in New Window
+          </Button>
         </Grid>
       </Grid>
 
