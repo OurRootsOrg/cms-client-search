@@ -42,15 +42,19 @@ export default function SearchResultsTable(props: Props): JSX.Element {
           <Paper className={classes.grid}>
             <Typography>Name: {detailRow?.person.name}</Typography>
             <Typography>Role: {detailRow?.person.role}</Typography>
-            <Typography>Event: {JSON.stringify(detailRow?.person.events)}</Typography>
-            <Typography>Relationship: {JSON.stringify(detailRow?.person.relationships)}</Typography>
           </Paper>
         </Grid>
         <Grid item xs={4} className={classes.image}></Grid>
+        {/* -------------------------- */}
+        <Grid item xs={8} className={classes.container}>
+          <Typography>Event: {JSON.stringify(detailRow?.person.events)}</Typography>
+          <Typography>Relationship: {JSON.stringify(detailRow?.person.relationships)}</Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <Typography>Collection Name:{detailRow?.collectionName}</Typography>
+          <Typography>Collection No: {JSON.stringify(detailRow?.collection)}</Typography>
+        </Grid>
       </Grid>
-      <div className={classes.container}>
-        <Typography>{JSON.stringify(detailRow?.person.relationships)}</Typography>
-      </div>
     </div>
   );
 
@@ -175,7 +179,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     paper: {
       position: 'fixed',
-      // width: 400,
+      width: 600,
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
