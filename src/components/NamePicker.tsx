@@ -131,7 +131,7 @@ export default function NamePicker(props: Props): JSX.Element {
             aria-describedby={fName}
             onClick={handleClick1}
           ></input>
-          Exact spelling and ...
+          Exact Spelling
           {/* <Popover
             id={fName}
             open={open}
@@ -208,7 +208,7 @@ export default function NamePicker(props: Props): JSX.Element {
             aria-describedby={lName}
             onClick={handleClick2}
           ></input>
-          Exact Spelling and ...
+          Exact Spelling
           {/* <Popover
             id={lName}
             open={open2}
